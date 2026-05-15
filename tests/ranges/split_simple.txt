@@ -1,0 +1,13 @@
+# Edge case: splitting helps — basic with 2 regs fails on this structure,
+# split K=1 solves it.
+# a (lines 1..8) conflicts with b (1..4) and c (5..8).
+# b and c each conflict with a, but a also has intermediate lines that
+# create a 3-way conflict at lines 2-3 and 6-7.
+# The key: b conflicts with a at lines 2-3; c conflicts with a at 6-7.
+# With 2 registers: a takes r0, b and c must both take r1 — BUT
+# to achieve this, we need b and c to not interfere. They share NO lines, so
+# basic DOES succeed. Instead use a structure that forces a 3-clique:
+# add variable d that overlaps both b and c:
+a: 1+,2,3,4,5,6,7,8-
+b: 2+,3,4,5-
+c: 4+,5,6,7-

@@ -1,0 +1,8 @@
+# Edge case: dense interference graph — a 4-clique requiring 4 distinct registers.
+# DSATUR should assign each a unique color without spills.
+# Expected with 4 registers: feasible, 4 registers used.
+# Expected with 3 registers: infeasible (1 or more spilled).
+p: 1+,2,3,4-
+q: 1+,2,3,5-
+r: 1+,2,3,6-
+s: 1+,2,3,7-

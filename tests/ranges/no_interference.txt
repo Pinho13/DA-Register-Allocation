@@ -1,0 +1,4 @@
+# Edge case: two variables whose live ranges never overlap.
+# Expected: 0 interference edges, 1 register suffices for both webs.
+a: 1+,2,3-
+b: 5+,6,7-

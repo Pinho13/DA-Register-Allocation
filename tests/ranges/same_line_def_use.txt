@@ -1,0 +1,8 @@
+# Edge case: same-line def-use fusion AND the non-interference exception.
+# x ends with a use at line 4 (4-), y is defined at line 4 (4+).
+#  - WebBuilder: different varNames so NO merge, but
+#  - InterferenceGraph: x's last-use coincides with y's def at line 4,
+#    so they do NOT interfere (value of x consumed before y is born).
+# Expected: 0 interference edges -> 1 register suffices.
+x: 1+,2,3,4-
+y: 4+,5,6-

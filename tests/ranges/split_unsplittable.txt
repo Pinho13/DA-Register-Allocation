@@ -1,0 +1,11 @@
+# Edge case: splitting K=5 cannot resolve the interference.
+# 4-clique (all pairs interfere at intermediate line 3), 2 registers available.
+# Chromatic number = 4. Splitting reduces individual web sizes but the
+# interference is concentrated at line 3 — every split half still contains
+# line 3 (if the web is split at midpoint into [start..3] and [3..end]).
+# After any number of splits the core conflict at line 3 remains infeasible
+# with only 2 registers.
+a: 2+,3,4-
+b: 2+,3,5-
+c: 2+,3,6-
+d: 2+,3,7-

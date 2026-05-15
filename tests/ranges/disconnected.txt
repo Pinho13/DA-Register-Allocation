@@ -1,0 +1,6 @@
+# Edge case: three variables, completely disjoint live ranges.
+# Interference graph has 3 nodes, 0 edges (fully disconnected).
+# Expected: 1 register suffices for all 3 webs.
+p: 1+,2-
+q: 4+,5-
+r: 7+,8-

@@ -1,0 +1,7 @@
+# Edge case: 3 mutually-overlapping variables, only 2 registers available.
+# All three are alive across lines 2..3 -> a 3-clique in the interference graph.
+# With basic algorithm + 2 registers: exactly 1 web must be spilled (M).
+# Pairs with registers spill1.txt (spilling, K=1) -> feasible, 1 spilled.
+a: 1+,2,3,4-
+b: 2+,3,4,5-
+c: 2+,3,4,6-

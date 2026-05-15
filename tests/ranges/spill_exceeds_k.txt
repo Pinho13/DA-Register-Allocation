@@ -1,0 +1,8 @@
+# Edge case: 4-clique interference with 2 registers available.
+# 4 webs all alive simultaneously -> need to spill 2.
+# Pairs with registers spill2.txt (spilling, K=1) -> INFEASIBLE (2 > 1 allowed spills).
+# Pairs with registers spill3.txt (spilling, K=2) -> feasible.
+a: 1+,2,3,4-
+b: 1+,2,3,5-
+c: 1+,2,3,6-
+d: 1+,2,3,7-

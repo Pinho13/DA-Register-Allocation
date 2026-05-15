@@ -1,0 +1,10 @@
+# Edge case: 3-clique requiring 3 registers; tests that spilling K=2 resolves it.
+# a(1..8), b(2..6), c(5..9) are mutually interfering at intermediate lines:
+#   a-b: share lines 2..6 (intermediate); a-c: share lines 5..8 (intermediate).
+#   b-c: share lines 5..6 (intermediate). No fusion exceptions apply.
+# Chromatic number = 3. With 2 registers: infeasible (basic and split K=1 both fail).
+# With spilling K=1: 1 web spilled to M, 2 regs used (feasible).
+# With spilling K=2: also resolves (2 webs could be spilled, but K=1 already suffices).
+a: 1+,2,3,4,5,6,7,8-
+b: 2+,3,4,5,6-
+c: 5+,6,7,8,9-
