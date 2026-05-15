@@ -4,7 +4,7 @@
  */
 
 #include <algorithm>
-#include "WebBuilder.h"
+#include "core/WebBuilder.h"
 
 bool WebBuilder::shouldMerge(const LiveRange &a, const LiveRange &b) {
     if (a.varName != b.varName) return false;

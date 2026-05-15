@@ -5,7 +5,7 @@
 
 #include <sstream>
 #include <map>
-#include "DisplayFormatter.h"
+#include "ui/DisplayFormatter.h"
 
 /// Returns a formatted "line+/-" string for a single web's program points.
 static std::string formatPoints(const Web &w) {

@@ -3,7 +3,7 @@
 #include <termios.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
-#include "Menu.h"
+#include "ui/Menu.h"
 
 // ANSI escape code constants
 const std::string Menu::CLEAR_SCREEN    = "\033[2J\033[H";

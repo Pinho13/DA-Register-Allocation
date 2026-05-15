@@ -4,7 +4,7 @@
 #include <vector>
 #include <stack>
 #include "models/AllocationData.h"
-#include "InterferenceGraph.h"
+#include "core/InterferenceGraph.h"
 
 /**
  * @brief Implements all four register allocation algorithms.

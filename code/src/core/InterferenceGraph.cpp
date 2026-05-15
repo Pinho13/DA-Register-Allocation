@@ -6,7 +6,7 @@
  * Edges are undirected and represent mutual interference between two webs.
  */
 
-#include "InterferenceGraph.h"
+#include "core/InterferenceGraph.h"
 
 InterferenceGraph::InterferenceGraph(const std::vector<Web> &webs)
     : numWebs_((int)webs.size()), removed_(webs.size(), false)

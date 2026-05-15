@@ -8,7 +8,7 @@
 #include <iostream>
 #include <algorithm>
 #include <map>
-#include "OutputWriter.h"
+#include "io/OutputWriter.h"
 
 std::string OutputWriter::formatWebPoints(const Web &web) {
     std::string result;

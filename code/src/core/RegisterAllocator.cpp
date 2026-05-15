@@ -13,7 +13,7 @@
 #include <stack>
 #include <set>
 #include <iostream>
-#include "RegisterAllocator.h"
+#include "core/RegisterAllocator.h"
 
 // ─── Basic coloring ───────────────────────────────────────────────────────────
 

@@ -5,13 +5,13 @@
 
 #include <iostream>
 #include <filesystem>
-#include "BatchProcessor.h"
+#include "io/BatchProcessor.h"
 #include "parser/RangesParser.h"
 #include "parser/RegistersParser.h"
-#include "WebBuilder.h"
-#include "InterferenceGraph.h"
-#include "RegisterAllocator.h"
-#include "OutputWriter.h"
+#include "core/WebBuilder.h"
+#include "core/InterferenceGraph.h"
+#include "core/RegisterAllocator.h"
+#include "io/OutputWriter.h"
 
 namespace fs = std::filesystem;
 

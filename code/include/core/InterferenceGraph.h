@@ -4,7 +4,7 @@
 #include <vector>
 #include <set>
 #include "models/AllocationData.h"
-#include "../data_structures/Graph.h"
+#include "data_structures/Graph.h"
 
 /**
  * @brief Builds and owns the interference graph for a set of webs.

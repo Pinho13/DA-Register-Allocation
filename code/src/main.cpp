@@ -14,15 +14,15 @@
 #include <csignal>
 #include <termios.h>
 #include <unistd.h>
-#include "Menu.h"
-#include "BatchProcessor.h"
-#include "DisplayFormatter.h"
+#include "ui/Menu.h"
+#include "io/BatchProcessor.h"
+#include "ui/DisplayFormatter.h"
 #include "parser/RangesParser.h"
 #include "parser/RegistersParser.h"
-#include "WebBuilder.h"
-#include "InterferenceGraph.h"
-#include "RegisterAllocator.h"
-#include "OutputWriter.h"
+#include "core/WebBuilder.h"
+#include "core/InterferenceGraph.h"
+#include "core/RegisterAllocator.h"
+#include "io/OutputWriter.h"
 #include "models/AllocationData.h"
 
 struct termios g_originalTermios;
