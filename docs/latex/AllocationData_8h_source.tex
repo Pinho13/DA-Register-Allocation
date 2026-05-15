@@ -1,0 +1,53 @@
+\doxysection{Allocation\+Data.\+h}
+\hypertarget{AllocationData_8h_source}{}\label{AllocationData_8h_source}\index{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/include/models/AllocationData.h@{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/include/models/AllocationData.h}}
+\doxymbox{\hyperlink{AllocationData_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ALLOCATIONDATA\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ALLOCATIONDATA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structLiveRange}{LiveRange}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ std::string\ \doxymbox{\hyperlink{structLiveRange_a922c82dd644c92249651fe99d56956b0}{varName}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ std::vector<int>\ \doxymbox{\hyperlink{structLiveRange_a123edd76f7cd5f57ecd4a90c1080263f}{lines}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ std::set<int>\ \doxymbox{\hyperlink{structLiveRange_a43a51916ffaa36e93aff1e9283fa3983}{defLines}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ std::set<int>\ \doxymbox{\hyperlink{structLiveRange_a1e7c3fdac60a09b9f33f1d301c4ef4c2}{useLines}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structWeb_aa5e813821bc4a8e27b85e384298b3dcf}{Web}}\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structWeb_af59e2bcb1907d91a75a5d2598e0eb1b6}{id}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ std::string\ \doxymbox{\hyperlink{structWeb_a864d30608851a4e2e7ecd1aa39cb4304}{varName}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ std::vector<int>\ \doxymbox{\hyperlink{structWeb_a83bc52dd38ecefa0ac7efe44afa6405b}{lines}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ std::set<int>\ \doxymbox{\hyperlink{structWeb_ac1477c11c610542d9e7028737b9a5ee8}{defLines}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ std::set<int>\ \doxymbox{\hyperlink{structWeb_a31370fec0f93468e410ca386b4360359}{useLines}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structWeb_a2acb6cdba4709c8389b608dfd0b3ba1a}{assignedRegister}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \doxymbox{\hyperlink{structWeb_aa5e813821bc4a8e27b85e384298b3dcf}{Web}}()\ :\ \doxymbox{\hyperlink{structWeb_af59e2bcb1907d91a75a5d2598e0eb1b6}{id}}(-\/1),\ \doxymbox{\hyperlink{structWeb_a2acb6cdba4709c8389b608dfd0b3ba1a}{assignedRegister}}(-\/1)\ \{\}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \ \ \ \ std::set<int>\ \doxymbox{\hyperlink{structWeb_a2cf4bdef73ef7ddb06dfef2bac34c6e5}{lineSet}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::set<int>(\doxymbox{\hyperlink{structWeb_a83bc52dd38ecefa0ac7efe44afa6405b}{lines}}.begin(),\ \doxymbox{\hyperlink{structWeb_a83bc52dd38ecefa0ac7efe44afa6405b}{lines}}.end());}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structRegisterConfig_aa94433f9545435f7c8ec707b5acb8959}{RegisterConfig}}\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structRegisterConfig_ad4a9ed282c6645cfa2465124c39ee393}{numRegisters}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ std::string\ \doxymbox{\hyperlink{structRegisterConfig_ab3ed45ad33bd6079e6b09a9628f7eace}{algorithm}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structRegisterConfig_a91a8a7a0d9f2852fbf4eac38af1f710d}{algorithmParam}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \doxymbox{\hyperlink{structRegisterConfig_aa94433f9545435f7c8ec707b5acb8959}{RegisterConfig}}()\ :\ \doxymbox{\hyperlink{structRegisterConfig_ad4a9ed282c6645cfa2465124c39ee393}{numRegisters}}(0),\ \doxymbox{\hyperlink{structRegisterConfig_ab3ed45ad33bd6079e6b09a9628f7eace}{algorithm}}(\textcolor{stringliteral}{"{}basic"{}}),\ \doxymbox{\hyperlink{structRegisterConfig_a91a8a7a0d9f2852fbf4eac38af1f710d}{algorithmParam}}(0)\ \{\}}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{structAllocationResult_ac66f7489916694f23d9f583138b10769}{AllocationResult}}\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ std::vector<Web>\ \doxymbox{\hyperlink{structAllocationResult_a0594ff7608a831b09e23c8767079c13d}{webs}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structAllocationResult_ad2745bf126a525f87be4ea94e99d393a}{registersUsed}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{structAllocationResult_a15e2d2c98221ee91b5b55197423e522a}{feasible}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \doxymbox{\hyperlink{structAllocationResult_ac66f7489916694f23d9f583138b10769}{AllocationResult}}()\ :\ \doxymbox{\hyperlink{structAllocationResult_ad2745bf126a525f87be4ea94e99d393a}{registersUsed}}(0),\ \doxymbox{\hyperlink{structAllocationResult_a15e2d2c98221ee91b5b55197423e522a}{feasible}}(false)\ \{\}}
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

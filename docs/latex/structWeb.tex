@@ -1,0 +1,110 @@
+\doxysection{Web Struct Reference}
+\hypertarget{structWeb}{}\label{structWeb}\index{Web@{Web}}
+
+
+Represents a web:\+ the union of one or more merged live ranges for a variable.  
+
+
+
+
+{\ttfamily \+\#include $<$Allocation\+Data.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structWeb_aa5e813821bc4a8e27b85e384298b3dcf}{Web}} ()
+\item 
+std::\+set$<$ int $>$ \doxymbox{\hyperlink{structWeb_a2cf4bdef73ef7ddb06dfef2bac34c6e5}{line\+Set}} () const
+\begin{DoxyCompactList}\small\item\em Returns the set of program points as a sorted set for interference checks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{structWeb_af59e2bcb1907d91a75a5d2598e0eb1b6}{id}}
+\item 
+std::\+string \doxymbox{\hyperlink{structWeb_a864d30608851a4e2e7ecd1aa39cb4304}{var\+Name}}
+\item 
+std::\+vector$<$ int $>$ \doxymbox{\hyperlink{structWeb_a83bc52dd38ecefa0ac7efe44afa6405b}{lines}}
+\item 
+std::\+set$<$ int $>$ \doxymbox{\hyperlink{structWeb_ac1477c11c610542d9e7028737b9a5ee8}{def\+Lines}}
+\item 
+std::\+set$<$ int $>$ \doxymbox{\hyperlink{structWeb_a31370fec0f93468e410ca386b4360359}{use\+Lines}}
+\item 
+int \doxymbox{\hyperlink{structWeb_a2acb6cdba4709c8389b608dfd0b3ba1a}{assigned\+Register}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a web:\+ the union of one or more merged live ranges for a variable. 
+
+A web is the unit that gets assigned a register (or memory). 
+
+\label{doc-constructors}
+\Hypertarget{structWeb_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structWeb_aa5e813821bc4a8e27b85e384298b3dcf}\index{Web@{Web}!Web@{Web}}
+\index{Web@{Web}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{Web()}{Web()}}
+{\footnotesize\ttfamily \label{structWeb_aa5e813821bc4a8e27b85e384298b3dcf} 
+Web::\+\+Web (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{structWeb_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structWeb_a2cf4bdef73ef7ddb06dfef2bac34c6e5}\index{Web@{Web}!lineSet@{lineSet}}
+\index{lineSet@{lineSet}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{lineSet()}{lineSet()}}
+{\footnotesize\ttfamily \label{structWeb_a2cf4bdef73ef7ddb06dfef2bac34c6e5} 
+std::\+set$<$ int $>$ Web::\+line\+Set (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the set of program points as a sorted set for interference checks. 
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structWeb_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structWeb_a2acb6cdba4709c8389b608dfd0b3ba1a}\index{Web@{Web}!assignedRegister@{assignedRegister}}
+\index{assignedRegister@{assignedRegister}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{assignedRegister}{assignedRegister}}
+{\footnotesize\ttfamily \label{structWeb_a2acb6cdba4709c8389b608dfd0b3ba1a} 
+int Web::\+assigned\+Register}
+
+-\/1 = unassigned, -\/2 = spilled to memory, \texorpdfstring{$>$}{>}= 0 = register index \Hypertarget{structWeb_ac1477c11c610542d9e7028737b9a5ee8}\index{Web@{Web}!defLines@{defLines}}
+\index{defLines@{defLines}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{defLines}{defLines}}
+{\footnotesize\ttfamily \label{structWeb_ac1477c11c610542d9e7028737b9a5ee8} 
+std::\+set$<$int$>$ Web::\+def\+Lines}
+
+Definition points across all merged ranges \Hypertarget{structWeb_af59e2bcb1907d91a75a5d2598e0eb1b6}\index{Web@{Web}!id@{id}}
+\index{id@{id}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily \label{structWeb_af59e2bcb1907d91a75a5d2598e0eb1b6} 
+int Web::\+id}
+
+Unique web index (web0, web1, ...) \Hypertarget{structWeb_a83bc52dd38ecefa0ac7efe44afa6405b}\index{Web@{Web}!lines@{lines}}
+\index{lines@{lines}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{lines}{lines}}
+{\footnotesize\ttfamily \label{structWeb_a83bc52dd38ecefa0ac7efe44afa6405b} 
+std::\+vector$<$int$>$ Web::\+lines}
+
+Sorted merged program line numbers \Hypertarget{structWeb_a31370fec0f93468e410ca386b4360359}\index{Web@{Web}!useLines@{useLines}}
+\index{useLines@{useLines}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{useLines}{useLines}}
+{\footnotesize\ttfamily \label{structWeb_a31370fec0f93468e410ca386b4360359} 
+std::\+set$<$int$>$ Web::\+use\+Lines}
+
+Last-\/use points across all merged ranges \Hypertarget{structWeb_a864d30608851a4e2e7ecd1aa39cb4304}\index{Web@{Web}!varName@{varName}}
+\index{varName@{varName}!Web@{Web}}
+\doxysubsubsection{\texorpdfstring{varName}{varName}}
+{\footnotesize\ttfamily \label{structWeb_a864d30608851a4e2e7ecd1aa39cb4304} 
+std::\+string Web::\+var\+Name}
+
+Variable name this web belongs to 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+include/\+models/\+\doxymbox{\hyperlink{AllocationData_8h}{Allocation\+Data.\+h}}\end{DoxyCompactItemize}

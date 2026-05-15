@@ -1,0 +1,72 @@
+\doxysection{/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+main.cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/src/main.cpp@{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/src/main.cpp}}
+
+
+Entry point for the Register Allocation tool.  
+
+
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$csignal$>$}\newline
+{\ttfamily \+\#include $<$termios.\+h$>$}\newline
+{\ttfamily \+\#include $<$unistd.\+h$>$}\newline
+{\ttfamily \+\#include "{}ui/\+\+Menu.\+h"{}}\newline
+{\ttfamily \+\#include "{}io/\+\+Batch\+Processor.\+h"{}}\newline
+{\ttfamily \+\#include "{}ui/\+\+Display\+Formatter.\+h"{}}\newline
+{\ttfamily \+\#include "{}parser/\+\+Ranges\+Parser.\+h"{}}\newline
+{\ttfamily \+\#include "{}parser/\+\+Registers\+Parser.\+h"{}}\newline
+{\ttfamily \+\#include "{}core/\+\+Web\+Builder.\+h"{}}\newline
+{\ttfamily \+\#include "{}core/\+\+Interference\+Graph.\+h"{}}\newline
+{\ttfamily \+\#include "{}core/\+\+Register\+Allocator.\+h"{}}\newline
+{\ttfamily \+\#include "{}io/\+\+Output\+Writer.\+h"{}}\newline
+{\ttfamily \+\#include "{}models/\+\+Allocation\+Data.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{main_8cpp_a52bd440dfc168262222a8dcd76b4d3e1}{restore\+Terminal}} (int)
+\item 
+int \doxymbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\+[$\,$]\+)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct termios \doxymbox{\hyperlink{main_8cpp_a1f61f80fbb464146c93ea74b1c7839e1}{g\+\_\+original\+Termios}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entry point for the Register Allocation tool. 
+
+Supports two execution modes:\+
+\begin{DoxyItemize}
+\item {\bfseries{Interactive}}:\+ arrow-\/key menu for loading files, inspecting webs/\+graphs, running allocation algorithms, and saving results.
+\item {\bfseries{Batch}}:\+ {\ttfamily ./\+register\+\_\+alloc -\/b ranges.\+txt registers.\+txt output.\+txt} 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{main_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\+[$\,$]\+}\end{DoxyParamCaption})}
+
+\Hypertarget{main_8cpp_a52bd440dfc168262222a8dcd76b4d3e1}\index{main.cpp@{main.cpp}!restoreTerminal@{restoreTerminal}}
+\index{restoreTerminal@{restoreTerminal}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{restoreTerminal()}{restoreTerminal()}}
+{\footnotesize\ttfamily \label{main_8cpp_a52bd440dfc168262222a8dcd76b4d3e1} 
+void restore\+Terminal (\begin{DoxyParamCaption}\item[{int}]{}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-var-members}
+\Hypertarget{main_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8cpp_a1f61f80fbb464146c93ea74b1c7839e1}\index{main.cpp@{main.cpp}!g\_originalTermios@{g\_originalTermios}}
+\index{g\_originalTermios@{g\_originalTermios}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_originalTermios}{g\_originalTermios}}
+{\footnotesize\ttfamily \label{main_8cpp_a1f61f80fbb464146c93ea74b1c7839e1} 
+struct termios g\+\_\+original\+Termios}
+

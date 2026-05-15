@@ -1,0 +1,101 @@
+\doxysection{Display\+Formatter Class Reference}
+\hypertarget{classDisplayFormatter}{}\label{classDisplayFormatter}\index{DisplayFormatter@{DisplayFormatter}}
+
+
+Converts domain data into display-\/ready string lines for the \doxylink{classMenu}{Menu}.  
+
+
+
+
+{\ttfamily \+\#include $<$Display\+Formatter.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{classDisplayFormatter_a3da51e2a45b908cd2e8eb70080f1b201}{format\+Webs}} (const std::\+vector$<$ \doxymbox{\hyperlink{structWeb}{Web}} $>$ \&webs)
+\begin{DoxyCompactList}\small\item\em Formats the list of webs for display. \end{DoxyCompactList}\item 
+static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{classDisplayFormatter_aec0542fab64ac51752bf382a390d7cd8}{format\+Allocation\+Result}} (const \doxymbox{\hyperlink{structAllocationResult}{Allocation\+Result}} \&result)
+\begin{DoxyCompactList}\small\item\em Formats the allocation result (webs + register assignments). \end{DoxyCompactList}\item 
+static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{classDisplayFormatter_ab0f9393bd3f187aea6f3653ed31e1117}{format\+Config}} (const \doxymbox{\hyperlink{structRegisterConfig}{Register\+Config}} \&config)
+\begin{DoxyCompactList}\small\item\em Formats the register configuration settings. \end{DoxyCompactList}\item 
+static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{classDisplayFormatter_aba982b547957f4a8b14167963530258b}{format\+Ranges}} (const std::\+vector$<$ \doxymbox{\hyperlink{structLiveRange}{Live\+Range}} $>$ \&ranges)
+\begin{DoxyCompactList}\small\item\em Formats the raw live ranges loaded from file. \end{DoxyCompactList}\item 
+static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{classDisplayFormatter_ac35de0b0105bf7399d96c0524f6aa4f9}{wrap\+Line}} (const std::\+string \&prefix, const std::\+string \&text, int max\+Width)
+\begin{DoxyCompactList}\small\item\em Wraps a long string into multiple lines fitting within max\+Width. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Converts domain data into display-\/ready string lines for the \doxylink{classMenu}{Menu}. 
+
+Pure formatting layer — receives domain objects, returns vectors of strings. Knows nothing about terminal rendering. 
+
+\label{doc-func-members}
+\Hypertarget{classDisplayFormatter_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDisplayFormatter_aec0542fab64ac51752bf382a390d7cd8}\index{DisplayFormatter@{DisplayFormatter}!formatAllocationResult@{formatAllocationResult}}
+\index{formatAllocationResult@{formatAllocationResult}!DisplayFormatter@{DisplayFormatter}}
+\doxysubsubsection{\texorpdfstring{formatAllocationResult()}{formatAllocationResult()}}
+{\footnotesize\ttfamily \label{classDisplayFormatter_aec0542fab64ac51752bf382a390d7cd8} 
+std::\+vector$<$ std::\+string $>$ Display\+Formatter::\+format\+Allocation\+Result (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structAllocationResult}{Allocation\+Result}} \&}]{result}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Formats the allocation result (webs + register assignments). 
+
+\Hypertarget{classDisplayFormatter_ab0f9393bd3f187aea6f3653ed31e1117}\index{DisplayFormatter@{DisplayFormatter}!formatConfig@{formatConfig}}
+\index{formatConfig@{formatConfig}!DisplayFormatter@{DisplayFormatter}}
+\doxysubsubsection{\texorpdfstring{formatConfig()}{formatConfig()}}
+{\footnotesize\ttfamily \label{classDisplayFormatter_ab0f9393bd3f187aea6f3653ed31e1117} 
+std::\+vector$<$ std::\+string $>$ Display\+Formatter::\+format\+Config (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structRegisterConfig}{Register\+Config}} \&}]{config}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Formats the register configuration settings. 
+
+\Hypertarget{classDisplayFormatter_aba982b547957f4a8b14167963530258b}\index{DisplayFormatter@{DisplayFormatter}!formatRanges@{formatRanges}}
+\index{formatRanges@{formatRanges}!DisplayFormatter@{DisplayFormatter}}
+\doxysubsubsection{\texorpdfstring{formatRanges()}{formatRanges()}}
+{\footnotesize\ttfamily \label{classDisplayFormatter_aba982b547957f4a8b14167963530258b} 
+std::\+vector$<$ std::\+string $>$ Display\+Formatter::\+format\+Ranges (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{structLiveRange}{Live\+Range}} $>$ \&}]{ranges}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Formats the raw live ranges loaded from file. 
+
+\Hypertarget{classDisplayFormatter_a3da51e2a45b908cd2e8eb70080f1b201}\index{DisplayFormatter@{DisplayFormatter}!formatWebs@{formatWebs}}
+\index{formatWebs@{formatWebs}!DisplayFormatter@{DisplayFormatter}}
+\doxysubsubsection{\texorpdfstring{formatWebs()}{formatWebs()}}
+{\footnotesize\ttfamily \label{classDisplayFormatter_a3da51e2a45b908cd2e8eb70080f1b201} 
+std::\+vector$<$ std::\+string $>$ Display\+Formatter::\+format\+Webs (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{structWeb}{Web}} $>$ \&}]{webs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Formats the list of webs for display. 
+
+\Hypertarget{classDisplayFormatter_ac35de0b0105bf7399d96c0524f6aa4f9}\index{DisplayFormatter@{DisplayFormatter}!wrapLine@{wrapLine}}
+\index{wrapLine@{wrapLine}!DisplayFormatter@{DisplayFormatter}}
+\doxysubsubsection{\texorpdfstring{wrapLine()}{wrapLine()}}
+{\footnotesize\ttfamily \label{classDisplayFormatter_ac35de0b0105bf7399d96c0524f6aa4f9} 
+std::\+vector$<$ std::\+string $>$ Display\+Formatter::\+wrap\+Line (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prefix}{, }\item[{const std::\+string \&}]{text}{, }\item[{int}]{max\+Width}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Wraps a long string into multiple lines fitting within max\+Width. 
+
+If the prefix starts with "{}!!"{} all continuation lines also get "{}!!"{} so the \doxylink{classMenu}{Menu} renders them in red.
+
+
+\begin{DoxyParams}{Parameters}
+{\em prefix} & Prefix for the first line (e.\+g. "{}-\/ "{} or "{}!!"{}) \\
+\hline
+{\em text} & Text to wrap. \\
+\hline
+{\em max\+Width} & Maximum line width including prefix. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+include/\+ui/\+\doxymbox{\hyperlink{DisplayFormatter_8h}{Display\+Formatter.\+h}}\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+ui/\+\doxymbox{\hyperlink{DisplayFormatter_8cpp}{Display\+Formatter.\+cpp}}\end{DoxyCompactItemize}

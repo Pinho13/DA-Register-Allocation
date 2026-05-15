@@ -1,0 +1,76 @@
+\doxysection{Output\+Writer Class Reference}
+\hypertarget{classOutputWriter}{}\label{classOutputWriter}\index{OutputWriter@{OutputWriter}}
+
+
+Writes the allocation result to a text file in the required format.  
+
+
+
+
+{\ttfamily \+\#include $<$Output\+Writer.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{classOutputWriter_a5090842b40233514a29b09540f586251}{write}} (const std::\+string \&filename, const \doxymbox{\hyperlink{structAllocationResult}{Allocation\+Result}} \&result)
+\begin{DoxyCompactList}\small\item\em Writes the allocation result to the given file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Writes the allocation result to a text file in the required format. 
+
+Output format (success):\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#\ Total\ number\ of\ webs\ ...}}
+\DoxyCodeLine{webs:\ N}
+\DoxyCodeLine{web0:\ 1+,2,3-\/}
+\DoxyCodeLine{...}
+\DoxyCodeLine{registers:\ K}
+\DoxyCodeLine{r0:\ web0}
+\DoxyCodeLine{r0:\ web2}
+\DoxyCodeLine{r1:\ web1}
+
+\end{DoxyCode}
+
+
+Output format (failure — all to memory):\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{webs:\ N}
+\DoxyCodeLine{web0:\ ...}
+\DoxyCodeLine{registers:\ 0}
+\DoxyCodeLine{M:\ web0}
+\DoxyCodeLine{M:\ web1}
+
+\end{DoxyCode}
+ 
+
+\label{doc-func-members}
+\Hypertarget{classOutputWriter_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classOutputWriter_a5090842b40233514a29b09540f586251}\index{OutputWriter@{OutputWriter}!write@{write}}
+\index{write@{write}!OutputWriter@{OutputWriter}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{classOutputWriter_a5090842b40233514a29b09540f586251} 
+void Output\+Writer::\+write (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filename}{, }\item[{const \doxymbox{\hyperlink{structAllocationResult}{Allocation\+Result}} \&}]{result}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Writes the allocation result to the given file. 
+
+Also prints a console warning if allocation was not feasible.
+
+{\bfseries{Time Complexity:\+}} O(\+W \texorpdfstring{$\ast$}{*} L) where W = number of webs, L = average web size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to the output text file. \\
+\hline
+{\em result} & The allocation result to write. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+include/\+io/\+\doxymbox{\hyperlink{OutputWriter_8h}{Output\+Writer.\+h}}\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+io/\+\doxymbox{\hyperlink{OutputWriter_8cpp}{Output\+Writer.\+cpp}}\end{DoxyCompactItemize}

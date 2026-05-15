@@ -1,0 +1,26 @@
+\doxysection{/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+include/\+models/\+\+Allocation\+Data.h File Reference}
+\hypertarget{AllocationData_8h}{}\label{AllocationData_8h}\index{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/include/models/AllocationData.h@{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/include/models/AllocationData.h}}
+
+
+Core data structures for the Register Allocation project.  
+
+
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$set$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structLiveRange}{Live\+Range}}
+\begin{DoxyCompactList}\small\item\em Represents a single live range for a variable:\+ a set of program line numbers. \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{structWeb}{Web}}
+\begin{DoxyCompactList}\small\item\em Represents a web:\+ the union of one or more merged live ranges for a variable. \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{structRegisterConfig}{Register\+Config}}
+\begin{DoxyCompactList}\small\item\em Holds the parsed register configuration from the registers input file. \end{DoxyCompactList}\item 
+struct \doxymbox{\hyperlink{structAllocationResult}{Allocation\+Result}}
+\begin{DoxyCompactList}\small\item\em Holds the full result of a register allocation run. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core data structures for the Register Allocation project. 
+

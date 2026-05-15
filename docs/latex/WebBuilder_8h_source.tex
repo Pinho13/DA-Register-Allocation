@@ -1,0 +1,23 @@
+\doxysection{Web\+Builder.\+h}
+\hypertarget{WebBuilder_8h_source}{}\label{WebBuilder_8h_source}\index{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/include/core/WebBuilder.h@{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/include/core/WebBuilder.h}}
+\doxymbox{\hyperlink{WebBuilder_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ WEBBUILDER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ WEBBUILDER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{AllocationData_8h}{models/AllocationData.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classWebBuilder}{WebBuilder}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classWebBuilder_a212eceabad7e612628f7ea874d2a8c3c}{build}}(\textcolor{keyword}{const}\ std::vector<LiveRange>\ \&ranges,\ std::vector<Web>\ \&webs);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ shouldMerge(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structLiveRange}{LiveRange}}\ \&a,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structLiveRange}{LiveRange}}\ \&b);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ mergeTo(\doxymbox{\hyperlink{structLiveRange}{LiveRange}}\ \&a,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structLiveRange}{LiveRange}}\ \&b);}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

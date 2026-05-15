@@ -1,0 +1,159 @@
+\doxysection{Interference\+Graph Class Reference}
+\hypertarget{classInterferenceGraph}{}\label{classInterferenceGraph}\index{InterferenceGraph@{InterferenceGraph}}
+
+
+Builds and owns the interference graph for a set of webs.  
+
+
+
+
+{\ttfamily \+\#include $<$Interference\+Graph.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classInterferenceGraph_a4052e9b7d9a7f7a1e2e1311e577c07b6}{Interference\+Graph}} (const std::\+vector$<$ \doxymbox{\hyperlink{structWeb}{Web}} $>$ \&webs)
+\begin{DoxyCompactList}\small\item\em Constructs the interference graph from the given webs. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{classInterferenceGraph_a8b4fab6a60f93008035e665d8df30109}{effective\+Degree}} (int web\+Id) const
+\begin{DoxyCompactList}\small\item\em Returns the effective degree of node web\+Id, counting only non-\/removed nodes. \end{DoxyCompactList}\item 
+std::\+vector$<$ int $>$ \doxymbox{\hyperlink{classInterferenceGraph_a198ca6f2c31bfff930562d90f1bf009b}{neighbours}} (int web\+Id) const
+\begin{DoxyCompactList}\small\item\em Returns the neighbours of web\+Id (all, including removed ones). \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{classInterferenceGraph_a8bb93aabd5633759f1f360f0c5e82823}{interferes}} (int a, int b) const
+\begin{DoxyCompactList}\small\item\em Returns true if the two webs are connected by an edge. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{classInterferenceGraph_aa81d693c4e2cddd40bb9d9891fafe006}{size}} () const
+\begin{DoxyCompactList}\small\item\em Number of webs (nodes) in the graph. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInterferenceGraph_a28ca6789befd9d111b06177b455e404a}{set\+Removed}} (int web\+Id, bool removed)
+\begin{DoxyCompactList}\small\item\em Marks a node as removed (soft-\/delete for the coloring algorithm). \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{classInterferenceGraph_adfd9bb518bb762a1e59036849a8d0485}{is\+Removed}} (int web\+Id) const
+\begin{DoxyCompactList}\small\item\em Returns true if the node has been soft-\/deleted. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classInterferenceGraph_ab95684ac0b728579ffcfa9135da882c4}{reset\+Removed}} ()
+\begin{DoxyCompactList}\small\item\em Resets all removed flags (for re-\/runs with different N). \end{DoxyCompactList}\item 
+const Graph$<$ int $>$ \& \doxymbox{\hyperlink{classInterferenceGraph_ab2f24eb760a02c827c5e3da10c82aa4b}{get\+Graph}} () const
+\begin{DoxyCompactList}\small\item\em Returns the underlying Graph object for display/\+inspection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Builds and owns the interference graph for a set of webs. 
+
+Each node in the graph corresponds to one web (identified by its id). An undirected edge connects two nodes if their webs interfere.
+
+Two webs interfere if they are simultaneously alive at any program point, with one exception:\+ if web A ends at line N with \textquotesingle{}-\/\textquotesingle{} (last-\/use) and web B starts at line N with \textquotesingle{}+\textquotesingle{} (definition), they do NOT interfere at that line. 
+
+\label{doc-constructors}
+\Hypertarget{classInterferenceGraph_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classInterferenceGraph_a4052e9b7d9a7f7a1e2e1311e577c07b6}\index{InterferenceGraph@{InterferenceGraph}!InterferenceGraph@{InterferenceGraph}}
+\index{InterferenceGraph@{InterferenceGraph}!InterferenceGraph@{InterferenceGraph}}
+\doxysubsubsection{\texorpdfstring{InterferenceGraph()}{InterferenceGraph()}}
+{\footnotesize\ttfamily \label{classInterferenceGraph_a4052e9b7d9a7f7a1e2e1311e577c07b6} 
+Interference\+Graph::\+\+Interference\+Graph (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{structWeb}{Web}} $>$ \&}]{webs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructs the interference graph from the given webs. 
+
+{\bfseries{Time Complexity:\+}} O(\+W\texorpdfstring{$^\wedge$}{\string^}2 \texorpdfstring{$\ast$}{*} L) where W = number of webs, L = average web size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em webs} & The list of webs to build the graph from. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classInterferenceGraph_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classInterferenceGraph_a8b4fab6a60f93008035e665d8df30109}\index{InterferenceGraph@{InterferenceGraph}!effectiveDegree@{effectiveDegree}}
+\index{effectiveDegree@{effectiveDegree}!InterferenceGraph@{InterferenceGraph}}
+\doxysubsubsection{\texorpdfstring{effectiveDegree()}{effectiveDegree()}}
+{\footnotesize\ttfamily \label{classInterferenceGraph_a8b4fab6a60f93008035e665d8df30109} 
+int Interference\+Graph::\+effective\+Degree (\begin{DoxyParamCaption}\item[{int}]{web\+Id}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns the effective degree of node web\+Id, counting only non-\/removed nodes. 
+
+{\bfseries{Time Complexity:\+}} O(\+W) where W = number of webs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em web\+Id} & \doxylink{structWeb}{Web} index. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classInterferenceGraph_ab2f24eb760a02c827c5e3da10c82aa4b}\index{InterferenceGraph@{InterferenceGraph}!getGraph@{getGraph}}
+\index{getGraph@{getGraph}!InterferenceGraph@{InterferenceGraph}}
+\doxysubsubsection{\texorpdfstring{getGraph()}{getGraph()}}
+{\footnotesize\ttfamily \label{classInterferenceGraph_ab2f24eb760a02c827c5e3da10c82aa4b} 
+const Graph$<$ int $>$ \& Interference\+Graph::\+get\+Graph (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns the underlying Graph object for display/\+inspection. 
+
+\Hypertarget{classInterferenceGraph_a8bb93aabd5633759f1f360f0c5e82823}\index{InterferenceGraph@{InterferenceGraph}!interferes@{interferes}}
+\index{interferes@{interferes}!InterferenceGraph@{InterferenceGraph}}
+\doxysubsubsection{\texorpdfstring{interferes()}{interferes()}}
+{\footnotesize\ttfamily \label{classInterferenceGraph_a8bb93aabd5633759f1f360f0c5e82823} 
+bool Interference\+Graph::\+interferes (\begin{DoxyParamCaption}\item[{int}]{a}{, }\item[{int}]{b}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the two webs are connected by an edge. 
+
+\Hypertarget{classInterferenceGraph_adfd9bb518bb762a1e59036849a8d0485}\index{InterferenceGraph@{InterferenceGraph}!isRemoved@{isRemoved}}
+\index{isRemoved@{isRemoved}!InterferenceGraph@{InterferenceGraph}}
+\doxysubsubsection{\texorpdfstring{isRemoved()}{isRemoved()}}
+{\footnotesize\ttfamily \label{classInterferenceGraph_adfd9bb518bb762a1e59036849a8d0485} 
+bool Interference\+Graph::\+is\+Removed (\begin{DoxyParamCaption}\item[{int}]{web\+Id}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns true if the node has been soft-\/deleted. 
+
+\Hypertarget{classInterferenceGraph_a198ca6f2c31bfff930562d90f1bf009b}\index{InterferenceGraph@{InterferenceGraph}!neighbours@{neighbours}}
+\index{neighbours@{neighbours}!InterferenceGraph@{InterferenceGraph}}
+\doxysubsubsection{\texorpdfstring{neighbours()}{neighbours()}}
+{\footnotesize\ttfamily \label{classInterferenceGraph_a198ca6f2c31bfff930562d90f1bf009b} 
+std::\+vector$<$ int $>$ Interference\+Graph::\+neighbours (\begin{DoxyParamCaption}\item[{int}]{web\+Id}{}\end{DoxyParamCaption}) const}
+
+
+
+Returns the neighbours of web\+Id (all, including removed ones). 
+
+\Hypertarget{classInterferenceGraph_ab95684ac0b728579ffcfa9135da882c4}\index{InterferenceGraph@{InterferenceGraph}!resetRemoved@{resetRemoved}}
+\index{resetRemoved@{resetRemoved}!InterferenceGraph@{InterferenceGraph}}
+\doxysubsubsection{\texorpdfstring{resetRemoved()}{resetRemoved()}}
+{\footnotesize\ttfamily \label{classInterferenceGraph_ab95684ac0b728579ffcfa9135da882c4} 
+void Interference\+Graph::\+reset\+Removed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Resets all removed flags (for re-\/runs with different N). 
+
+\Hypertarget{classInterferenceGraph_a28ca6789befd9d111b06177b455e404a}\index{InterferenceGraph@{InterferenceGraph}!setRemoved@{setRemoved}}
+\index{setRemoved@{setRemoved}!InterferenceGraph@{InterferenceGraph}}
+\doxysubsubsection{\texorpdfstring{setRemoved()}{setRemoved()}}
+{\footnotesize\ttfamily \label{classInterferenceGraph_a28ca6789befd9d111b06177b455e404a} 
+void Interference\+Graph::\+set\+Removed (\begin{DoxyParamCaption}\item[{int}]{web\+Id}{, }\item[{bool}]{removed}{}\end{DoxyParamCaption})}
+
+
+
+Marks a node as removed (soft-\/delete for the coloring algorithm). 
+
+\Hypertarget{classInterferenceGraph_aa81d693c4e2cddd40bb9d9891fafe006}\index{InterferenceGraph@{InterferenceGraph}!size@{size}}
+\index{size@{size}!InterferenceGraph@{InterferenceGraph}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily \label{classInterferenceGraph_aa81d693c4e2cddd40bb9d9891fafe006} 
+int Interference\+Graph::\+size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Number of webs (nodes) in the graph. 
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+include/\+core/\+\doxymbox{\hyperlink{InterferenceGraph_8h}{Interference\+Graph.\+h}}\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+core/\+\doxymbox{\hyperlink{InterferenceGraph_8cpp}{Interference\+Graph.\+cpp}}\end{DoxyCompactItemize}

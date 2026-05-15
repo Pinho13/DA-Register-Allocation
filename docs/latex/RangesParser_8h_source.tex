@@ -1,0 +1,22 @@
+\doxysection{Ranges\+Parser.\+h}
+\hypertarget{RangesParser_8h_source}{}\label{RangesParser_8h_source}\index{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/include/parser/RangesParser.h@{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/include/parser/RangesParser.h}}
+\doxymbox{\hyperlink{RangesParser_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ RANGESPARSER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ RANGESPARSER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{AllocationData_8h}{../models/AllocationData.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classRangesParser}{RangesParser}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classRangesParser_aed2e770177bcbff251c7ff06a690f4ce}{parse}}(\textcolor{keyword}{const}\ std::string\ \&filename,\ std::vector<LiveRange>\ \&ranges);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ parseToken(\textcolor{keyword}{const}\ std::string\ \&token,\ \textcolor{keywordtype}{int}\ \&line,\ \textcolor{keywordtype}{bool}\ \&isDef,\ \textcolor{keywordtype}{bool}\ \&isUse);}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

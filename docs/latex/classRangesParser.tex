@@ -1,0 +1,62 @@
+\doxysection{Ranges\+Parser Class Reference}
+\hypertarget{classRangesParser}{}\label{classRangesParser}\index{RangesParser@{RangesParser}}
+
+
+Parses the live-\/ranges input file into a list of \doxylink{structLiveRange}{Live\+Range} objects.  
+
+
+
+
+{\ttfamily \+\#include $<$Ranges\+Parser.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \doxymbox{\hyperlink{classRangesParser_aed2e770177bcbff251c7ff06a690f4ce}{parse}} (const std::\+string \&filename, std::\+vector$<$ \doxymbox{\hyperlink{structLiveRange}{Live\+Range}} $>$ \&ranges)
+\begin{DoxyCompactList}\small\item\em Parses the given file and fills the output vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Parses the live-\/ranges input file into a list of \doxylink{structLiveRange}{Live\+Range} objects. 
+
+File format (lines starting with \textquotesingle{}\#\textquotesingle{} are ignored):\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{varName:\ line+,\ line,\ line-\/}
+\DoxyCodeLine{varName:\ line+,\ line-\/}
+
+\end{DoxyCode}
+
+
+A \textquotesingle{}+\textquotesingle{} suffix on a line number marks a definition point. A \textquotesingle{}-\/\textquotesingle{} suffix marks a last-\/use point. 
+
+\label{doc-func-members}
+\Hypertarget{classRangesParser_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRangesParser_aed2e770177bcbff251c7ff06a690f4ce}\index{RangesParser@{RangesParser}!parse@{parse}}
+\index{parse@{parse}!RangesParser@{RangesParser}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily \label{classRangesParser_aed2e770177bcbff251c7ff06a690f4ce} 
+bool Ranges\+Parser::\+parse (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filename}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{structLiveRange}{Live\+Range}} $>$ \&}]{ranges}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parses the given file and fills the output vector. 
+
+{\bfseries{Time Complexity:\+}} O(\+L) where L = total number of line-\/number tokens across all ranges.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to the ranges text file. \\
+\hline
+{\em ranges} & Output vector of \doxylink{structLiveRange}{Live\+Range} objects. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success, false if the file cannot be opened or is malformed. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+include/\+parser/\+\doxymbox{\hyperlink{RangesParser_8h}{Ranges\+Parser.\+h}}\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+parser/\+\doxymbox{\hyperlink{RangesParser_8cpp}{Ranges\+Parser.\+cpp}}\end{DoxyCompactItemize}

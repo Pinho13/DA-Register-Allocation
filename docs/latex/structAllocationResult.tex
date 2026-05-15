@@ -1,0 +1,67 @@
+\doxysection{Allocation\+Result Struct Reference}
+\hypertarget{structAllocationResult}{}\label{structAllocationResult}\index{AllocationResult@{AllocationResult}}
+
+
+Holds the full result of a register allocation run.  
+
+
+
+
+{\ttfamily \+\#include $<$Allocation\+Data.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structAllocationResult_ac66f7489916694f23d9f583138b10769}{Allocation\+Result}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{structWeb}{Web}} $>$ \doxymbox{\hyperlink{structAllocationResult_a0594ff7608a831b09e23c8767079c13d}{webs}}
+\item 
+int \doxymbox{\hyperlink{structAllocationResult_ad2745bf126a525f87be4ea94e99d393a}{registers\+Used}}
+\item 
+bool \doxymbox{\hyperlink{structAllocationResult_a15e2d2c98221ee91b5b55197423e522a}{feasible}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Holds the full result of a register allocation run. 
+
+\label{doc-constructors}
+\Hypertarget{structAllocationResult_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structAllocationResult_ac66f7489916694f23d9f583138b10769}\index{AllocationResult@{AllocationResult}!AllocationResult@{AllocationResult}}
+\index{AllocationResult@{AllocationResult}!AllocationResult@{AllocationResult}}
+\doxysubsubsection{\texorpdfstring{AllocationResult()}{AllocationResult()}}
+{\footnotesize\ttfamily \label{structAllocationResult_ac66f7489916694f23d9f583138b10769} 
+Allocation\+Result::\+\+Allocation\+Result (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structAllocationResult_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structAllocationResult_a15e2d2c98221ee91b5b55197423e522a}\index{AllocationResult@{AllocationResult}!feasible@{feasible}}
+\index{feasible@{feasible}!AllocationResult@{AllocationResult}}
+\doxysubsubsection{\texorpdfstring{feasible}{feasible}}
+{\footnotesize\ttfamily \label{structAllocationResult_a15e2d2c98221ee91b5b55197423e522a} 
+bool Allocation\+Result::\+feasible}
+
+True if allocation succeeded without spilling everything \Hypertarget{structAllocationResult_ad2745bf126a525f87be4ea94e99d393a}\index{AllocationResult@{AllocationResult}!registersUsed@{registersUsed}}
+\index{registersUsed@{registersUsed}!AllocationResult@{AllocationResult}}
+\doxysubsubsection{\texorpdfstring{registersUsed}{registersUsed}}
+{\footnotesize\ttfamily \label{structAllocationResult_ad2745bf126a525f87be4ea94e99d393a} 
+int Allocation\+Result::\+registers\+Used}
+
+Number of registers actually used (0 = all spilled) \Hypertarget{structAllocationResult_a0594ff7608a831b09e23c8767079c13d}\index{AllocationResult@{AllocationResult}!webs@{webs}}
+\index{webs@{webs}!AllocationResult@{AllocationResult}}
+\doxysubsubsection{\texorpdfstring{webs}{webs}}
+{\footnotesize\ttfamily \label{structAllocationResult_a0594ff7608a831b09e23c8767079c13d} 
+std::\+vector$<$\doxymbox{\hyperlink{structWeb}{Web}}$>$ Allocation\+Result::\+webs}
+
+All webs, in order, with assignments filled in 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+include/\+models/\+\doxymbox{\hyperlink{AllocationData_8h}{Allocation\+Data.\+h}}\end{DoxyCompactItemize}
