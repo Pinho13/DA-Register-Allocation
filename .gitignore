@@ -16,10 +16,6 @@ register_alloc
 .vscode/
 *.iml
 
-# Doxygen generated docs
-documentation/html/
-documentation/latex/
-
 # macOS junk
 .DS_Store
 **/.DS_Store
