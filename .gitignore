@@ -1,0 +1,29 @@
+# Build output
+code/cmake-build/
+code/cmake-build-*/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Compiled binary
+register_alloc
+
+# IDE directories
+.idea/
+.vscode/
+*.iml
+
+# Doxygen generated docs
+documentation/html/
+documentation/latex/
+
+# macOS junk
+.DS_Store
+**/.DS_Store
+
+# Temporary output files
+/tmp/
+*.tmp
