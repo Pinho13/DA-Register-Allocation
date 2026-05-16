@@ -2,7 +2,7 @@
 # run_tests.sh — full regression suite for register_alloc
 # Usage: bash tests/run_tests.sh  (from project root)
 
-set -euo pipefail
+set -uo pipefail
 
 BIN="code/cmake-build/register_alloc"
 TMPOUT=$(mktemp)
@@ -24,9 +24,9 @@ run() {
 
     local failed=false reason=""
 
-    if ! timeout 10 "$BIN" -b "$ranges" "$regs" "$TMPOUT" 2>"$ERRTMP"; then
+    timeout 10 "$BIN" -b "$ranges" "$regs" "$TMPOUT" 2>"$ERRTMP" || {
         failed=true; reason="binary returned non-zero / timeout"
-    fi
+    }
 
     local out=""
     [[ -f "$TMPOUT" ]] && out=$(cat "$TMPOUT")
@@ -36,7 +36,7 @@ run() {
         case "$key" in
             feasible)
                 local err_warn=false
-                grep -q "Warning: Register allocation was not possible" "$ERRTMP" && err_warn=true
+                grep -q "Warning: Register allocation was not possible" "$ERRTMP" 2>/dev/null && err_warn=true || true
                 if [[ "$val" == "yes" ]] && $err_warn; then
                     failed=true; reason="expected feasible, got infeasible warning"
                 elif [[ "$val" == "no" ]] && ! $err_warn; then
