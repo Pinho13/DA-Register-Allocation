@@ -97,7 +97,10 @@ $(function(){initNavTree('RegisterAllocator_8cpp.html','',''); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;stack&gt;</code><br />
+<code>#include &lt;queue&gt;</code><br />
 <code>#include &lt;set&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
+<code>#include &lt;unordered_map&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &quot;<a class="el" href="RegisterAllocator_8h_source.html">core/RegisterAllocator.h</a>&quot;</code><br />
 </div><a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
@@ -106,7 +109,7 @@ $(function(){initNavTree('RegisterAllocator_8cpp.html','',''); });
 <li><b>basic</b>: Chaitin-style greedy simplification + stack-based coloring.</li>
 <li><b>spilling</b>: Basic coloring extended with up to K webs committed to memory.</li>
 <li><b>splitting</b>: Iterative web splitting to reduce interference, then basic coloring.</li>
-<li><b>free</b>: DSATUR heuristic — always color the highest-saturation web first. </li>
+<li><b>free</b> (BCT-Color): biconnected-component decomposition with per-block adaptive coloring. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
