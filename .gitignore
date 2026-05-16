@@ -1,6 +1,7 @@
 # Build output
 code/cmake-build/
 code/cmake-build-*/
+output/*
 
 # CMake generated files
 CMakeCache.txt
