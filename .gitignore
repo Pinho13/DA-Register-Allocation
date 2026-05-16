@@ -23,3 +23,7 @@ register_alloc
 # Temporary output files
 /tmp/
 *.tmp
+
+.claude/
+
+dataset.zip
