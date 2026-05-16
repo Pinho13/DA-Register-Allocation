@@ -1,0 +1,7 @@
+# C5 (5-cycle) = Mycielski M2. χ=3, triangle-free. Greedy worst case uses 3 colors
+# but ordering matters. Tests whether free's sparse-BCC greedy finds 3 or wastes 4.
+v0: 1+,2,3,4-
+v1: 3+,4,5,6-
+v2: 5+,6,7,8-
+v3: 7+,8,9,10-
+v4: 9+,10,1,2-

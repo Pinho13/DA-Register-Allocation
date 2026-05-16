@@ -1,0 +1,13 @@
+# W-shaped block-cut tree: B0=K4(ap0,ap1,x,y), B1=K4(ap0,ap1,ap2,ap3), B2=K4(ap2,ap3,u,v)
+# B1's 4 nodes are ALL articulation points — the block itself is a K4 of APs.
+# DP must assign 4 different colors to ap0,ap1,ap2,ap3 simultaneously.
+# With N=4: feasible. With N=3: infeasible.
+# Tests DP when a block contains multiple APs that are all shared with other blocks.
+ap0: 1+,2,3,4,5,17-
+ap1: 1+,6,7,8,9,18-
+ap2: 2+,6,10,11,12,19-
+ap3: 3+,7,10,13,14,20-
+x: 4+,8,15,21-
+y: 5+,9,15,22-
+u: 11+,13,16,23-
+v: 12+,14,16,24-

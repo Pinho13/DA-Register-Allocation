@@ -1,0 +1,63 @@
+# Hourglass 5: Asymmetric — K4 left blob + K3 right blob, shared AP
+#
+# This is the hardest test for naive AP color assignment.
+# The AP participates in a K4 on the left and a K3 on the right.
+# With N=4 registers:
+#   Left K4 {a,b,c,p}: needs 4 colors. p gets color 0,1,2, or 3.
+#   Right K3 {p,d,e}: needs 3 colors. p must NOT take both "slots" from d and e.
+#   Any color for p is compatible with the right K3 (it only blocks one of 3 colors).
+#   Greedy left-to-right: colors left K4 first, assigns p some color, right K3 uses remaining 2.
+#   Tree DP: confirms p can take any of 4 colors and right K3 remains 3-colorable.
+#   Result: 4 registers (chromatic number = 4 due to left K4).
+#
+# With N=3 (the interesting case):
+#   Left K4 {a,b,c,p}: needs 4 colors — INFEASIBLE with N=3.
+#   But wait: if we treat this with N=3 and basic coloring, basic force-spills
+#   one node from the K4 during simplification. If it spills p (the AP), the right
+#   K3 loses its anchor and must use a fresh coloring.
+#   Free: detects K4 on the left (size 4, density=1.0>0.6, maxDeg=3=N-1 for N=4),
+#   dispatches DSATUR. DSATUR cannot 3-color a K4 → left block fails → p spilled.
+#   Both algorithms report infeasible with N=3.
+#
+# With N=4 (the meaningful test):
+#   Left K4: a,b,c get colors 0,1,2; p gets color 3 (or any permutation).
+#   Right K3: p=3, d and e get 2 of {0,1,2} → 4 registers total.
+#   Free achieves this cleanly. Basic also achieves it (4-simplification succeeds).
+#   The advantage shows when we make the right side ALSO a near-K4:
+#
+# Extended variant: K4 left + K4 right, but the RIGHT K4 only needs 3 colors
+# because p already occupies one color slot (reducing pressure).
+# If p=0 in the left K4, right K4 {p=0, d, e, f} needs colors for d,e,f ≠ 0
+# → uses {1,2,3} → 4 registers total, no waste.
+# Greedy without DP might assign p=3 in left, then right K4 needs {3,?,?,?}
+# → uses 4 more colors {3,0,1,2} → still 4. Normalization handles it.
+# The REAL difference: if greedy assigns p a color that forces a 5th color in
+# the right block, that's the failure case the tree DP prevents.
+#
+# Structure here: K4_left + K4_right sharing AP p, N=4 → should use exactly 4 registers.
+#
+# K4_left {a, b, c, p}: all alive lines 2-4
+#   a: 1+,2,3,4,5-
+#   b: 2+,3,4,5-
+#   c: 2+,3,4,5-
+#   p: 2+,3,4,5,6,7,8,9,10,11-   (AP)
+#
+# K4_right {p, d, e, f}: all alive lines 7-9
+#   d: 7+,8,9,10-
+#   e: 7+,8,9,10-
+#   f: 7+,8,9,10-
+#
+# Chromatic number: 4 (each K4 needs 4; p in both means colors must align)
+# With N=4: free picks p's color via DP to be compatible with both K4s → 4 registers.
+# With N=3: infeasible (K4 needs 4 colors regardless of AP).
+#
+# This is the asymmetric pressure case: if the right side were K5, then p's color
+# choice in the left K4 would determine whether the right side needs 5 or 6 colors.
+# With K4+K4 and N=4, any color for p works — this validates the DP is consistent.
+a: 1+,2,3,4,5-
+b: 2+,3,4,5-
+c: 2+,3,4,5-
+p: 2+,3,4,5,6,7,8,9,10,11-
+d: 7+,8,9,10-
+e: 7+,8,9,10-
+f: 7+,8,9,10-

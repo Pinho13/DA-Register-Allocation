@@ -1,0 +1,10 @@
+# Two K4 cliques sharing edge (a,b). Both a and b are articulation points.
+# Left K4: {a,b,c,d} alive lines 1-4. Right K4: {a,b,e,f} alive lines 7-10.
+# χ=4. With N=4: feasible. Tree DP assigns a and b colors compatible with both K4s.
+# Hardest AP case: two APs must simultaneously satisfy two K4 constraints.
+a: 1+,2,3,4,5,6,7,8,9,10-
+b: 1+,2,3,4,5,6,7,8,9,10-
+c: 1+,2,3,4-
+d: 1+,2,3,4-
+e: 7+,8,9,10-
+f: 7+,8,9,10-

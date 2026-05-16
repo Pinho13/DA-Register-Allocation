@@ -1,0 +1,12 @@
+# AP color conflict test: AP p connects K3_left and K4_right.
+# Left K3 {a,b,p}: p will want color 2 (last assigned). 
+# Right K4 {p,c,d,e}: with p=2, needs 3 more colors → 4 total → feasible with N=4.
+# But with N=3: K4 needs 4 → infeasible regardless. With N=4: feasible.
+# Real conflict: what if the AP's greedy color from left forces extra colors on right?
+# This tests that tree DP picks p's color to minimize right-side pressure.
+a: 1+,2,3,4-
+b: 1+,2,3,4-
+p: 1+,2,3,4,5,6,7,8,9,10,11,12-
+c: 5+,6,7,8,9,10,11,12-
+d: 5+,6,7,8,9,10,11,12-
+e: 5+,6,7,8,9,10,11,12-

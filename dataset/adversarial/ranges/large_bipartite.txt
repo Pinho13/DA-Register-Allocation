@@ -1,0 +1,28 @@
+# Large bipartite graph: 24 nodes (L0..L11, R0..R11), χ=2, one BCC.
+# 3-regular bipartite — each node has degree 3, 36 edges.
+# With N=2: feasible. Greedy may use more; DSATUR and free should find 2.
+# No articulation points (biconnected by construction).
+L0: 1+,2,3,37-
+L1: 4+,5,6,38-
+L2: 7+,8,9,39-
+L3: 10+,11,12,40-
+L4: 13+,14,15,41-
+L5: 16+,17,18,42-
+L6: 19+,20,21,43-
+L7: 22+,23,24,44-
+L8: 25+,26,27,45-
+L9: 28+,29,30,46-
+L10: 31+,32,33,47-
+L11: 34+,35,36,48-
+R0: 1+,31,34,49-
+R1: 2+,4,35,50-
+R2: 3+,5,7,51-
+R3: 6+,8,10,52-
+R4: 9+,11,13,53-
+R5: 12+,14,16,54-
+R6: 15+,17,19,55-
+R7: 18+,20,22,56-
+R8: 21+,23,25,57-
+R9: 24+,26,28,58-
+R10: 27+,29,32,59-
+R11: 30+,33,36,60-

@@ -1,0 +1,14 @@
+# Six disjoint edges (K2s). χ=2. Tests color normalization aggressively.
+# Each K2 gets colors {0,1} locally. Normalization must collapse all to exactly 2 global colors.
+u0: 1+,2-
+v0: 1+,2-
+u1: 5+,6-
+v1: 5+,6-
+u2: 10+,11-
+v2: 10+,11-
+u3: 15+,16-
+v3: 15+,16-
+u4: 20+,21-
+v4: 20+,21-
+u5: 25+,26-
+v5: 25+,26-

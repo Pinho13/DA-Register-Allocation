@@ -1,0 +1,11 @@
+# C7: 7-cycle. χ=3. No articulation points — one biconnected component.
+# Tests DSATUR on a single sparse BCC (density=2/7≈0.29 < 0.6, maxDeg=2).
+# Sparse path means free uses greedy, not DSATUR. Greedy may use 4 colors.
+# If free uses 4 and basic uses 3 → FREE_WORSE.
+v0: 1+,2,3,4-
+v1: 3+,4,5,6-
+v2: 5+,6,7,8-
+v3: 7+,8,9,10-
+v4: 9+,10,11,12-
+v5: 11+,12,13,14-
+v6: 13+,14,1,2-

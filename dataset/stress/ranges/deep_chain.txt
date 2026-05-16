@@ -1,0 +1,28 @@
+# Deep chain of K3 cliques: 8 K3s connected in sequence by 7 APs.
+# χ=3. With N=3: free should color all 8 cliques with exactly 3 registers.
+# Tests tree DP on a depth-7 block-cut tree (stress test for DP propagation).
+# Each clique shares one node (AP) with the next. APs get their own register,
+# and normalization should collapse all 8 cliques to a shared 3-color palette.
+a0: 1+,2,3-
+b0: 1+,2,3-
+p0: 1+,2,3,4,5,6-
+a1: 4+,5,6-
+b1: 4+,5,6-
+p1: 4+,5,6,7,8,9-
+a2: 7+,8,9-
+b2: 7+,8,9-
+p2: 7+,8,9,10,11,12-
+a3: 10+,11,12-
+b3: 10+,11,12-
+p3: 10+,11,12,13,14,15-
+a4: 13+,14,15-
+b4: 13+,14,15-
+p4: 13+,14,15,16,17,18-
+a5: 16+,17,18-
+b5: 16+,17,18-
+p5: 16+,17,18,19,20,21-
+a6: 19+,20,21-
+b6: 19+,20,21-
+p6: 19+,20,21,22,23,24-
+a7: 22+,23,24-
+b7: 22+,23,24-

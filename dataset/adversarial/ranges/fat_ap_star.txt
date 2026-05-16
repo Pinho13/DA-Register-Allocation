@@ -1,0 +1,15 @@
+# Star of 5 K3s sharing central AP z. z must pick a color compatible with all 5 K3s.
+# Since each K3 only needs z to avoid 2 colors (the other 2 K3 members), any color
+# for z works. But with N=3: the 5 K3s each use all 3 colors — normalization must
+# collapse all 5 to 3 physical registers.
+z:  1+,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30-
+a0: 1+,2,3-
+b0: 1+,2,3-
+a1: 7+,8,9-
+b1: 7+,8,9-
+a2: 13+,14,15-
+b2: 13+,14,15-
+a3: 19+,20,21-
+b3: 19+,20,21-
+a4: 25+,26,27-
+b4: 25+,26,27-

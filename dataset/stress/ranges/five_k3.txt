@@ -1,0 +1,17 @@
+# Five disjoint K3 cliques. χ=3. Tests disconnected graph + color normalization.
+# With N=3: free should color all 15 webs with exactly 3 registers.
+a1: 1+,2,3-
+b1: 1+,2,3-
+c1: 1+,2,3-
+a2: 10+,11,12-
+b2: 10+,11,12-
+c2: 10+,11,12-
+a3: 20+,21,22-
+b3: 20+,21,22-
+c3: 20+,21,22-
+a4: 30+,31,32-
+b4: 30+,31,32-
+c4: 30+,31,32-
+a5: 40+,41,42-
+b5: 40+,41,42-
+c5: 40+,41,42-

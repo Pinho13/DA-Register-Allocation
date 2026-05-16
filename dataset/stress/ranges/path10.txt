@@ -1,0 +1,12 @@
+# Chain of 10 variables. χ=2. Tests BCC chain (9 single-edge BCCs, 9 APs).
+# With N=2: free should color all 10 webs with exactly 2 registers via DP + normalization.
+x0: 1+,2,3,4-
+x1: 4+,5,6,7-
+x2: 7+,8,9,10-
+x3: 10+,11,12,13-
+x4: 13+,14,15,16-
+x5: 16+,17,18,19-
+x6: 19+,20,21,22-
+x7: 22+,23,24,25-
+x8: 25+,26,27,28-
+x9: 28+,29,30,31-

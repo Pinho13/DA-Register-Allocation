@@ -1,0 +1,45 @@
+# Hourglass 3: Chain of 3 K3 cliques connected by 2 articulation points
+#
+# Structure: [K3_left] --AP1(d)-- [K3_mid] --AP2(h)-- [K3_right]
+#
+# K3_left {a, b, d}: alive at lines 2-3
+#   a: 1+,2,3,4-
+#   b: 2+,3,4-
+#   d: 2+,3,4,5,6,7,8-   (AP1 — bridges left and mid cliques)
+#
+# K3_mid {d, e, h}: alive at lines 5-6
+#   d: already defined (alive 2-8, spans left and mid)
+#   e: 5+,6,7-
+#   h: 5+,6,7,8,9,10,11-  (AP2 — bridges mid and right cliques)
+#
+# K3_right {h, i, j}: alive at lines 9-10
+#   h: already defined (alive 5-11, spans mid and right)
+#   i: 9+,10,11-
+#   j: 9+,10,11-
+#
+# Interference edges:
+#   Left K3:  a-b, a-d, b-d
+#   Mid K3:   d-e, d-h, e-h
+#   Right K3: h-i, h-j, i-j
+#   d and h are articulation points in the block-cut tree.
+#
+# Chromatic number: 3
+# Block-cut tree: leaf(K3_left) --d-- (K3_mid) --h-- leaf(K3_right)
+#
+# Tree DP critical test:
+#   Bottom-up: for K3_right, h can be color 0,1,2 — all feasible.
+#   For K3_mid, d can be color 0,1,2 given h's choice — all feasible.
+#   For K3_left, a,b,d → any 3-coloring works.
+#   DP picks d=0, h=1 (or any consistent pair) and propagates.
+#
+# With N=3: free should color all 3 cliques with 3 registers total,
+#   reusing colors across cliques (left uses {0,1,2}, mid uses {0,1,2},
+#   right uses {0,1,2} — color normalization collapses to 3 registers).
+# With N=2: infeasible.
+a: 1+,2,3,4-
+b: 2+,3,4-
+d: 2+,3,4,5,6,7,8-
+e: 5+,6,7-
+h: 5+,6,7,8,9,10,11-
+i: 9+,10,11-
+j: 9+,10,11-
