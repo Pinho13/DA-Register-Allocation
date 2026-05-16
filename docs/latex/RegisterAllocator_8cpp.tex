@@ -1,0 +1,24 @@
+\doxysection{/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+core/\+\+Register\+Allocator.cpp File Reference}
+\hypertarget{RegisterAllocator_8cpp}{}\label{RegisterAllocator_8cpp}\index{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/src/core/RegisterAllocator.cpp@{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/src/core/RegisterAllocator.cpp}}
+
+
+Implementation of the four register allocation algorithms.  
+
+
+{\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include $<$stack$>$}\newline
+{\ttfamily \+\#include $<$set$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include "{}core/\+\+Register\+Allocator.\+h"{}}\newline
+
+
+\doxysubsection{Detailed Description}
+Implementation of the four register allocation algorithms. 
+
+Algorithms implemented:\+
+\begin{DoxyItemize}
+\item {\bfseries{basic}}:\+ Chaitin-\/style greedy simplification + stack-\/based coloring.
+\item {\bfseries{spilling}}:\+ Basic coloring extended with up to K webs committed to memory.
+\item {\bfseries{splitting}}:\+ Iterative web splitting to reduce interference, then basic coloring.
+\item {\bfseries{free}}:\+ DSATUR heuristic — always color the highest-\/saturation web first. 
+\end{DoxyItemize}

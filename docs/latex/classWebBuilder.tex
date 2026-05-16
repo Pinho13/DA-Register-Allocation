@@ -1,0 +1,57 @@
+\doxysection{Web\+Builder Class Reference}
+\hypertarget{classWebBuilder}{}\label{classWebBuilder}\index{WebBuilder@{WebBuilder}}
+
+
+Merges live ranges into webs using a greedy union approach.  
+
+
+
+
+{\ttfamily \+\#include $<$Web\+Builder.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{classWebBuilder_a212eceabad7e612628f7ea874d2a8c3c}{build}} (const std::\+vector$<$ \doxymbox{\hyperlink{structLiveRange}{Live\+Range}} $>$ \&ranges, std::\+vector$<$ \doxymbox{\hyperlink{structWeb}{Web}} $>$ \&webs)
+\begin{DoxyCompactList}\small\item\em Builds webs from a list of live ranges. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Merges live ranges into webs using a greedy union approach. 
+
+Two live ranges of the same variable are merged into one web if:\+
+\begin{DoxyEnumerate}
+\item They share at least one program line number, OR
+\item One ends at line N with \textquotesingle{}-\/\textquotesingle{} and the other starts at line N with \textquotesingle{}+\textquotesingle{} (same-\/line def-\/use fusion).
+\end{DoxyEnumerate}
+
+Merging is repeated until no further merges are possible (fixed-\/point). 
+
+\label{doc-func-members}
+\Hypertarget{classWebBuilder_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classWebBuilder_a212eceabad7e612628f7ea874d2a8c3c}\index{WebBuilder@{WebBuilder}!build@{build}}
+\index{build@{build}!WebBuilder@{WebBuilder}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{classWebBuilder_a212eceabad7e612628f7ea874d2a8c3c} 
+void Web\+Builder::\+build (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{structLiveRange}{Live\+Range}} $>$ \&}]{ranges}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{structWeb}{Web}} $>$ \&}]{webs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Builds webs from a list of live ranges. 
+
+{\bfseries{Time Complexity:\+}} O(\+R\texorpdfstring{$^\wedge$}{\string^}2 \texorpdfstring{$\ast$}{*} L) where R = number of ranges, L = average range size. In practice R is small so this is fast.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ranges} & Input live ranges (may contain multiple ranges per variable). \\
+\hline
+{\em webs} & Output vector of fully merged webs, each with a unique id. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+include/\+core/\+\doxymbox{\hyperlink{WebBuilder_8h}{Web\+Builder.\+h}}\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+core/\+\doxymbox{\hyperlink{WebBuilder_8cpp}{Web\+Builder.\+cpp}}\end{DoxyCompactItemize}

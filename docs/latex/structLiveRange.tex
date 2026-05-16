@@ -1,0 +1,61 @@
+\doxysection{Live\+Range Struct Reference}
+\hypertarget{structLiveRange}{}\label{structLiveRange}\index{LiveRange@{LiveRange}}
+
+
+Represents a single live range for a variable:\+ a set of program line numbers.  
+
+
+
+
+{\ttfamily \+\#include $<$Allocation\+Data.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{structLiveRange_a922c82dd644c92249651fe99d56956b0}{var\+Name}}
+\item 
+std::\+vector$<$ int $>$ \doxymbox{\hyperlink{structLiveRange_a123edd76f7cd5f57ecd4a90c1080263f}{lines}}
+\item 
+std::\+set$<$ int $>$ \doxymbox{\hyperlink{structLiveRange_a43a51916ffaa36e93aff1e9283fa3983}{def\+Lines}}
+\item 
+std::\+set$<$ int $>$ \doxymbox{\hyperlink{structLiveRange_a1e7c3fdac60a09b9f33f1d301c4ef4c2}{use\+Lines}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a single live range for a variable:\+ a set of program line numbers. 
+
+A line number may carry a \textquotesingle{}+\textquotesingle{} (definition point) or \textquotesingle{}-\/\textquotesingle{} (last-\/use point) marker. These are stored separately so interference logic can use them. 
+
+\label{doc-variable-members}
+\Hypertarget{structLiveRange_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structLiveRange_a43a51916ffaa36e93aff1e9283fa3983}\index{LiveRange@{LiveRange}!defLines@{defLines}}
+\index{defLines@{defLines}!LiveRange@{LiveRange}}
+\doxysubsubsection{\texorpdfstring{defLines}{defLines}}
+{\footnotesize\ttfamily \label{structLiveRange_a43a51916ffaa36e93aff1e9283fa3983} 
+std::\+set$<$int$>$ Live\+Range::\+def\+Lines}
+
+Lines marked with \textquotesingle{}+\textquotesingle{} (definition points) \Hypertarget{structLiveRange_a123edd76f7cd5f57ecd4a90c1080263f}\index{LiveRange@{LiveRange}!lines@{lines}}
+\index{lines@{lines}!LiveRange@{LiveRange}}
+\doxysubsubsection{\texorpdfstring{lines}{lines}}
+{\footnotesize\ttfamily \label{structLiveRange_a123edd76f7cd5f57ecd4a90c1080263f} 
+std::\+vector$<$int$>$ Live\+Range::\+lines}
+
+Sorted line numbers (without markers) \Hypertarget{structLiveRange_a1e7c3fdac60a09b9f33f1d301c4ef4c2}\index{LiveRange@{LiveRange}!useLines@{useLines}}
+\index{useLines@{useLines}!LiveRange@{LiveRange}}
+\doxysubsubsection{\texorpdfstring{useLines}{useLines}}
+{\footnotesize\ttfamily \label{structLiveRange_a1e7c3fdac60a09b9f33f1d301c4ef4c2} 
+std::\+set$<$int$>$ Live\+Range::\+use\+Lines}
+
+Lines marked with \textquotesingle{}-\/\textquotesingle{} (last-\/use points) \Hypertarget{structLiveRange_a922c82dd644c92249651fe99d56956b0}\index{LiveRange@{LiveRange}!varName@{varName}}
+\index{varName@{varName}!LiveRange@{LiveRange}}
+\doxysubsubsection{\texorpdfstring{varName}{varName}}
+{\footnotesize\ttfamily \label{structLiveRange_a922c82dd644c92249651fe99d56956b0} 
+std::\+string Live\+Range::\+var\+Name}
+
+Variable this range belongs to 
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+include/\+models/\+\doxymbox{\hyperlink{AllocationData_8h}{Allocation\+Data.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,60 @@
+\doxysection{Register\+Allocator Class Reference}
+\hypertarget{classRegisterAllocator}{}\label{classRegisterAllocator}\index{RegisterAllocator@{RegisterAllocator}}
+
+
+Implements all four register allocation algorithms.  
+
+
+
+
+{\ttfamily \+\#include $<$Register\+Allocator.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{structAllocationResult}{Allocation\+Result}} \doxymbox{\hyperlink{classRegisterAllocator_ac855e3a4c9db08619a0ef8fb39970333}{allocate}} (std::\+vector$<$ \doxymbox{\hyperlink{structWeb}{Web}} $>$ \&webs, \doxymbox{\hyperlink{classInterferenceGraph}{Interference\+Graph}} \&ig, const \doxymbox{\hyperlink{structRegisterConfig}{Register\+Config}} \&config)
+\begin{DoxyCompactList}\small\item\em Runs the algorithm specified in config on the given webs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements all four register allocation algorithms. 
+
+Algorithms:\+
+\begin{DoxyItemize}
+\item basic:\+ Greedy graph coloring as described in the project spec.
+\item spilling:\+ Greedy coloring with up to K webs spilled to memory.
+\item splitting:\+ Greedy coloring with up to K webs split into two sub-\/webs.
+\item free:\+ DSATUR heuristic (color node with most constraints first). 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{classRegisterAllocator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRegisterAllocator_ac855e3a4c9db08619a0ef8fb39970333}\index{RegisterAllocator@{RegisterAllocator}!allocate@{allocate}}
+\index{allocate@{allocate}!RegisterAllocator@{RegisterAllocator}}
+\doxysubsubsection{\texorpdfstring{allocate()}{allocate()}}
+{\footnotesize\ttfamily \label{classRegisterAllocator_ac855e3a4c9db08619a0ef8fb39970333} 
+\doxymbox{\hyperlink{structAllocationResult}{Allocation\+Result}} Register\+Allocator::\+allocate (\begin{DoxyParamCaption}\item[{std::\+vector$<$ \doxymbox{\hyperlink{structWeb}{Web}} $>$ \&}]{webs}{, }\item[{\doxymbox{\hyperlink{classInterferenceGraph}{Interference\+Graph}} \&}]{ig}{, }\item[{const \doxymbox{\hyperlink{structRegisterConfig}{Register\+Config}} \&}]{config}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Runs the algorithm specified in config on the given webs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em webs} & The webs to allocate (modified in-\/place with assigned\+Register). \\
+\hline
+{\em ig} & The interference graph. \\
+\hline
+{\em config} & The register configuration (num\+Registers, algorithm, param). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{structAllocationResult}{Allocation\+Result} with assignments and feasibility flag. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+include/\+core/\+\doxymbox{\hyperlink{RegisterAllocator_8h}{Register\+Allocator.\+h}}\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+core/\+\doxymbox{\hyperlink{RegisterAllocator_8cpp}{Register\+Allocator.\+cpp}}\end{DoxyCompactItemize}

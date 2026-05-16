@@ -1,0 +1,63 @@
+\doxysection{Registers\+Parser Class Reference}
+\hypertarget{classRegistersParser}{}\label{classRegistersParser}\index{RegistersParser@{RegistersParser}}
+
+
+Parses the registers configuration input file.  
+
+
+
+
+{\ttfamily \+\#include $<$Registers\+Parser.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \doxymbox{\hyperlink{classRegistersParser_aa44d8c06f543ddf18f94deece256192f}{parse}} (const std::\+string \&filename, \doxymbox{\hyperlink{structRegisterConfig}{Register\+Config}} \&config)
+\begin{DoxyCompactList}\small\item\em Parses the given file and fills the \doxylink{structRegisterConfig}{Register\+Config} struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Parses the registers configuration input file. 
+
+File format (lines starting with \textquotesingle{}\#\textquotesingle{} are ignored):\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{registers:\ N}
+\DoxyCodeLine{algorithm:\ basic}
+\DoxyCodeLine{algorithm:\ spilling,\ 2}
+\DoxyCodeLine{algorithm:\ splitting,\ 2}
+\DoxyCodeLine{algorithm:\ free}
+
+\end{DoxyCode}
+ 
+
+\label{doc-func-members}
+\Hypertarget{classRegistersParser_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classRegistersParser_aa44d8c06f543ddf18f94deece256192f}\index{RegistersParser@{RegistersParser}!parse@{parse}}
+\index{parse@{parse}!RegistersParser@{RegistersParser}}
+\doxysubsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily \label{classRegistersParser_aa44d8c06f543ddf18f94deece256192f} 
+bool Registers\+Parser::\+parse (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filename}{, }\item[{\doxymbox{\hyperlink{structRegisterConfig}{Register\+Config}} \&}]{config}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Parses the given file and fills the \doxylink{structRegisterConfig}{Register\+Config} struct. 
+
+{\bfseries{Time Complexity:\+}} O(1) — fixed number of lines.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Path to the registers text file. \\
+\hline
+{\em config} & Output \doxylink{structRegisterConfig}{Register\+Config} struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true on success, false if the file cannot be opened or is malformed. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+include/\+parser/\+\doxymbox{\hyperlink{RegistersParser_8h}{Registers\+Parser.\+h}}\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+parser/\+\doxymbox{\hyperlink{RegistersParser_8cpp}{Registers\+Parser.\+cpp}}\end{DoxyCompactItemize}

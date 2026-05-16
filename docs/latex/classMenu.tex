@@ -1,0 +1,70 @@
+\doxysection{Menu Class Reference}
+\hypertarget{classMenu}{}\label{classMenu}\index{Menu@{Menu}}
+
+
+Terminal UI renderer — draws boxes, arrow menus, and prompts.  
+
+
+
+
+{\ttfamily \+\#include $<$Menu.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{classMenu_a49f8ff5f200f5b25ad105f6d754b0253}{display\+In\+Box}} (const std::\+string \&subtitle, const std::\+vector$<$ std::\+string $>$ \&lines)
+\item 
+std::\+string \doxymbox{\hyperlink{classMenu_a1d3323ef2925e5c10ea166bc839820b7}{prompt\+In\+Box}} (const std::\+string \&subtitle, const std::\+string \&prompt)
+\item 
+int \doxymbox{\hyperlink{classMenu_aeb65bcbb7409a20a6a81367b95e54adb}{arrow\+Menu}} (const std::\+vector$<$ std::\+string $>$ \&options)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const std::\+string \doxymbox{\hyperlink{classMenu_a94287afd7090e7785d7006117d6af00b}{CLEAR\+\_\+\+SCREEN}} = "{}\textbackslash{}033\+[2J\textbackslash{}033\+[H"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Terminal UI renderer — draws boxes, arrow menus, and prompts. 
+
+Pure presentation layer. Knows nothing about domain data (submissions, reviewers, flow networks). Receives pre-\/formatted strings to display. 
+
+\label{doc-func-members}
+\Hypertarget{classMenu_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMenu_aeb65bcbb7409a20a6a81367b95e54adb}\index{Menu@{Menu}!arrowMenu@{arrowMenu}}
+\index{arrowMenu@{arrowMenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{arrowMenu()}{arrowMenu()}}
+{\footnotesize\ttfamily \label{classMenu_aeb65bcbb7409a20a6a81367b95e54adb} 
+int Menu::\+arrow\+Menu (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ std::\+string $>$ \&}]{options}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classMenu_a49f8ff5f200f5b25ad105f6d754b0253}\index{Menu@{Menu}!displayInBox@{displayInBox}}
+\index{displayInBox@{displayInBox}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{displayInBox()}{displayInBox()}}
+{\footnotesize\ttfamily \label{classMenu_a49f8ff5f200f5b25ad105f6d754b0253} 
+void Menu::\+display\+In\+Box (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{subtitle}{, }\item[{const std::\+vector$<$ std::\+string $>$ \&}]{lines}{}\end{DoxyParamCaption})}
+
+\Hypertarget{classMenu_a1d3323ef2925e5c10ea166bc839820b7}\index{Menu@{Menu}!promptInBox@{promptInBox}}
+\index{promptInBox@{promptInBox}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{promptInBox()}{promptInBox()}}
+{\footnotesize\ttfamily \label{classMenu_a1d3323ef2925e5c10ea166bc839820b7} 
+std::\+string Menu::\+prompt\+In\+Box (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{subtitle}{, }\item[{const std::\+string \&}]{prompt}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{classMenu_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classMenu_a94287afd7090e7785d7006117d6af00b}\index{Menu@{Menu}!CLEAR\_SCREEN@{CLEAR\_SCREEN}}
+\index{CLEAR\_SCREEN@{CLEAR\_SCREEN}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{CLEAR\_SCREEN}{CLEAR\_SCREEN}}
+{\footnotesize\ttfamily \label{classMenu_a94287afd7090e7785d7006117d6af00b} 
+const std::\+string Menu::\+\+CLEAR\+\_\+\+SCREEN = "{}\textbackslash{}033\+[2J\textbackslash{}033\+[H"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+include/\+ui/\+\doxymbox{\hyperlink{Menu_8h}{Menu.\+h}}\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+ui/\+\doxymbox{\hyperlink{Menu_8cpp}{Menu.\+cpp}}\end{DoxyCompactItemize}
