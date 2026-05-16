@@ -4,7 +4,10 @@
 
 set -uo pipefail
 
-BIN="code/cmake-build/register_alloc"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+BIN="$ROOT/code/cmake-build/register_alloc"
 TMPOUT=$(mktemp)
 ERRTMP=$(mktemp)
 trap "rm -f $TMPOUT $ERRTMP" EXIT
@@ -72,59 +75,59 @@ run() {
 # ── Professor basic tests ────────────────────────────────────────────────────
 
 echo "=== Basic (professor dataset) ==="
-run dataset/basic/ranges/ranges1.txt dataset/basic/registers/registers2.txt "basic/r1-reg2" feasible yes regs_at_most 2
-run dataset/basic/ranges/ranges2.txt dataset/basic/registers/registers2.txt "basic/r2-reg2" feasible yes regs_at_most 2
-run dataset/basic/ranges/ranges3.txt dataset/basic/registers/registers2.txt "basic/r3-reg2" feasible yes regs_at_most 2
-run dataset/basic/ranges/ranges4.txt dataset/basic/registers/registers1.txt "basic/r4-reg1" feasible yes regs_used 1
-run dataset/basic/ranges/ranges5.txt dataset/basic/registers/registers1.txt "basic/r5-reg1" feasible yes regs_used 1
-run dataset/basic/ranges/ranges6.txt dataset/basic/registers/registers3.txt "basic/r6-reg3" feasible yes regs_at_most 3
+run "$ROOT"/dataset/basic/ranges/ranges1.txt dataset/basic/registers/registers2.txt "basic/r1-reg2" feasible yes regs_at_most 2
+run "$ROOT"/dataset/basic/ranges/ranges2.txt dataset/basic/registers/registers2.txt "basic/r2-reg2" feasible yes regs_at_most 2
+run "$ROOT"/dataset/basic/ranges/ranges3.txt dataset/basic/registers/registers2.txt "basic/r3-reg2" feasible yes regs_at_most 2
+run "$ROOT"/dataset/basic/ranges/ranges4.txt dataset/basic/registers/registers1.txt "basic/r4-reg1" feasible yes regs_used 1
+run "$ROOT"/dataset/basic/ranges/ranges5.txt dataset/basic/registers/registers1.txt "basic/r5-reg1" feasible yes regs_used 1
+run "$ROOT"/dataset/basic/ranges/ranges6.txt dataset/basic/registers/registers3.txt "basic/r6-reg3" feasible yes regs_at_most 3
 
 # ── Edge cases: basic ─────────────────────────────────────────────────────────
 
 echo ""
 echo "=== Edge cases: basic ==="
-run dataset/edge_cases/ranges/disconnected.txt      dataset/edge_cases/registers/basic1.txt "basic/disconnected"      feasible yes regs_used 1
-run dataset/edge_cases/ranges/no_interference.txt   dataset/edge_cases/registers/basic1.txt "basic/no_interference"   feasible yes regs_used 1
-run dataset/edge_cases/ranges/same_line_def_use.txt dataset/edge_cases/registers/basic1.txt "basic/same_line_def_use" feasible yes regs_used 1
-run dataset/edge_cases/ranges/dsatur_dense.txt      dataset/edge_cases/registers/basic4.txt "basic/dsatur_dense/4regs" feasible yes regs_used 4
-run dataset/edge_cases/ranges/dsatur_dense.txt      dataset/edge_cases/registers/basic2.txt "basic/dsatur_dense/2regs" feasible no
+run "$ROOT"/dataset/edge_cases/ranges/disconnected.txt      dataset/edge_cases/registers/basic1.txt "basic/disconnected"      feasible yes regs_used 1
+run "$ROOT"/dataset/edge_cases/ranges/no_interference.txt   dataset/edge_cases/registers/basic1.txt "basic/no_interference"   feasible yes regs_used 1
+run "$ROOT"/dataset/edge_cases/ranges/same_line_def_use.txt dataset/edge_cases/registers/basic1.txt "basic/same_line_def_use" feasible yes regs_used 1
+run "$ROOT"/dataset/edge_cases/ranges/dsatur_dense.txt      dataset/edge_cases/registers/basic4.txt "basic/dsatur_dense/4regs" feasible yes regs_used 4
+run "$ROOT"/dataset/edge_cases/ranges/dsatur_dense.txt      dataset/edge_cases/registers/basic2.txt "basic/dsatur_dense/2regs" feasible no
 
 # ── Edge cases: spilling ─────────────────────────────────────────────────────
 
 echo ""
 echo "=== Edge cases: spilling ==="
-run dataset/edge_cases/ranges/spill_basic.txt      dataset/edge_cases/registers/spill1.txt "spill/basic/K=1"   feasible yes
-run dataset/edge_cases/ranges/spill_exceeds_k.txt  dataset/edge_cases/registers/spill2.txt "spill/exceeds/K=1" feasible no
-run dataset/edge_cases/ranges/spill_exceeds_k.txt  dataset/edge_cases/registers/spill3.txt "spill/exceeds/K=2" feasible yes
+run "$ROOT"/dataset/edge_cases/ranges/spill_basic.txt      dataset/edge_cases/registers/spill1.txt "spill/basic/K=1"   feasible yes
+run "$ROOT"/dataset/edge_cases/ranges/spill_exceeds_k.txt  dataset/edge_cases/registers/spill2.txt "spill/exceeds/K=1" feasible no
+run "$ROOT"/dataset/edge_cases/ranges/spill_exceeds_k.txt  dataset/edge_cases/registers/spill3.txt "spill/exceeds/K=2" feasible yes
 
 # ── Edge cases: splitting ─────────────────────────────────────────────────────
 
 echo ""
 echo "=== Edge cases: splitting ==="
-run dataset/edge_cases/ranges/split_simple.txt       dataset/edge_cases/registers/split_k1.txt "split/simple/K=1"
-run dataset/edge_cases/ranges/split_needed.txt       dataset/edge_cases/registers/split_k2.txt "split/needed/K=2"
-run dataset/edge_cases/ranges/split_unsplittable.txt dataset/edge_cases/registers/split_k5.txt "split/unsplittable/K=5" feasible no
+run "$ROOT"/dataset/edge_cases/ranges/split_simple.txt       dataset/edge_cases/registers/split_k1.txt "split/simple/K=1"
+run "$ROOT"/dataset/edge_cases/ranges/split_needed.txt       dataset/edge_cases/registers/split_k2.txt "split/needed/K=2"
+run "$ROOT"/dataset/edge_cases/ranges/split_unsplittable.txt dataset/edge_cases/registers/split_k5.txt "split/unsplittable/K=5" feasible no
 
 # ── Edge cases: dsatur ────────────────────────────────────────────────────────
 
 echo ""
 echo "=== Edge cases: dsatur ==="
-run dataset/edge_cases/ranges/dsatur_dense.txt dataset/edge_cases/registers/dsatur1.txt "dsatur/dense/1reg" feasible yes regs_used 1
-run dataset/edge_cases/ranges/dsatur_dense.txt dataset/edge_cases/registers/dsatur3.txt "dsatur/dense/3regs" feasible yes regs_used 3
-run dataset/edge_cases/ranges/dsatur_dense.txt dataset/edge_cases/registers/dsatur4.txt "dsatur/dense/4regs" feasible yes regs_used 4
+run "$ROOT"/dataset/edge_cases/ranges/dsatur_dense.txt dataset/edge_cases/registers/dsatur1.txt "dsatur/dense/1reg" feasible yes regs_used 1
+run "$ROOT"/dataset/edge_cases/ranges/dsatur_dense.txt dataset/edge_cases/registers/dsatur3.txt "dsatur/dense/3regs" feasible yes regs_used 3
+run "$ROOT"/dataset/edge_cases/ranges/dsatur_dense.txt dataset/edge_cases/registers/dsatur4.txt "dsatur/dense/4regs" feasible yes regs_used 4
 
 # ── Edge cases: free (tree DP + backtracking) ─────────────────────────────────
 
 echo ""
 echo "=== Edge cases: free (partitioned + tree DP + backtracking) ==="
-run dataset/edge_cases/ranges/disconnected.txt      dataset/edge_cases/registers/free1.txt "free/disconnected/1reg"      feasible yes regs_used 1
-run dataset/edge_cases/ranges/no_interference.txt   dataset/edge_cases/registers/free1.txt "free/no_interference/1reg"   feasible yes regs_used 1
-run dataset/edge_cases/ranges/same_line_def_use.txt dataset/edge_cases/registers/free1.txt "free/same_line_def_use/1reg" feasible yes regs_used 1
-run dataset/edge_cases/ranges/dsatur_dense.txt      dataset/edge_cases/registers/free4.txt "free/dsatur_dense/4regs"     feasible yes regs_used 4
-run dataset/edge_cases/ranges/dsatur_dense.txt      dataset/edge_cases/registers/free3.txt "free/dsatur_dense/3regs"     feasible yes regs_used 3
-run dataset/edge_cases/ranges/spill_basic.txt       dataset/edge_cases/registers/free2.txt "free/spill_basic/2regs"      feasible yes regs_used 2
-run dataset/edge_cases/ranges/spill_exceeds_k.txt   dataset/edge_cases/registers/free2.txt "free/spill_exceeds/2regs"
-run dataset/edge_cases/ranges/web_merge_chain.txt   dataset/edge_cases/registers/free2.txt "free/web_merge_chain/2regs"
+run "$ROOT"/dataset/edge_cases/ranges/disconnected.txt      dataset/edge_cases/registers/free1.txt "free/disconnected/1reg"      feasible yes regs_used 1
+run "$ROOT"/dataset/edge_cases/ranges/no_interference.txt   dataset/edge_cases/registers/free1.txt "free/no_interference/1reg"   feasible yes regs_used 1
+run "$ROOT"/dataset/edge_cases/ranges/same_line_def_use.txt dataset/edge_cases/registers/free1.txt "free/same_line_def_use/1reg" feasible yes regs_used 1
+run "$ROOT"/dataset/edge_cases/ranges/dsatur_dense.txt      dataset/edge_cases/registers/free4.txt "free/dsatur_dense/4regs"     feasible yes regs_used 4
+run "$ROOT"/dataset/edge_cases/ranges/dsatur_dense.txt      dataset/edge_cases/registers/free3.txt "free/dsatur_dense/3regs"     feasible yes regs_used 3
+run "$ROOT"/dataset/edge_cases/ranges/spill_basic.txt       dataset/edge_cases/registers/free2.txt "free/spill_basic/2regs"      feasible yes regs_used 2
+run "$ROOT"/dataset/edge_cases/ranges/spill_exceeds_k.txt   dataset/edge_cases/registers/free2.txt "free/spill_exceeds/2regs"
+run "$ROOT"/dataset/edge_cases/ranges/web_merge_chain.txt   dataset/edge_cases/registers/free2.txt "free/web_merge_chain/2regs"
 
 # ── Summary ───────────────────────────────────────────────────────────────────
 
