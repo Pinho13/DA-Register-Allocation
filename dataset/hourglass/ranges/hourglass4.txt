@@ -1,0 +1,46 @@
+# Hourglass 4: Star topology — 3 K3 cliques all sharing one central AP
+#
+# Structure: K3_top, K3_left, K3_right all connected through central node z
+#
+#   z: 2+,3,...,15-   (THE CENTRAL AP — alive throughout, participates in all 3 cliques)
+#
+# K3_top {a, b, z}: alive at lines 2-3
+#   a: 1+,2,3,4-
+#   b: 2+,3,4-
+#   z: 2+,3,4,5,6,7,8,9,10,11,12,13,14,15-
+#
+# K3_left {z, c, d}: alive at lines 6-7
+#   c: 6+,7,8-
+#   d: 6+,7,8-
+#
+# K3_right {z, e, f}: alive at lines 11-12
+#   e: 11+,12,13-
+#   f: 11+,12,13-
+#
+# Interference edges:
+#   K3_top:   a-b, a-z, b-z
+#   K3_left:  c-d, c-z, d-z
+#   K3_right: e-f, e-z, f-z
+#   z is the articulation point connecting all 3 cliques.
+#
+# Chromatic number: 3
+# Block-cut tree: star with z as the center, 3 K3 leaves.
+#
+# Tree DP critical test:
+#   z participates in 3 separate K3 cliques. Its color is fixed once by the DP
+#   and must be compatible with all 3 cliques simultaneously.
+#   Since each K3 just needs z to take ONE of its 3 colors, and all K3s have
+#   3-colorings with z in any color, the DP confirms all 3 colors are feasible for z.
+#   DP picks z=0. Top uses {0,1,2}, left uses {0,1,2}, right uses {0,1,2}.
+#   Color normalization: all three cliques use the same 3 color indices → 3 registers total.
+#
+# This tests the star topology where one AP must be compatible with N≥3 subtrees simultaneously.
+# With N=3: feasible, 3 registers.
+# With N=2: infeasible.
+a: 1+,2,3,4-
+b: 2+,3,4-
+z: 2+,3,4,5,6,7,8,9,10,11,12,13,14,15-
+c: 6+,7,8-
+d: 6+,7,8-
+e: 11+,12,13-
+f: 11+,12,13-

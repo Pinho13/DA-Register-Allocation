@@ -1,0 +1,11 @@
+# Ladder graph: top path a0-a1-a2-a3, bottom path b0-b1-b2-b3, rungs ai-bi.
+# Bipartite: χ=2. Tests DSATUR on a dense-looking but 2-colorable structure.
+# With N=2: feasible. basic may spill due to high local degrees; free should not.
+a0: 1+,2,3,4-
+a1: 4+,5,6,7-
+a2: 7+,8,9,10-
+a3: 10+,11,12,13-
+b0: 1+,2,3,4-
+b1: 4+,5,6,7-
+b2: 7+,8,9,10-
+b3: 10+,11,12,13-

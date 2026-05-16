@@ -1,0 +1,11 @@
+# Asymmetric hourglass: K4 left + K3 right sharing AP.
+# Left K4 {a,b,c,ap} alive lines 1-4. Right K3 {ap,d,e} alive lines 7-9.
+# χ=4 (driven by left K4). With N=4: feasible.
+# Tree DP: ap's color from K4 leaves 2 free colors for d,e in K3 — always works.
+# With N=3: infeasible (K4 needs 4 colors).
+a:  1+,2,3,4-
+b:  1+,2,3,4-
+c:  1+,2,3,4-
+ap: 1+,2,3,4,5,6,7,8,9-
+d:  7+,8,9-
+e:  7+,8,9-

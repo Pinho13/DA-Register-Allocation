@@ -1,0 +1,12 @@
+# Two K4s sharing an edge: 6 nodes, χ=4.
+# {a,b,p,q} = K4 and {c,d,p,q} = K4. p and q are both APs (2-node separator).
+# With N=4: feasible. With N=3: infeasible.
+# Tests tree DP when the separator has 2 nodes (p-q edge in block-cut tree).
+# Greedy may assign p=0,q=1 from left K4, leaving {2,3} for a,b — OK.
+# Then right K4 needs {0,1,2,3}: c,d must avoid p=0 and q=1, gets {2,3} — feasible.
+a: 1+,2,3,12-
+b: 1+,4,5,13-
+c: 6+,7,8,14-
+p: 2+,4,6,9,10,15-
+q: 3+,5,7,9,11,16-
+d: 8+,10,11,17-

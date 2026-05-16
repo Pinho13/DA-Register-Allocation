@@ -1,0 +1,29 @@
+# Hourglass 1: K3 + K3 connected by articulation point (bridge variable b)
+#
+# Left clique {a, b, c}: all alive at lines 2-3
+#   a: def 1, alive 2,3, use 4  → a: 1+,2,3,4-
+#   b: def 2, alive 3,4,...,8, use 9  → b: 2+,3,4,5,6,7,8,9-   (THE AP)
+#   c: def 2, alive 3, use 4   → c: 2+,3,4-
+#
+# Right clique {b, d, e}: all alive at lines 6-7
+#   b: already defined above (alive 2-9, spans both cliques)
+#   d: def 6, alive 7, use 8   → d: 6+,7,8-
+#   e: def 6, alive 7, use 8   → e: 6+,7,8-
+#
+# Interference edges:
+#   Left:  a-b (lines 2-3), a-c (lines 2-3), b-c (lines 2-3)  → K3
+#   Right: b-d (lines 6-7), b-e (lines 6-7), d-e (lines 6-7)  → K3
+#   b is the articulation point connecting both cliques.
+#
+# Chromatic number: 3 (each clique needs 3 colors; b participates in both)
+# With N=3: free should color optimally — b gets color X,
+#   left clique uses {X, Y, Z}, right clique uses {X, Y', Z'} → 3 registers total.
+# Basic/DSATUR may also achieve 3 here, but tree DP ensures b's color is chosen
+# to minimize cascading color pressure on the right clique.
+#
+# With N=2: infeasible (K3 needs 3 colors).
+a: 1+,2,3,4-
+b: 2+,3,4,5,6,7,8,9-
+c: 2+,3,4-
+d: 6+,7,8-
+e: 6+,7,8-

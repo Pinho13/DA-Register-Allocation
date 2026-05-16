@@ -1,0 +1,15 @@
+# Zigzag: K3_0 -p0- K3_1 -p1- K3_2 -p2- K3_3
+# Each K3 shares one AP with the next. The AP colors must alternate.
+# Greedy assigns p0=0, then K3_1 uses {0,1,2}, p1=1, K3_2 uses {0,1,2}, p2=2, etc.
+# Tree DP should handle this correctly in all cases. χ=3.
+a0: 1+,2,3-
+b0: 1+,2,3-
+p0: 1+,2,3,4,5,6-
+a1: 4+,5,6-
+b1: 4+,5,6-
+p1: 4+,5,6,7,8,9-
+a2: 7+,8,9-
+b2: 7+,8,9-
+p2: 7+,8,9,10,11,12-
+a3: 10+,11,12-
+b3: 10+,11,12-

@@ -1,0 +1,16 @@
+# Triple hourglass: K4 + K4 + K4 in a chain with 2 APs.
+# Left K4 {a,b,c,p} lines 1-4. Mid K4 {p,d,e,q} lines 7-10. Right K4 {q,f,g,h} lines 13-16.
+# p and q are articulation points. χ=4.
+# With N=4: tree DP must assign p and q colors such that all three K4s are 4-colorable.
+# Greedy might pick p=0 from left K4, then mid K4 forces q=1, then right K4 conflicts.
+# Tree DP solves this globally bottom-up.
+a: 1+,2,3,4-
+b: 1+,2,3,4-
+c: 1+,2,3,4-
+p: 1+,2,3,4,5,6,7,8,9,10-
+d: 7+,8,9,10-
+e: 7+,8,9,10-
+q: 7+,8,9,10,11,12,13,14,15,16-
+f: 13+,14,15,16-
+g: 13+,14,15,16-
+h: 13+,14,15,16-

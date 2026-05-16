@@ -1,0 +1,18 @@
+# Three disjoint K4s connected by bridge edges, χ=4.
+# Each K4 independently colored — normalizeColors must collapse to 4 global registers.
+# Bridge nodes between K4s have degree 2 (one edge each side).
+# With N=4: feasible. Tests normalization when 3 BCCs each use color indices 0..3.
+a0: 1+,2,3,23-
+b0: 1+,4,5,24-
+c0: 2+,4,6,25-
+d0: 3+,5,6,7,26-
+br1: 7+,8,27-
+a1: 8+,9,10,11,28-
+b1: 9+,12,13,29-
+c1: 10+,12,14,30-
+d1: 11+,13,14,15,31-
+br2: 15+,16,32-
+a2: 16+,17,18,19,33-
+b2: 17+,20,21,34-
+c2: 18+,20,22,35-
+d2: 19+,21,22,36-

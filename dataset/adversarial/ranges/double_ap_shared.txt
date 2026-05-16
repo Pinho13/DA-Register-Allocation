@@ -1,0 +1,12 @@
+# Double-AP shared block: K4(a,b,ap1,ap2) -- K4(ap1,ap2,c,d) -- K3(ap2,e,f)
+# ap1 and ap2 are both APs. Middle block uses BOTH APs as 2-node separator.
+# χ=4 (driven by K4s). With N=4: feasible. With N=3: infeasible.
+# DP must fix ap1 and ap2 jointly such that all three blocks are colorable.
+a: 1+,2,3,15-
+b: 1+,4,5,16-
+ap1: 2+,4,6,7,8,17-
+ap2: 3+,5,6,9,10,11,12,18-
+c: 7+,9,13,19-
+d: 8+,10,13,20-
+e: 11+,14,21-
+f: 12+,14,22-

@@ -1,0 +1,15 @@
+# Petersen graph: 10 nodes, χ=3, 3-regular, girth 5, triangle-free.
+# Hardest known 3-chromatic 3-regular graph. Classic adversary for greedy.
+# All 10 nodes form one BCC — forces backtracking to find 3-coloring.
+# With N=3: feasible. With N=2: infeasible.
+# Outer cycle a-b-c-d-e-a. Inner star f-h-j-g-i-f. Spokes a-f,b-g,c-h,d-i,e-j.
+a: 1+,2,3,16-
+b: 1+,4,5,17-
+c: 4+,6,7,18-
+d: 6+,8,9,19-
+e: 2+,8,10,20-
+f: 3+,11,12,21-
+g: 5+,13,14,22-
+h: 7+,11,15,23-
+i: 9+,12,13,24-
+j: 10+,14,15,25-

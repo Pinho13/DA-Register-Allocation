@@ -5,6 +5,12 @@
 
 #include <iostream>
 #include <filesystem>
+#include <climits>
+#ifdef __APPLE__
+#  include <mach-o/dyld.h>
+#else
+#  include <unistd.h>
+#endif
 #include "io/BatchProcessor.h"
 #include "parser/RangesParser.h"
 #include "parser/RegistersParser.h"
@@ -40,12 +46,31 @@ int BatchProcessor::run(const std::string &rangesFile,
     return 0;
 }
 
+static fs::path datasetRoot() {
+    char buf[PATH_MAX];
+#ifdef __APPLE__
+    uint32_t size = sizeof(buf);
+    if (_NSGetExecutablePath(buf, &size) != 0) return fs::current_path();
+    fs::path binDir = fs::canonical(buf).parent_path();
+#else
+    ssize_t len = readlink("/proc/self/exe", buf, sizeof(buf) - 1);
+    if (len < 0) return fs::current_path();
+    buf[len] = '\0';
+    fs::path binDir = fs::path(buf).parent_path();
+#endif
+    // binary is at <root>/code/cmake-build/register_alloc
+    // dataset is at <root>/dataset/
+    return binDir / ".." / ".." / "dataset";
+}
+
 std::vector<std::string> BatchProcessor::runAllBasicDatasets() {
     struct TestCase {
         std::string rangesFile;
         std::string registersFile;
         std::string label;
     };
+
+    fs::path root = datasetRoot();
 
     const std::vector<TestCase> cases = {
         {"basic/ranges/ranges1.txt", "basic/registers/registers2.txt", "ranges1 + registers2 (expect 2 regs)"},
@@ -60,8 +85,10 @@ std::vector<std::string> BatchProcessor::runAllBasicDatasets() {
     for (const auto &tc : cases) {
         std::vector<LiveRange> ranges;
         RegisterConfig config;
-        if (!RangesParser::parse(tc.rangesFile, ranges) ||
-            !RegistersParser::parse(tc.registersFile, config)) {
+        std::string rpath = (root / tc.rangesFile).string();
+        std::string cpath = (root / tc.registersFile).string();
+        if (!RangesParser::parse(rpath, ranges) ||
+            !RegistersParser::parse(cpath, config)) {
             output.push_back("!!" + tc.label + " — FAILED to load");
             continue;
         }

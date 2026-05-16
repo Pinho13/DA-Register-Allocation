@@ -1,0 +1,34 @@
+# Hourglass 2: K4 + K4 connected by articulation point (bridge variable e)
+#
+# Left K4 {a, b, c, e}: all alive at lines 2-4
+#   a: 1+,2,3,4,5-
+#   b: 2+,3,4,5-
+#   c: 2+,3,4,5-
+#   e: 2+,3,4,5,6,7,8,9,10,11-   (THE AP — spans both cliques)
+#
+# Right K4 {e, f, g, h}: all alive at lines 7-9
+#   e: already defined (alive 2-11)
+#   f: 7+,8,9,10-
+#   g: 7+,8,9,10-
+#   h: 7+,8,9,10-
+#
+# Interference edges:
+#   Left K4: a-b, a-c, a-e, b-c, b-e, c-e  (6 edges)
+#   Right K4: e-f, e-g, e-h, f-g, f-h, g-h  (6 edges)
+#   e is the articulation point.
+#
+# Chromatic number: 4 (K4 requires 4 colors; e participates in both)
+# With N=4: all algorithms should succeed with 4 registers.
+#   Tree DP key role: e's color in the left K4 must also work in the right K4.
+#   Since e is 1 of 4 nodes in each K4, its color occupies one slot in each.
+#   Tree DP chooses e's color so that both K4s are 4-colorable — any of the
+#   4 colors works for a symmetric K4, so this is a tie. But for asymmetric
+#   graphs (hourglass5), tree DP makes the critical difference.
+# With N=3: infeasible (K4 needs 4 colors).
+a: 1+,2,3,4,5-
+b: 2+,3,4,5-
+c: 2+,3,4,5-
+e: 2+,3,4,5,6,7,8,9,10,11-
+f: 7+,8,9,10-
+g: 7+,8,9,10-
+h: 7+,8,9,10-

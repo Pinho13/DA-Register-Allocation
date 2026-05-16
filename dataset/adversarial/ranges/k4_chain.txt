@@ -1,0 +1,14 @@
+# Three K4s in a chain. χ=4. Tests DP on depth-2 block-cut tree with K4 blocks.
+# Left K4 {a,b,c,p}. Mid K4 {p,d,e,q}. Right K4 {q,f,g,h}.
+# With N=4: p gets a color from left K4, must be valid for mid K4 too.
+# q gets a color from mid K4, must be valid for right K4.
+a: 1+,2,3,4-
+b: 1+,2,3,4-
+c: 1+,2,3,4-
+p: 1+,2,3,4,5,6,7,8,9,10-
+d: 7+,8,9,10-
+e: 7+,8,9,10-
+q: 7+,8,9,10,11,12,13,14,15,16-
+f: 13+,14,15,16-
+g: 13+,14,15,16-
+h: 13+,14,15,16-

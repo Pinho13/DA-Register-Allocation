@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <set>
+#include <map>
 #include "models/AllocationData.h"
 #include "data_structures/Graph.h"
 
