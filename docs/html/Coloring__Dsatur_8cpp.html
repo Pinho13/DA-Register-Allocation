@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>DA Register Allocation: /home/pinho/Classes/DA/DA-Register-Allocation/code/src/ui/Menu.cpp File Reference</title>
+<title>DA Register Allocation: /home/pinho/Classes/DA/DA-Register-Allocation/code/src/core/Coloring_Dsatur.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('Menu_8cpp.html','',''); });
+$(function(){initNavTree('Coloring__Dsatur_8cpp.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -89,18 +89,60 @@ $(function(){initNavTree('Menu_8cpp.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Menu.cpp File Reference</div></div>
+  <div class="headertitle"><div class="title">Coloring_Dsatur.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;limits&gt;</code><br />
-<code>#include &lt;algorithm&gt;</code><br />
-<code>#include &lt;termios.h&gt;</code><br />
-<code>#include &lt;unistd.h&gt;</code><br />
-<code>#include &lt;sys/ioctl.h&gt;</code><br />
-<code>#include &lt;filesystem&gt;</code><br />
-<code>#include &quot;<a class="el" href="Menu_8h_source.html">ui/Menu.h</a>&quot;</code><br />
-</div></div><!-- contents -->
+<div class="textblock"><code>#include &lt;set&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
+<code>#include &quot;<a class="el" href="RegisterAllocator_8h_source.html">core/RegisterAllocator.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a2c4904418bc9708ff465d0a02eed0080" id="r_a2c4904418bc9708ff465d0a02eed0080"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2c4904418bc9708ff465d0a02eed0080">backtrack</a> (const std::vector&lt; int &gt; &amp;order, int idx, std::vector&lt; <a class="el" href="structWeb.html">Web</a> &gt; &amp;webs, const <a class="el" href="classInterferenceGraph.html">InterferenceGraph</a> &amp;ig, int N, const std::map&lt; int, int &gt; &amp;fixedColors)</td></tr>
+</table>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="a2c4904418bc9708ff465d0a02eed0080" name="a2c4904418bc9708ff465d0a02eed0080"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c4904418bc9708ff465d0a02eed0080">&#9670;&#160;</a></span>backtrack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool backtrack </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>order</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structWeb.html">Web</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>webs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classInterferenceGraph.html">InterferenceGraph</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ig</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>N</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::map&lt; int, int &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>fixedColors</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>
@@ -113,7 +155,7 @@ $(function(){initNavTree('Menu_8cpp.html','',''); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a href="dir_14807827589b339a04434892d1c1deae.html">src</a></li><li class="navelem"><a href="dir_75e89d8c0a5d0e42ed0589845e61e4c9.html">ui</a></li><li class="navelem"><a href="Menu_8cpp.html">Menu.cpp</a></li>
+    <li class="navelem"><a href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a href="dir_14807827589b339a04434892d1c1deae.html">src</a></li><li class="navelem"><a href="dir_4e656da10055ed747361d9f685aea179.html">core</a></li><li class="navelem"><a href="Coloring__Dsatur_8cpp.html">Coloring_Dsatur.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

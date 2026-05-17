@@ -2,7 +2,7 @@
 \hypertarget{main_8cpp}{}\label{main_8cpp}\index{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/src/main.cpp@{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/src/main.cpp}}
 
 
-Entry point for the Register Allocation tool.  
+Entry point — batch mode dispatcher and interactive menu loop.  
 
 
 {\ttfamily \+\#include $<$iostream$>$}\newline
@@ -11,6 +11,8 @@ Entry point for the Register Allocation tool.
 {\ttfamily \+\#include $<$csignal$>$}\newline
 {\ttfamily \+\#include $<$termios.\+h$>$}\newline
 {\ttfamily \+\#include $<$unistd.\+h$>$}\newline
+{\ttfamily \+\#include $<$climits$>$}\newline
+{\ttfamily \+\#include $<$filesystem$>$}\newline
 {\ttfamily \+\#include "{}ui/\+\+Menu.\+h"{}}\newline
 {\ttfamily \+\#include "{}io/\+\+Batch\+Processor.\+h"{}}\newline
 {\ttfamily \+\#include "{}ui/\+\+Display\+Formatter.\+h"{}}\newline
@@ -36,13 +38,9 @@ struct termios \doxymbox{\hyperlink{main_8cpp_a1f61f80fbb464146c93ea74b1c7839e1}
 
 
 \doxysubsection{Detailed Description}
-Entry point for the Register Allocation tool. 
+Entry point — batch mode dispatcher and interactive menu loop. 
 
-Supports two execution modes:\+
-\begin{DoxyItemize}
-\item {\bfseries{Interactive}}:\+ arrow-\/key menu for loading files, inspecting webs/\+graphs, running allocation algorithms, and saving results.
-\item {\bfseries{Batch}}:\+ {\ttfamily ./\+register\+\_\+alloc -\/b ranges.\+txt registers.\+txt output.\+txt} 
-\end{DoxyItemize}
+
 
 \label{doc-func-members}
 \Hypertarget{main_8cpp_doc-func-members}

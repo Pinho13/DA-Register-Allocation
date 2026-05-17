@@ -2,26 +2,15 @@
 \hypertarget{RegisterAllocator_8cpp}{}\label{RegisterAllocator_8cpp}\index{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/src/core/RegisterAllocator.cpp@{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/src/core/RegisterAllocator.cpp}}
 
 
-Implementation of the four register allocation algorithms.  
+Main dispatch — routes to the appropriate coloring algorithm.  
 
 
-{\ttfamily \+\#include $<$algorithm$>$}\newline
-{\ttfamily \+\#include $<$stack$>$}\newline
-{\ttfamily \+\#include $<$queue$>$}\newline
 {\ttfamily \+\#include $<$set$>$}\newline
-{\ttfamily \+\#include $<$map$>$}\newline
-{\ttfamily \+\#include $<$unordered\+\_\+map$>$}\newline
 {\ttfamily \+\#include $<$iostream$>$}\newline
 {\ttfamily \+\#include "{}core/\+\+Register\+Allocator.\+h"{}}\newline
 
 
 \doxysubsection{Detailed Description}
-Implementation of the four register allocation algorithms. 
+Main dispatch — routes to the appropriate coloring algorithm. 
 
-Algorithms implemented:\+
-\begin{DoxyItemize}
-\item {\bfseries{basic}}:\+ Chaitin-\/style greedy simplification + stack-\/based coloring.
-\item {\bfseries{spilling}}:\+ Basic coloring extended with up to K webs committed to memory.
-\item {\bfseries{splitting}}:\+ Iterative web splitting to reduce interference, then basic coloring.
-\item {\bfseries{free}} (BCT-\/\+Color):\+ biconnected-\/component decomposition with per-\/block adaptive coloring. 
-\end{DoxyItemize}
+Algorithm implementations are split across:\+ \doxylink{Coloring__Basic_8cpp}{Coloring\+\_\+\+Basic.\+cpp} — basic greedy, spill/\+split candidate selection \doxylink{Coloring__Dsatur_8cpp}{Coloring\+\_\+\+Dsatur.\+cpp} — DSATUR heuristic + exact backtracking \doxylink{Coloring__BCT_8cpp}{Coloring\+\_\+\+BCT.\+cpp} — biconnected-\/partition coloring (BCT-\/\+Color) \doxylink{Coloring__Utils_8cpp}{Coloring\+\_\+\+Utils.\+cpp} — Kempe swap, color normalization, reduction, validator 
