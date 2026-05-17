@@ -8,7 +8,7 @@
 
 /**
  * Implements all register allocation algorithms:
- *   basic, spilling, splitting, free (BCT-Color).
+ *   basic, spilling, splitting, phantom (BCT-Color).
  * Each algorithm is implemented in its own Coloring_*.cpp file.
  */
 class RegisterAllocator {
