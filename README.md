@@ -34,10 +34,10 @@ Arrow-key menu with 10 options:
 
 ```bash
 # Full paths
-./run.sh -b <ranges.txt> <registers.txt> <out.txt>
+./run.sh -b <ranges_full_path> <registers_full_path> <output_full_path>
 
 # Short form — looks up dataset/<folder>/, writes to outputs/<folder>/<stem>.txt
-./run.sh -b <folder> <ranges-name> <registers-name> <out-stem>
+./run.sh -b <dataset_type> <ranges_filename> <registers_filename> <output_filename>
 ```
 
 Example:
