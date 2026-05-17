@@ -7,37 +7,38 @@
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <set>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{AllocationData_8h}{models/AllocationData.h}}"{}}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}data\_structures/Graph.h"{}}}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classInterferenceGraph_a4052e9b7d9a7f7a1e2e1311e577c07b6}{InterferenceGraph}}\ \{}
-\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classInterferenceGraph_a4052e9b7d9a7f7a1e2e1311e577c07b6}{InterferenceGraph}}(\textcolor{keyword}{const}\ std::vector<Web>\ \&webs);}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classInterferenceGraph_a8b4fab6a60f93008035e665d8df30109}{effectiveDegree}}(\textcolor{keywordtype}{int}\ webId)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00042\ \ \ \ \ std::vector<int>\ \doxymbox{\hyperlink{classInterferenceGraph_a198ca6f2c31bfff930562d90f1bf009b}{neighbours}}(\textcolor{keywordtype}{int}\ webId)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classInterferenceGraph_a8bb93aabd5633759f1f360f0c5e82823}{interferes}}(\textcolor{keywordtype}{int}\ a,\ \textcolor{keywordtype}{int}\ b)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classInterferenceGraph_aa81d693c4e2cddd40bb9d9891fafe006}{size}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInterferenceGraph_a28ca6789befd9d111b06177b455e404a}{setRemoved}}(\textcolor{keywordtype}{int}\ webId,\ \textcolor{keywordtype}{bool}\ removed);}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classInterferenceGraph_adfd9bb518bb762a1e59036849a8d0485}{isRemoved}}(\textcolor{keywordtype}{int}\ webId)\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInterferenceGraph_ab95684ac0b728579ffcfa9135da882c4}{resetRemoved}}();}
-\DoxyCodeLine{00062\ }
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{const}\ Graph<int>\ \&\doxymbox{\hyperlink{classInterferenceGraph_ab2f24eb760a02c827c5e3da10c82aa4b}{getGraph}}()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00068\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00069\ \ \ \ \ Graph<int>\ graph\_;\ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ numWebs\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00071\ \ \ \ \ std::vector<bool>\ removed\_;\ \ \ }
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ computeInterference(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structWeb}{Web}}\ \&a,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structWeb}{Web}}\ \&b);}
-\DoxyCodeLine{00075\ \};}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{AllocationData_8h}{models/AllocationData.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}data\_structures/Graph.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classInterferenceGraph_a4052e9b7d9a7f7a1e2e1311e577c07b6}{InterferenceGraph}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classInterferenceGraph_a4052e9b7d9a7f7a1e2e1311e577c07b6}{InterferenceGraph}}(\textcolor{keyword}{const}\ std::vector<Web>\ \&webs);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classInterferenceGraph_a8b4fab6a60f93008035e665d8df30109}{effectiveDegree}}(\textcolor{keywordtype}{int}\ webId)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \ \ \ \ std::vector<int>\ \doxymbox{\hyperlink{classInterferenceGraph_a198ca6f2c31bfff930562d90f1bf009b}{neighbours}}(\textcolor{keywordtype}{int}\ webId)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classInterferenceGraph_a8bb93aabd5633759f1f360f0c5e82823}{interferes}}(\textcolor{keywordtype}{int}\ a,\ \textcolor{keywordtype}{int}\ b)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classInterferenceGraph_aa81d693c4e2cddd40bb9d9891fafe006}{size}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInterferenceGraph_a28ca6789befd9d111b06177b455e404a}{setRemoved}}(\textcolor{keywordtype}{int}\ webId,\ \textcolor{keywordtype}{bool}\ removed);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classInterferenceGraph_adfd9bb518bb762a1e59036849a8d0485}{isRemoved}}(\textcolor{keywordtype}{int}\ webId)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classInterferenceGraph_ab95684ac0b728579ffcfa9135da882c4}{resetRemoved}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{const}\ Graph<int>\ \&\doxymbox{\hyperlink{classInterferenceGraph_ab2f24eb760a02c827c5e3da10c82aa4b}{getGraph}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00070\ \ \ \ \ Graph<int>\ graph\_;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{int}\ numWebs\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ std::vector<bool>\ removed\_;\ \ \ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ computeInterference(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structWeb}{Web}}\ \&a,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structWeb}{Web}}\ \&b);}
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
