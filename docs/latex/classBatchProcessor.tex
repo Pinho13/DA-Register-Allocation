@@ -2,20 +2,35 @@
 \hypertarget{classBatchProcessor}{}\label{classBatchProcessor}\index{BatchProcessor@{BatchProcessor}}
 
 
+Runs register allocation in batch mode and across full dataset suites.  
+
+
+
+
 {\ttfamily \+\#include $<$Batch\+Processor.\+h$>$}
 
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static int \doxymbox{\hyperlink{classBatchProcessor_a89f76fd730dabebbbbdd665e8d8b7695}{run}} (const std::\+string \&ranges\+File, const std::\+string \&registers\+File, const std::\+string \&output\+File)
-\item 
+\begin{DoxyCompactList}\small\item\em Parses, allocates, and writes a single input pair to an output file. \end{DoxyCompactList}\item 
 static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{classBatchProcessor_ad6446f2a49351a5bd0e907e160b5622e}{run\+Basic\+Datasets\+To\+File}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Runs the 6 basic professor datasets and writes results to outputs/\+basic/\+. \end{DoxyCompactList}\item 
 static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{classBatchProcessor_ad8168367955d5da21d65a870256c8811}{run\+All\+Tests\+To\+File}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Runs all 75 test cases across 5 dataset folders and writes results to outputs/\+. \end{DoxyCompactList}\item 
 static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{classBatchProcessor_aa2c7e30384f9b3b5283613532f9ea3f9}{run\+All\+Basic\+Datasets}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns summary lines for the basic datasets without writing any files. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Runs register allocation in batch mode and across full dataset suites. 
+
+Three entry points:\+
+\begin{DoxyItemize}
+\item \doxylink{classBatchProcessor_a89f76fd730dabebbbbdd665e8d8b7695}{run()} — single-\/case batch mode (the -\/b CLI flag).
+\item \doxylink{classBatchProcessor_ad6446f2a49351a5bd0e907e160b5622e}{run\+Basic\+Datasets\+To\+File()} — the 6 professor-\/provided basic cases.
+\item \doxylink{classBatchProcessor_ad8168367955d5da21d65a870256c8811}{run\+All\+Tests\+To\+File()} — all 75 test cases across 5 dataset folders. 
+\end{DoxyItemize}
 
 \label{doc-func-members}
 \Hypertarget{classBatchProcessor_doc-func-members}
@@ -26,25 +41,68 @@ static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{classBatchProcess
 {\footnotesize\ttfamily \label{classBatchProcessor_a89f76fd730dabebbbbdd665e8d8b7695} 
 int Batch\+Processor::\+run (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{ranges\+File}{, }\item[{const std::\+string \&}]{registers\+File}{, }\item[{const std::\+string \&}]{output\+File}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{classBatchProcessor_aa2c7e30384f9b3b5283613532f9ea3f9}\index{BatchProcessor@{BatchProcessor}!runAllBasicDatasets@{runAllBasicDatasets}}
+
+
+Parses, allocates, and writes a single input pair to an output file. 
+
+Used by the -\/b command-\/line flag. Reads the ranges and registers files, runs the allocation algorithm specified in the registers file, and writes the result to {\ttfamily output\+File}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ranges\+File} & Path to the live-\/ranges input file. \\
+\hline
+{\em registers\+File} & Path to the register-\/configuration input file. \\
+\hline
+{\em output\+File} & Path to the output file to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 on parse or I/\+O error.
+\end{DoxyReturn}
+@complexity O(W² · L) dominated by interference graph construction. \Hypertarget{classBatchProcessor_aa2c7e30384f9b3b5283613532f9ea3f9}\index{BatchProcessor@{BatchProcessor}!runAllBasicDatasets@{runAllBasicDatasets}}
 \index{runAllBasicDatasets@{runAllBasicDatasets}!BatchProcessor@{BatchProcessor}}
 \doxysubsubsection{\texorpdfstring{runAllBasicDatasets()}{runAllBasicDatasets()}}
 {\footnotesize\ttfamily \label{classBatchProcessor_aa2c7e30384f9b3b5283613532f9ea3f9} 
 std::\+vector$<$ std::\+string $>$ Batch\+Processor::\+run\+All\+Basic\+Datasets (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{classBatchProcessor_ad8168367955d5da21d65a870256c8811}\index{BatchProcessor@{BatchProcessor}!runAllTestsToFile@{runAllTestsToFile}}
+
+
+Returns summary lines for the basic datasets without writing any files. 
+
+\begin{DoxyReturn}{Returns}
+One summary string per test case.
+\end{DoxyReturn}
+@complexity O(6 · W² · L). \Hypertarget{classBatchProcessor_ad8168367955d5da21d65a870256c8811}\index{BatchProcessor@{BatchProcessor}!runAllTestsToFile@{runAllTestsToFile}}
 \index{runAllTestsToFile@{runAllTestsToFile}!BatchProcessor@{BatchProcessor}}
 \doxysubsubsection{\texorpdfstring{runAllTestsToFile()}{runAllTestsToFile()}}
 {\footnotesize\ttfamily \label{classBatchProcessor_ad8168367955d5da21d65a870256c8811} 
 std::\+vector$<$ std::\+string $>$ Batch\+Processor::\+run\+All\+Tests\+To\+File (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{classBatchProcessor_ad6446f2a49351a5bd0e907e160b5622e}\index{BatchProcessor@{BatchProcessor}!runBasicDatasetsToFile@{runBasicDatasetsToFile}}
+
+
+Runs all 75 test cases across 5 dataset folders and writes results to outputs/\+. 
+
+Creates outputs/\+$<$folder$>$/\+ for each dataset category. Writes one allocation file per test case, a per-\/folder results.\+txt with PASS/\+\+FAIL, and a global outputs/\+results\+\_\+report.\+txt summarising all categories.
+
+\begin{DoxyReturn}{Returns}
+Display lines for the interactive menu box (pass count + saved path).
+\end{DoxyReturn}
+@complexity O(75 · W² · L). \Hypertarget{classBatchProcessor_ad6446f2a49351a5bd0e907e160b5622e}\index{BatchProcessor@{BatchProcessor}!runBasicDatasetsToFile@{runBasicDatasetsToFile}}
 \index{runBasicDatasetsToFile@{runBasicDatasetsToFile}!BatchProcessor@{BatchProcessor}}
 \doxysubsubsection{\texorpdfstring{runBasicDatasetsToFile()}{runBasicDatasetsToFile()}}
 {\footnotesize\ttfamily \label{classBatchProcessor_ad6446f2a49351a5bd0e907e160b5622e} 
 std::\+vector$<$ std::\+string $>$ Batch\+Processor::\+run\+Basic\+Datasets\+To\+File (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
+
+Runs the 6 basic professor datasets and writes results to outputs/\+basic/\+. 
+
+Creates outputs/\+basic/\+ if it does not exist. Writes one allocation file per test case and a results.\+txt summary with PASS/\+\+FAIL per case.
+
+\begin{DoxyReturn}{Returns}
+Display lines for the interactive menu box (summary + saved path).
+\end{DoxyReturn}
+@complexity O(6 · W² · L). 
 
 The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
 \item 

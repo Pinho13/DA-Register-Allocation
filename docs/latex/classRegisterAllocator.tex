@@ -2,17 +2,30 @@
 \hypertarget{classRegisterAllocator}{}\label{classRegisterAllocator}\index{RegisterAllocator@{RegisterAllocator}}
 
 
+Dispatcher for all register allocation algorithms.  
+
+
+
+
 {\ttfamily \+\#include $<$Register\+Allocator.\+h$>$}
 
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \doxymbox{\hyperlink{structAllocationResult}{Allocation\+Result}} \doxymbox{\hyperlink{classRegisterAllocator_ac855e3a4c9db08619a0ef8fb39970333}{allocate}} (std::\+vector$<$ \doxymbox{\hyperlink{structWeb}{Web}} $>$ \&webs, \doxymbox{\hyperlink{classInterferenceGraph}{Interference\+Graph}} \&ig, const \doxymbox{\hyperlink{structRegisterConfig}{Register\+Config}} \&config)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Runs the register allocation algorithm specified in {\ttfamily config}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Implements all register allocation algorithms:\+ basic, spilling, splitting, free (BCT-\/\+Color). Each algorithm is implemented in its own Coloring\+\_\+\texorpdfstring{$\ast$}{*}.cpp file. 
+Dispatcher for all register allocation algorithms. 
+
+Selects and runs the algorithm specified in \doxylink{structRegisterConfig_ab3ed45ad33bd6079e6b09a9628f7eace}{Register\+Config::\+algorithm}. Implementations are split across:\+
+\begin{DoxyItemize}
+\item \doxylink{Coloring__Basic_8cpp}{Coloring\+\_\+\+Basic.\+cpp} — basic greedy, spill/\+split candidate selection
+\item \doxylink{Coloring__Dsatur_8cpp}{Coloring\+\_\+\+Dsatur.\+cpp} — DSATUR heuristic + exact backtracking
+\item \doxylink{Coloring__BCT_8cpp}{Coloring\+\_\+\+BCT.\+cpp} — Phantom (BCT-\/\+Color):\+ biconnected-\/component decomposition
+\item \doxylink{Coloring__Utils_8cpp}{Coloring\+\_\+\+Utils.\+cpp} — Kempe swap, colour normalisation, reduction, validator 
+\end{DoxyItemize}
 
 \label{doc-func-members}
 \Hypertarget{classRegisterAllocator_doc-func-members}
@@ -24,6 +37,24 @@ Implements all register allocation algorithms:\+ basic, spilling, splitting, fre
 \doxymbox{\hyperlink{structAllocationResult}{Allocation\+Result}} Register\+Allocator::\+allocate (\begin{DoxyParamCaption}\item[{std::\+vector$<$ \doxymbox{\hyperlink{structWeb}{Web}} $>$ \&}]{webs}{, }\item[{\doxymbox{\hyperlink{classInterferenceGraph}{Interference\+Graph}} \&}]{ig}{, }\item[{const \doxymbox{\hyperlink{structRegisterConfig}{Register\+Config}} \&}]{config}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
+
+Runs the register allocation algorithm specified in {\ttfamily config}. 
+
+Dispatches to basic\+Coloring, dsatur\+Coloring, or partitioned\+Coloring depending on config.\+algorithm ("{}basic"{}, "{}spilling"{}, "{}splitting"{}, "{}dsatur"{}, "{}phantom"{}). Applies a DSATUR floor for phantom:\+ falls back to DSATUR when it produces fewer spills.
+
+
+\begin{DoxyParams}{Parameters}
+{\em webs} & Webs to colour; assigned\+Register is set on each web. \\
+\hline
+{\em ig} & Interference graph over {\ttfamily webs}. \\
+\hline
+{\em config} & Register count, algorithm name, and optional parameter K. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{structAllocationResult}{Allocation\+Result} with feasibility flag, register count, and coloured webs.
+\end{DoxyReturn}
+@complexity O(W²) for basic/\+spilling/\+splitting/\+dsatur; O(V+E + N\texorpdfstring{$^\wedge$}{\string^}b) for phantom where b is the largest biconnected block size. 
 
 The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
 \item 

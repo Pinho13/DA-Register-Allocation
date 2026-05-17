@@ -13,13 +13,13 @@ Terminal UI renderer — draws boxes, arrow menus, and prompts.
 \begin{DoxyCompactItemize}
 \item 
 void \doxymbox{\hyperlink{classMenu_a49f8ff5f200f5b25ad105f6d754b0253}{display\+In\+Box}} (const std::\+string \&subtitle, const std::\+vector$<$ std::\+string $>$ \&lines)
-\item 
+\begin{DoxyCompactList}\small\item\em Renders a centred box with a subtitle and a list of content lines. \end{DoxyCompactList}\item 
 std::\+string \doxymbox{\hyperlink{classMenu_a1d3323ef2925e5c10ea166bc839820b7}{prompt\+In\+Box}} (const std::\+string \&subtitle, const std::\+string \&prompt)
-\item 
+\begin{DoxyCompactList}\small\item\em Renders a box with an inline text prompt and returns the user\textquotesingle{}s input. \end{DoxyCompactList}\item 
 int \doxymbox{\hyperlink{classMenu_aeb65bcbb7409a20a6a81367b95e54adb}{arrow\+Menu}} (const std::\+vector$<$ std::\+string $>$ \&options)
-\item 
+\begin{DoxyCompactList}\small\item\em Renders an arrow-\/key navigable menu and returns the selected index. \end{DoxyCompactList}\item 
 std::\+string \doxymbox{\hyperlink{classMenu_a55cdb8d088d38582df3c672cf39e2b14}{browse\+File}} (const std::\+filesystem::\+path \&start\+Dir, const std::\+string \&subtitle, const std::\+string \&hide\+Dir\+Name="{}"{})
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Interactive filesystem browser starting at {\ttfamily start\+Dir}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -30,7 +30,7 @@ static const std::\+string \doxymbox{\hyperlink{classMenu_a94287afd7090e7785d700
 \doxysubsection{Detailed Description}
 Terminal UI renderer — draws boxes, arrow menus, and prompts. 
 
-Pure presentation layer. Knows nothing about domain data (submissions, reviewers, flow networks). Receives pre-\/formatted strings to display. 
+Pure presentation layer. Knows nothing about domain data. Receives pre-\/formatted strings and renders them using ANSI escape codes. 
 
 \label{doc-func-members}
 \Hypertarget{classMenu_doc-func-members}
@@ -41,24 +41,83 @@ Pure presentation layer. Knows nothing about domain data (submissions, reviewers
 {\footnotesize\ttfamily \label{classMenu_aeb65bcbb7409a20a6a81367b95e54adb} 
 int Menu::\+arrow\+Menu (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ std::\+string $>$ \&}]{options}{}\end{DoxyParamCaption})}
 
+
+
+Renders an arrow-\/key navigable menu and returns the selected index. 
+
+Scrolls automatically when options exceed the terminal height. Up/\+down arrow keys move selection; Enter confirms.
+
+
+\begin{DoxyParams}{Parameters}
+{\em options} & List of option labels to display. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the selected option. 
+\end{DoxyReturn}
 \Hypertarget{classMenu_a55cdb8d088d38582df3c672cf39e2b14}\index{Menu@{Menu}!browseFile@{browseFile}}
 \index{browseFile@{browseFile}!Menu@{Menu}}
 \doxysubsubsection{\texorpdfstring{browseFile()}{browseFile()}}
 {\footnotesize\ttfamily \label{classMenu_a55cdb8d088d38582df3c672cf39e2b14} 
 std::\+string Menu::\+browse\+File (\begin{DoxyParamCaption}\item[{const std::\+filesystem::\+path \&}]{start\+Dir}{, }\item[{const std::\+string \&}]{subtitle}{, }\item[{const std::\+string \&}]{hide\+Dir\+Name}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
 
+
+
+Interactive filesystem browser starting at {\ttfamily start\+Dir}. 
+
+Directories are listed before files. Selecting a directory descends into it; selecting a file returns its full path. Auto-\/descends past intermediate subdirectories named {\ttfamily hide\+Dir\+Name} when entering a folder.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Dir} & Root directory to start browsing from. \\
+\hline
+{\em subtitle} & Label shown in the menu box header. \\
+\hline
+{\em hide\+Dir\+Name} & If non-\/empty, directories with this name are hidden from listing. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Full path of the selected file, or "{}"{} if the user cancelled. 
+\end{DoxyReturn}
 \Hypertarget{classMenu_a49f8ff5f200f5b25ad105f6d754b0253}\index{Menu@{Menu}!displayInBox@{displayInBox}}
 \index{displayInBox@{displayInBox}!Menu@{Menu}}
 \doxysubsubsection{\texorpdfstring{displayInBox()}{displayInBox()}}
 {\footnotesize\ttfamily \label{classMenu_a49f8ff5f200f5b25ad105f6d754b0253} 
 void Menu::\+display\+In\+Box (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{subtitle}{, }\item[{const std::\+vector$<$ std::\+string $>$ \&}]{lines}{}\end{DoxyParamCaption})}
 
+
+
+Renders a centred box with a subtitle and a list of content lines. 
+
+Lines prefixed with "{}!!"{} are rendered in red. Waits for Enter before returning.
+
+
+\begin{DoxyParams}{Parameters}
+{\em subtitle} & Label displayed below the title bar. \\
+\hline
+{\em lines} & Content lines to display inside the box. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classMenu_a1d3323ef2925e5c10ea166bc839820b7}\index{Menu@{Menu}!promptInBox@{promptInBox}}
 \index{promptInBox@{promptInBox}!Menu@{Menu}}
 \doxysubsubsection{\texorpdfstring{promptInBox()}{promptInBox()}}
 {\footnotesize\ttfamily \label{classMenu_a1d3323ef2925e5c10ea166bc839820b7} 
 std::\+string Menu::\+prompt\+In\+Box (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{subtitle}{, }\item[{const std::\+string \&}]{prompt}{}\end{DoxyParamCaption})}
 
+
+
+Renders a box with an inline text prompt and returns the user\textquotesingle{}s input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em subtitle} & Label displayed below the title bar. \\
+\hline
+{\em prompt} & Prompt string shown on the input line. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The string entered by the user (whitespace-\/trimmed by cin). 
+\end{DoxyReturn}
 
 
 \label{doc-variable-members}
@@ -70,7 +129,7 @@ std::\+string Menu::\+prompt\+In\+Box (\begin{DoxyParamCaption}\item[{const std:
 {\footnotesize\ttfamily \label{classMenu_a94287afd7090e7785d7006117d6af00b} 
 const std::\+string Menu::\+\+CLEAR\+\_\+\+SCREEN = "{}\textbackslash{}033\+[2J\textbackslash{}033\+[H"{}\hspace{0.3cm}{\ttfamily [static]}}
 
-
+ANSI escape:\+ clear screen and home cursor. 
 
 The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
 \item 

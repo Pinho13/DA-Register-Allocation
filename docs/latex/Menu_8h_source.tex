@@ -11,43 +11,50 @@
 \DoxyCodeLine{00007\ }
 \DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classMenu}{Menu}}\ \{}
 \DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classMenu_a49f8ff5f200f5b25ad105f6d754b0253}{displayInBox}}(\textcolor{keyword}{const}\ std::string\ \&subtitle,\ \textcolor{keyword}{const}\ std::vector<std::string>\ \&lines);}
-\DoxyCodeLine{00017\ \ \ \ \ std::string\ \doxymbox{\hyperlink{classMenu_a1d3323ef2925e5c10ea166bc839820b7}{promptInBox}}(\textcolor{keyword}{const}\ std::string\ \&subtitle,\ \textcolor{keyword}{const}\ std::string\ \&prompt);}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classMenu_aeb65bcbb7409a20a6a81367b95e54adb}{arrowMenu}}(\textcolor{keyword}{const}\ std::vector<std::string>\ \&options);}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ Browse\ the\ filesystem\ starting\ at\ startDir;\ returns\ selected\ file\ path,}}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ or\ "{}"{}\ if\ the\ user\ cancelled\ (backed\ out\ of\ the\ root).}}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ hideDirName:\ if\ non-\/empty,\ directories\ with\ that\ name\ are\ hidden.}}
-\DoxyCodeLine{00023\ \ \ \ \ std::string\ \doxymbox{\hyperlink{classMenu_a55cdb8d088d38582df3c672cf39e2b14}{browseFile}}(\textcolor{keyword}{const}\ std::filesystem::path\ \&startDir,}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&subtitle,}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&hideDirName\ =\ \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ \doxymbox{\hyperlink{classMenu_a94287afd7090e7785d7006117d6af00b}{CLEAR\_SCREEN}};}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ HIGHLIGHT\_ON;}
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ HIGHLIGHT\_OFF;}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ COLOR\_RED;}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ COLOR\_RESET;}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ CURSOR\_HIDE;}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ CURSOR\_SHOW;}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ CURSOR\_SAVE;}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ CURSOR\_RESTORE;}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ BOX\_INNER;}
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ BOX\_TOP;}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ BOX\_MID;}
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ BOX\_BOTTOM;}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ getTerminalSize(\textcolor{keywordtype}{int}\ \&rows,\ \textcolor{keywordtype}{int}\ \&cols);}
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ hPad(\textcolor{keywordtype}{int}\ cols);}
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ cursorToRow(\textcolor{keywordtype}{int}\ row);}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ cursorToPos(\textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col);}
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ boxLine(\textcolor{keyword}{const}\ std::string\ \&text);}
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ boxLineArrow(\textcolor{keyword}{const}\ std::string\ \&text);}
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ menuLine(\textcolor{keyword}{const}\ std::string\ \&text,\ \textcolor{keywordtype}{bool}\ highlighted);}
-\DoxyCodeLine{00051\ \};}
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classMenu_a49f8ff5f200f5b25ad105f6d754b0253}{displayInBox}}(\textcolor{keyword}{const}\ std::string\ \&subtitle,\ \textcolor{keyword}{const}\ std::vector<std::string>\ \&lines);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00033\ \ \ \ \ std::string\ \doxymbox{\hyperlink{classMenu_a1d3323ef2925e5c10ea166bc839820b7}{promptInBox}}(\textcolor{keyword}{const}\ std::string\ \&subtitle,\ \textcolor{keyword}{const}\ std::string\ \&prompt);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{classMenu_aeb65bcbb7409a20a6a81367b95e54adb}{arrowMenu}}(\textcolor{keyword}{const}\ std::vector<std::string>\ \&options);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00058\ \ \ \ \ std::string\ \doxymbox{\hyperlink{classMenu_a55cdb8d088d38582df3c672cf39e2b14}{browseFile}}(\textcolor{keyword}{const}\ std::filesystem::path\ \&startDir,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&subtitle,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&hideDirName\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ \doxymbox{\hyperlink{classMenu_a94287afd7090e7785d7006117d6af00b}{CLEAR\_SCREEN}};\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ ANSI\ escape\ code\ constants}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ HIGHLIGHT\_ON;\ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ HIGHLIGHT\_OFF;\ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ COLOR\_RED;\ \ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ COLOR\_RESET;\ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ CURSOR\_HIDE;\ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ CURSOR\_SHOW;\ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ CURSOR\_SAVE;\ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ CURSOR\_RESTORE;\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ Box\ drawing\ constants}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ BOX\_INNER;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ BOX\_TOP;\ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ BOX\_MID;\ \ \ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ BOX\_BOTTOM;}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ getTerminalSize(\textcolor{keywordtype}{int}\ \&rows,\ \textcolor{keywordtype}{int}\ \&cols);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ hPad(\textcolor{keywordtype}{int}\ cols);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ cursorToRow(\textcolor{keywordtype}{int}\ row);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ cursorToPos(\textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ boxLine(\textcolor{keyword}{const}\ std::string\ \&text);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ boxLineArrow(\textcolor{keyword}{const}\ std::string\ \&text);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ menuLine(\textcolor{keyword}{const}\ std::string\ \&text,\ \textcolor{keywordtype}{bool}\ highlighted);}
+\DoxyCodeLine{00130\ \};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

@@ -93,16 +93,30 @@ $(function(){initNavTree('classBatchProcessor.html','','classBatchProcessor-memb
 </div><!--header-->
 <div class="contents">
 
+<p>Runs register allocation in batch mode and across full dataset suites.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="BatchProcessor_8h_source.html">BatchProcessor.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a89f76fd730dabebbbbdd665e8d8b7695" id="r_a89f76fd730dabebbbbdd665e8d8b7695"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a89f76fd730dabebbbbdd665e8d8b7695">run</a> (const std::string &amp;rangesFile, const std::string &amp;registersFile, const std::string &amp;outputFile)</td></tr>
+<tr class="memdesc:a89f76fd730dabebbbbdd665e8d8b7695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses, allocates, and writes a single input pair to an output file.  <br /></td></tr>
 <tr class="memitem:ad6446f2a49351a5bd0e907e160b5622e" id="r_ad6446f2a49351a5bd0e907e160b5622e"><td class="memItemLeft">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ad6446f2a49351a5bd0e907e160b5622e">runBasicDatasetsToFile</a> ()</td></tr>
+<tr class="memdesc:ad6446f2a49351a5bd0e907e160b5622e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the 6 basic professor datasets and writes results to outputs/basic/.  <br /></td></tr>
 <tr class="memitem:ad8168367955d5da21d65a870256c8811" id="r_ad8168367955d5da21d65a870256c8811"><td class="memItemLeft">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ad8168367955d5da21d65a870256c8811">runAllTestsToFile</a> ()</td></tr>
+<tr class="memdesc:ad8168367955d5da21d65a870256c8811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs all 75 test cases across 5 dataset folders and writes results to outputs/.  <br /></td></tr>
 <tr class="memitem:aa2c7e30384f9b3b5283613532f9ea3f9" id="r_aa2c7e30384f9b3b5283613532f9ea3f9"><td class="memItemLeft">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aa2c7e30384f9b3b5283613532f9ea3f9">runAllBasicDatasets</a> ()</td></tr>
+<tr class="memdesc:aa2c7e30384f9b3b5283613532f9ea3f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns summary lines for the basic datasets without writing any files.  <br /></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Runs register allocation in batch mode and across full dataset suites. </p>
+<p>Three entry points:</p><ul>
+<li><a class="el" href="#a89f76fd730dabebbbbdd665e8d8b7695" title="Parses, allocates, and writes a single input pair to an output file.">run()</a> — single-case batch mode (the -b CLI flag).</li>
+<li><a class="el" href="#ad6446f2a49351a5bd0e907e160b5622e" title="Runs the 6 basic professor datasets and writes results to outputs/basic/.">runBasicDatasetsToFile()</a> — the 6 professor-provided basic cases.</li>
+<li><a class="el" href="#ad8168367955d5da21d65a870256c8811" title="Runs all 75 test cases across 5 dataset folders and writes results to outputs/.">runAllTestsToFile()</a> — all 75 test cases across 5 dataset folders. </li>
+</ul>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a89f76fd730dabebbbbdd665e8d8b7695" name="a89f76fd730dabebbbbdd665e8d8b7695"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a89f76fd730dabebbbbdd665e8d8b7695">&#9670;&#160;</a></span>run()</h2>
 
@@ -135,6 +149,19 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Parses, allocates, and writes a single input pair to an output file. </p>
+<p>Used by the -b command-line flag. Reads the ranges and registers files, runs the allocation algorithm specified in the registers file, and writes the result to <code class="param">outputFile</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rangesFile</td><td>Path to the live-ranges input file. </td></tr>
+    <tr><td class="paramname">registersFile</td><td>Path to the register-configuration input file. </td></tr>
+    <tr><td class="paramname">outputFile</td><td>Path to the output file to write. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, 1 on parse or I/O error.</dd></dl>
+<p>@complexity O(W² · L) dominated by interference graph construction. </p>
+
 </div>
 </div>
 <a id="aa2c7e30384f9b3b5283613532f9ea3f9" name="aa2c7e30384f9b3b5283613532f9ea3f9"></a>
@@ -159,6 +186,10 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Returns summary lines for the basic datasets without writing any files. </p>
+<dl class="section return"><dt>Returns</dt><dd>One summary string per test case.</dd></dl>
+<p>@complexity O(6 · W² · L). </p>
 
 </div>
 </div>
@@ -185,6 +216,11 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Runs all 75 test cases across 5 dataset folders and writes results to outputs/. </p>
+<p>Creates outputs/&lt;folder&gt;/ for each dataset category. Writes one allocation file per test case, a per-folder results.txt with PASS/FAIL, and a global outputs/results_report.txt summarising all categories.</p>
+<dl class="section return"><dt>Returns</dt><dd>Display lines for the interactive menu box (pass count + saved path).</dd></dl>
+<p>@complexity O(75 · W² · L). </p>
+
 </div>
 </div>
 <a id="ad6446f2a49351a5bd0e907e160b5622e" name="ad6446f2a49351a5bd0e907e160b5622e"></a>
@@ -209,6 +245,11 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Runs the 6 basic professor datasets and writes results to outputs/basic/. </p>
+<p>Creates outputs/basic/ if it does not exist. Writes one allocation file per test case and a results.txt summary with PASS/FAIL per case.</p>
+<dl class="section return"><dt>Returns</dt><dd>Display lines for the interactive menu box (summary + saved path).</dd></dl>
+<p>@complexity O(6 · W² · L). </p>
 
 </div>
 </div>

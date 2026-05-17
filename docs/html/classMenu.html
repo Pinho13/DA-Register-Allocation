@@ -101,9 +101,13 @@ $(function(){initNavTree('classMenu.html','','classMenu-members'); });
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a49f8ff5f200f5b25ad105f6d754b0253" id="r_a49f8ff5f200f5b25ad105f6d754b0253"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a49f8ff5f200f5b25ad105f6d754b0253">displayInBox</a> (const std::string &amp;subtitle, const std::vector&lt; std::string &gt; &amp;lines)</td></tr>
+<tr class="memdesc:a49f8ff5f200f5b25ad105f6d754b0253"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a centred box with a subtitle and a list of content lines.  <br /></td></tr>
 <tr class="memitem:a1d3323ef2925e5c10ea166bc839820b7" id="r_a1d3323ef2925e5c10ea166bc839820b7"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a1d3323ef2925e5c10ea166bc839820b7">promptInBox</a> (const std::string &amp;subtitle, const std::string &amp;prompt)</td></tr>
+<tr class="memdesc:a1d3323ef2925e5c10ea166bc839820b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders a box with an inline text prompt and returns the user's input.  <br /></td></tr>
 <tr class="memitem:aeb65bcbb7409a20a6a81367b95e54adb" id="r_aeb65bcbb7409a20a6a81367b95e54adb"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aeb65bcbb7409a20a6a81367b95e54adb">arrowMenu</a> (const std::vector&lt; std::string &gt; &amp;options)</td></tr>
+<tr class="memdesc:aeb65bcbb7409a20a6a81367b95e54adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders an arrow-key navigable menu and returns the selected index.  <br /></td></tr>
 <tr class="memitem:a55cdb8d088d38582df3c672cf39e2b14" id="r_a55cdb8d088d38582df3c672cf39e2b14"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#a55cdb8d088d38582df3c672cf39e2b14">browseFile</a> (const std::filesystem::path &amp;startDir, const std::string &amp;subtitle, const std::string &amp;hideDirName=&quot;&quot;)</td></tr>
+<tr class="memdesc:a55cdb8d088d38582df3c672cf39e2b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interactive filesystem browser starting at <code class="param">startDir</code>.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -111,7 +115,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Terminal UI renderer — draws boxes, arrow menus, and prompts. </p>
-<p>Pure presentation layer. Knows nothing about domain data (submissions, reviewers, flow networks). Receives pre-formatted strings to display. </p>
+<p>Pure presentation layer. Knows nothing about domain data. Receives pre-formatted strings and renders them using ANSI escape codes. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="aeb65bcbb7409a20a6a81367b95e54adb" name="aeb65bcbb7409a20a6a81367b95e54adb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeb65bcbb7409a20a6a81367b95e54adb">&#9670;&#160;</a></span>arrowMenu()</h2>
@@ -127,6 +131,16 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Renders an arrow-key navigable menu and returns the selected index. </p>
+<p>Scrolls automatically when options exceed the terminal height. Up/down arrow keys move selection; Enter confirms.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">options</td><td>List of option labels to display. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero-based index of the selected option. </dd></dl>
 
 </div>
 </div>
@@ -154,6 +168,18 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Interactive filesystem browser starting at <code class="param">startDir</code>. </p>
+<p>Directories are listed before files. Selecting a directory descends into it; selecting a file returns its full path. Auto-descends past intermediate subdirectories named <code class="param">hideDirName</code> when entering a folder.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startDir</td><td>Root directory to start browsing from. </td></tr>
+    <tr><td class="paramname">subtitle</td><td>Label shown in the menu box header. </td></tr>
+    <tr><td class="paramname">hideDirName</td><td>If non-empty, directories with this name are hidden from listing. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Full path of the selected file, or "" if the user cancelled. </dd></dl>
+
 </div>
 </div>
 <a id="a49f8ff5f200f5b25ad105f6d754b0253" name="a49f8ff5f200f5b25ad105f6d754b0253"></a>
@@ -175,6 +201,16 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Renders a centred box with a subtitle and a list of content lines. </p>
+<p>Lines prefixed with "!!" are rendered in red. Waits for Enter before returning.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">subtitle</td><td>Label displayed below the title bar. </td></tr>
+    <tr><td class="paramname">lines</td><td>Content lines to display inside the box. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a1d3323ef2925e5c10ea166bc839820b7" name="a1d3323ef2925e5c10ea166bc839820b7"></a>
@@ -195,6 +231,16 @@ Static Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Renders a box with an inline text prompt and returns the user's input. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">subtitle</td><td>Label displayed below the title bar. </td></tr>
+    <tr><td class="paramname">prompt</td><td>Prompt string shown on the input line. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The string entered by the user (whitespace-trimmed by cin). </dd></dl>
 
 </div>
 </div>
@@ -218,6 +264,7 @@ Static Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>ANSI escape: clear screen and home cursor. </p>
 
 </div>
 </div>

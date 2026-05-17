@@ -2,7 +2,7 @@
 \hypertarget{RegisterAllocator_8cpp}{}\label{RegisterAllocator_8cpp}\index{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/src/core/RegisterAllocator.cpp@{/home/pinho/Classes/DA/DA-\/Register-\/Allocation/code/src/core/RegisterAllocator.cpp}}
 
 
-Main dispatch — routes to the appropriate coloring algorithm.  
+Dispatch implementation for \doxylink{classRegisterAllocator_ac855e3a4c9db08619a0ef8fb39970333}{Register\+Allocator::\+allocate}.  
 
 
 {\ttfamily \+\#include $<$set$>$}\newline
@@ -11,6 +11,6 @@ Main dispatch — routes to the appropriate coloring algorithm.
 
 
 \doxysubsection{Detailed Description}
-Main dispatch — routes to the appropriate coloring algorithm. 
+Dispatch implementation for \doxylink{classRegisterAllocator_ac855e3a4c9db08619a0ef8fb39970333}{Register\+Allocator::\+allocate}. 
 
-Algorithm implementations are split across:\+ \doxylink{Coloring__Basic_8cpp}{Coloring\+\_\+\+Basic.\+cpp} — basic greedy, spill/\+split candidate selection \doxylink{Coloring__Dsatur_8cpp}{Coloring\+\_\+\+Dsatur.\+cpp} — DSATUR heuristic + exact backtracking \doxylink{Coloring__BCT_8cpp}{Coloring\+\_\+\+BCT.\+cpp} — biconnected-\/partition coloring (BCT-\/\+Color) \doxylink{Coloring__Utils_8cpp}{Coloring\+\_\+\+Utils.\+cpp} — Kempe swap, color normalization, reduction, validator 
+Routes to the correct coloring strategy based on \doxylink{structRegisterConfig_ab3ed45ad33bd6079e6b09a9628f7eace}{Register\+Config::\+algorithm}. Algorithm implementations live in:\+ \doxylink{Coloring__Basic_8cpp}{Coloring\+\_\+\+Basic.\+cpp} — basic greedy, spill/\+split candidate selection \doxylink{Coloring__Dsatur_8cpp}{Coloring\+\_\+\+Dsatur.\+cpp} — DSATUR heuristic + exact backtracking \doxylink{Coloring__BCT_8cpp}{Coloring\+\_\+\+BCT.\+cpp} — Phantom (BCT-\/\+Color):\+ biconnected-\/component decomposition \doxylink{Coloring__Utils_8cpp}{Coloring\+\_\+\+Utils.\+cpp} — Kempe swap, colour normalisation, reduction, validator 

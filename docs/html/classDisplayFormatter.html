@@ -101,19 +101,19 @@ $(function(){initNavTree('classDisplayFormatter.html','','classDisplayFormatter-
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a3da51e2a45b908cd2e8eb70080f1b201" id="r_a3da51e2a45b908cd2e8eb70080f1b201"><td class="memItemLeft">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a3da51e2a45b908cd2e8eb70080f1b201">formatWebs</a> (const std::vector&lt; <a class="el" href="structWeb.html">Web</a> &gt; &amp;webs)</td></tr>
-<tr class="memdesc:a3da51e2a45b908cd2e8eb70080f1b201"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the list of webs for display.  <br /></td></tr>
+<tr class="memdesc:a3da51e2a45b908cd2e8eb70080f1b201"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the list of webs showing variable name, lines, and assignment.  <br /></td></tr>
 <tr class="memitem:aec0542fab64ac51752bf382a390d7cd8" id="r_aec0542fab64ac51752bf382a390d7cd8"><td class="memItemLeft">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aec0542fab64ac51752bf382a390d7cd8">formatAllocationResult</a> (const <a class="el" href="structAllocationResult.html">AllocationResult</a> &amp;result)</td></tr>
-<tr class="memdesc:aec0542fab64ac51752bf382a390d7cd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the allocation result (webs + register assignments).  <br /></td></tr>
+<tr class="memdesc:aec0542fab64ac51752bf382a390d7cd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the full allocation result: webs, register assignments, and summary.  <br /></td></tr>
 <tr class="memitem:ab0f9393bd3f187aea6f3653ed31e1117" id="r_ab0f9393bd3f187aea6f3653ed31e1117"><td class="memItemLeft">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ab0f9393bd3f187aea6f3653ed31e1117">formatConfig</a> (const <a class="el" href="structRegisterConfig.html">RegisterConfig</a> &amp;config)</td></tr>
-<tr class="memdesc:ab0f9393bd3f187aea6f3653ed31e1117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the register configuration settings.  <br /></td></tr>
+<tr class="memdesc:ab0f9393bd3f187aea6f3653ed31e1117"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the register configuration (register count, algorithm, parameter).  <br /></td></tr>
 <tr class="memitem:aba982b547957f4a8b14167963530258b" id="r_aba982b547957f4a8b14167963530258b"><td class="memItemLeft">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aba982b547957f4a8b14167963530258b">formatRanges</a> (const std::vector&lt; <a class="el" href="structLiveRange.html">LiveRange</a> &gt; &amp;ranges)</td></tr>
-<tr class="memdesc:aba982b547957f4a8b14167963530258b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the raw live ranges loaded from file.  <br /></td></tr>
+<tr class="memdesc:aba982b547957f4a8b14167963530258b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the raw live ranges as loaded from the ranges file.  <br /></td></tr>
 <tr class="memitem:ac35de0b0105bf7399d96c0524f6aa4f9" id="r_ac35de0b0105bf7399d96c0524f6aa4f9"><td class="memItemLeft">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ac35de0b0105bf7399d96c0524f6aa4f9">wrapLine</a> (const std::string &amp;prefix, const std::string &amp;text, int maxWidth)</td></tr>
-<tr class="memdesc:ac35de0b0105bf7399d96c0524f6aa4f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wraps a long string into multiple lines fitting within maxWidth.  <br /></td></tr>
+<tr class="memdesc:ac35de0b0105bf7399d96c0524f6aa4f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wraps a long string into multiple lines fitting within <code class="param">maxWidth</code> characters.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Converts domain data into display-ready string lines for the <a class="el" href="classMenu.html" title="Terminal UI renderer — draws boxes, arrow menus, and prompts.">Menu</a>. </p>
-<p>Pure formatting layer — receives domain objects, returns vectors of strings. Knows nothing about terminal rendering. </p>
+<p>Pure formatting layer — receives domain objects, returns vectors of strings. Knows nothing about terminal rendering or ANSI codes. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="aec0542fab64ac51752bf382a390d7cd8" name="aec0542fab64ac51752bf382a390d7cd8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aec0542fab64ac51752bf382a390d7cd8">&#9670;&#160;</a></span>formatAllocationResult()</h2>
@@ -138,7 +138,16 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Formats the allocation result (webs + register assignments). </p>
+<p>Formats the full allocation result: webs, register assignments, and summary. </p>
+<p>Lines prefixed with "!!" signal an infeasible allocation and are rendered in red by the <a class="el" href="classMenu.html" title="Terminal UI renderer — draws boxes, arrow menus, and prompts.">Menu</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td>Allocation result to format. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of display lines covering all webs and the register summary.</dd></dl>
+<p>@complexity O(W · L). </p>
 
 </div>
 </div>
@@ -165,7 +174,15 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Formats the register configuration settings. </p>
+<p>Formats the register configuration (register count, algorithm, parameter). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config</td><td><a class="el" href="structRegisterConfig.html" title="Holds the parsed register configuration from the registers input file.">RegisterConfig</a> to format. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of display lines, one per config field.</dd></dl>
+<p>@complexity O(1). </p>
 
 </div>
 </div>
@@ -192,7 +209,15 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Formats the raw live ranges loaded from file. </p>
+<p>Formats the raw live ranges as loaded from the ranges file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ranges</td><td>Live range vector to format. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>One string per range showing variable name and program points.</dd></dl>
+<p>@complexity O(R · L) where R = number of ranges, L = average line count. </p>
 
 </div>
 </div>
@@ -219,7 +244,15 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Formats the list of webs for display. </p>
+<p>Formats the list of webs showing variable name, lines, and assignment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">webs</td><td><a class="el" href="structWeb.html" title="Represents a web: the union of one or more merged live ranges for a variable.">Web</a> vector to format. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>One string per web, e.g. "web0 [sum]: 7+,8,9,10- → r0".</dd></dl>
+<p>@complexity O(W · L) where W = number of webs, L = average line count. </p>
 
 </div>
 </div>
@@ -255,16 +288,18 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Wraps a long string into multiple lines fitting within maxWidth. </p>
-<p>If the prefix starts with "!!" all continuation lines also get "!!" so the <a class="el" href="classMenu.html" title="Terminal UI renderer — draws boxes, arrow menus, and prompts.">Menu</a> renders them in red.</p>
+<p>Wraps a long string into multiple lines fitting within <code class="param">maxWidth</code> characters. </p>
+<p>If <code class="param">prefix</code> starts with "!!" all continuation lines also get "!!" so the <a class="el" href="classMenu.html" title="Terminal UI renderer — draws boxes, arrow menus, and prompts.">Menu</a> renders them in red.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">prefix</td><td>Prefix for the first line (e.g. "- " or "!!") </td></tr>
+    <tr><td class="paramname">prefix</td><td>Prefix for the first line (e.g. "- " or "!!"). </td></tr>
     <tr><td class="paramname">text</td><td>Text to wrap. </td></tr>
-    <tr><td class="paramname">maxWidth</td><td>Maximum line width including prefix. </td></tr>
+    <tr><td class="paramname">maxWidth</td><td>Maximum line width in characters including the prefix. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of wrapped lines, each no longer than <code class="param">maxWidth</code>.</dd></dl>
+<p>@complexity O(N) where N = length of <code class="param">text</code>. </p>
 
 </div>
 </div>

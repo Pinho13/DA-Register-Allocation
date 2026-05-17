@@ -93,14 +93,24 @@ $(function(){initNavTree('classRegisterAllocator.html','','classRegisterAllocato
 </div><!--header-->
 <div class="contents">
 
+<p>Dispatcher for all register allocation algorithms.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="RegisterAllocator_8h_source.html">RegisterAllocator.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ac855e3a4c9db08619a0ef8fb39970333" id="r_ac855e3a4c9db08619a0ef8fb39970333"><td class="memItemLeft">static <a class="el" href="structAllocationResult.html">AllocationResult</a>&#160;</td><td class="memItemRight"><a class="el" href="#ac855e3a4c9db08619a0ef8fb39970333">allocate</a> (std::vector&lt; <a class="el" href="structWeb.html">Web</a> &gt; &amp;webs, <a class="el" href="classInterferenceGraph.html">InterferenceGraph</a> &amp;ig, const <a class="el" href="structRegisterConfig.html">RegisterConfig</a> &amp;config)</td></tr>
+<tr class="memdesc:ac855e3a4c9db08619a0ef8fb39970333"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the register allocation algorithm specified in <code class="param">config</code>.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implements all register allocation algorithms: basic, spilling, splitting, phantom (BCT-Color). Each algorithm is implemented in its own Coloring_*.cpp file. </p>
+<div class="textblock"><p>Dispatcher for all register allocation algorithms. </p>
+<p>Selects and runs the algorithm specified in <a class="el" href="structRegisterConfig.html#ab3ed45ad33bd6079e6b09a9628f7eace">RegisterConfig::algorithm</a>. Implementations are split across:</p><ul>
+<li><a class="el" href="Coloring__Basic_8cpp.html">Coloring_Basic.cpp</a> — basic greedy, spill/split candidate selection</li>
+<li><a class="el" href="Coloring__Dsatur_8cpp.html">Coloring_Dsatur.cpp</a> — DSATUR heuristic + exact backtracking</li>
+<li><a class="el" href="Coloring__BCT_8cpp.html">Coloring_BCT.cpp</a> — Phantom (BCT-Color): biconnected-component decomposition</li>
+<li><a class="el" href="Coloring__Utils_8cpp.html">Coloring_Utils.cpp</a> — Kempe swap, colour normalisation, reduction, validator </li>
+</ul>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="ac855e3a4c9db08619a0ef8fb39970333" name="ac855e3a4c9db08619a0ef8fb39970333"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac855e3a4c9db08619a0ef8fb39970333">&#9670;&#160;</a></span>allocate()</h2>
@@ -133,6 +143,19 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Runs the register allocation algorithm specified in <code class="param">config</code>. </p>
+<p>Dispatches to basicColoring, dsaturColoring, or partitionedColoring depending on config.algorithm ("basic", "spilling", "splitting", "dsatur", "phantom"). Applies a DSATUR floor for phantom: falls back to DSATUR when it produces fewer spills.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">webs</td><td>Webs to colour; assignedRegister is set on each web. </td></tr>
+    <tr><td class="paramname">ig</td><td>Interference graph over <code class="param">webs</code>. </td></tr>
+    <tr><td class="paramname">config</td><td>Register count, algorithm name, and optional parameter K. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structAllocationResult.html" title="Holds the full result of a register allocation run.">AllocationResult</a> with feasibility flag, register count, and coloured webs.</dd></dl>
+<p>@complexity O(W²) for basic/spilling/splitting/dsatur; O(V+E + N^b) for phantom where b is the largest biconnected block size. </p>
 
 </div>
 </div>
