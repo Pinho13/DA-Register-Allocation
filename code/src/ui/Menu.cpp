@@ -55,22 +55,41 @@ std::string Menu::cursorToPos(int row, int col) {
     return "\033[" + std::to_string(row) + ";" + std::to_string(col) + "H";
 }
 
-std::string Menu::boxLine(const std::string &text) {
+// Returns a string that, when printed, occupies exactly `displayCols` terminal columns.
+// `extraBytes` accounts for multibyte UTF-8 sequences already in `text` whose byte
+// count exceeds their display width (e.g. each ↑/↓ arrow = 3 bytes but 1 display col).
+static std::string padTo(const std::string &text, int displayCols, int extraBytes = 0) {
+    int target = displayCols + extraBytes; // target byte length
     std::string padded = text;
-    if ((int)padded.size() > BOX_INNER) padded = padded.substr(0, BOX_INNER);
-    while ((int)padded.size() < BOX_INNER) padded += " ";
-    return "║ " + padded + " ║";
+    if ((int)padded.size() > target) padded = padded.substr(0, target);
+    while ((int)padded.size() < target) padded += " ";
+    return padded;
 }
 
+// Centers `text` within `width` display columns (text contains no multibyte chars).
+static std::string centered(const std::string &text, int width) {
+    int pad = (width - (int)text.size()) / 2;
+    if (pad < 0) pad = 0;
+    return std::string(pad, ' ') + text;
+}
+
+std::string Menu::boxLine(const std::string &text) {
+    return "║ " + padTo(text, BOX_INNER) + " ║";
+}
+
+// For lines that contain exactly two 3-byte UTF-8 arrows (↑ and ↓): each costs
+// 2 extra bytes vs. display width, so we pad to BOX_INNER + 4 bytes.
 std::string Menu::boxLineArrow(const std::string &text) {
-    std::string padded = text;
-    while ((int)padded.size() < BOX_INNER + 4) padded += " ";
-    return "║ " + padded + " ║";
+    return "║ " + padTo(text, BOX_INNER, 4) + " ║";
 }
 
 std::string Menu::menuLine(const std::string &text, bool highlighted) {
-    std::string padded = text;
-    while ((int)padded.size() < BOX_INNER - 3) padded += " ";
+    // The slot inside the box borders is BOX_INNER - 3 display cols:
+    //   non-highlighted: ║ + 3 spaces + slot + 2 spaces + ║  (3+slot+2 = BOX_INNER-1? No.)
+    //   ║(1) + space(1) + 3spaces + slot + 2spaces + space(1) + ║(1) — that's BOX_OUTER=70
+    //   so slot = 70 - 1 - 1 - 3 - 2 - 1 - 1 = 61? Actually:
+    //   "║   " = 4, "  ║" = 3, total border = 7, slot = BOX_OUTER - 7 = 63 = BOX_INNER - 3.
+    std::string padded = padTo(text, BOX_INNER - 3, /* extraBytes in text */ 0);
     if (highlighted)
         return "║  " + HIGHLIGHT_ON + " " + padded + HIGHLIGHT_OFF + "  ║";
     return "║   " + padded + "  ║";
@@ -90,7 +109,7 @@ void Menu::displayInBox(const std::string &subtitle, const std::vector<std::stri
     std::cout << cursorToPos(topMargin + 1, 1);
     std::cout << pad << BOX_TOP << "\n";
     std::cout << pad << boxLine("") << "\n";
-    std::cout << pad << boxLine("                Conference Review Assignment Tool") << "\n";
+    std::cout << pad << boxLine(centered("Register Allocation Tool", BOX_INNER)) << "\n";
     std::cout << pad << boxLine("") << "\n";
     std::cout << pad << BOX_MID << "\n";
     std::cout << pad << boxLine("") << "\n";
@@ -98,11 +117,8 @@ void Menu::displayInBox(const std::string &subtitle, const std::vector<std::stri
     std::cout << pad << boxLine("") << "\n";
     for (const auto &line : lines) {
         if (line.size() >= 2 && line[0] == '!' && line[1] == '!') {
-            std::string content = line.substr(2);
-            std::string padded = "  " + content;
-            if ((int)padded.size() > BOX_INNER) padded = padded.substr(0, BOX_INNER);
-            while ((int)padded.size() < BOX_INNER) padded += " ";
-            std::cout << pad << "║ " << COLOR_RED << padded << COLOR_RESET << " ║\n";
+            std::string content = "  " + line.substr(2);
+            std::cout << pad << "║ " << COLOR_RED << padTo(content, BOX_INNER) << COLOR_RESET << " ║\n";
         } else {
             std::cout << pad << boxLine("  " + line) << "\n";
         }
@@ -138,7 +154,7 @@ std::string Menu::promptInBox(const std::string &subtitle, const std::string &pr
     std::cout << cursorToPos(topMargin + 1, 1);
     std::cout << pad << BOX_TOP << "\n";
     std::cout << pad << boxLine("") << "\n";
-    std::cout << pad << boxLine("                Conference Review Assignment Tool") << "\n";
+    std::cout << pad << boxLine(centered("Register Allocation Tool", BOX_INNER)) << "\n";
     std::cout << pad << boxLine("") << "\n";
     std::cout << pad << BOX_MID << "\n";
     std::cout << pad << boxLine("") << "\n";
@@ -189,25 +205,37 @@ int Menu::arrowMenu(const std::vector<std::string> &options) {
         for (int i = 0; i < topMargin; i++) std::cout << "\n";
         std::cout << pad << BOX_TOP << "\n";
         std::cout << pad << boxLine("") << "\n";
-        std::cout << pad << boxLine("                Register Allocation Tool") << "\n";
+        std::cout << pad << boxLine(centered("Register Allocation Tool", BOX_INNER)) << "\n";
         std::cout << pad << boxLine("") << "\n";
         std::cout << pad << BOX_MID << "\n";
         std::cout << pad << boxLine("") << "\n";
         for (int i = 0; i < visCount; i++) {
             int idx = scrollTop + i;
             std::string label = options[idx];
-            // show scroll hints on first/last visible slot
-            // menuLine pads by byte length; \u2191/\u2193 are 3 bytes but 1 display col,
-            // so pre-pad the label to (BOX_INNER-3-2) display cols first.
-            const int labelWidth = BOX_INNER - 3 - 2; // 2 = "\u2191 " display width
+            // \u2191/\u2193 each = 3 bytes, 1 display col \u2192 2 extra bytes per arrow.
+            // Pre-pad label to (BOX_INNER-3-2) display cols, then prepend "\u2191 " or "\u2193 ".
+            // The resulting string has 2 extra bytes vs. its display width, which
+            // menuLine compensates for via padTo(..., extraBytes=2).
+            bool hasArrow = false;
+            const int slotWidth = BOX_INNER - 3;      // display cols in the menuLine slot
+            const int labelWidth = slotWidth - 2;      // leave 2 cols for arrow + space
             if (i == 0 && scrollTop > 0) {
                 while ((int)label.size() < labelWidth) label += ' ';
                 label = "\u2191 " + label;
+                hasArrow = true;
             } else if (i == visCount - 1 && scrollTop + visCount < numOptions) {
                 while ((int)label.size() < labelWidth) label += ' ';
                 label = "\u2193 " + label;
+                hasArrow = true;
             }
-            std::cout << pad << menuLine(label, idx == selected) << "\n";
+            // Pass extraBytes=2 when an arrow is present so padTo accounts for the
+            // 2-byte gap between byte length and display width of the UTF-8 arrow.
+            std::string padded = padTo(label, slotWidth, hasArrow ? 2 : 0);
+            bool hi = (idx == selected);
+            std::string row = hi
+                ? "\u2551  " + HIGHLIGHT_ON + " " + padded + HIGHLIGHT_OFF + "  \u2551"
+                : "\u2551   " + padded + "  \u2551";
+            std::cout << pad << row << "\n";
         }
         std::cout << pad << boxLine("") << "\n";
         std::cout << pad << boxLineArrow("  \u2191/\u2193 arrows, Enter to select") << "\n";

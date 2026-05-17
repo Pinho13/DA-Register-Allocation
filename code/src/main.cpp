@@ -69,7 +69,8 @@ static void runInteractiveMenu() {
         "Run register allocation",
         "Show allocation result",
         "Save result to file",
-        "Run all basic test datasets",
+        "Run basic datasets",
+        "Run all datasets",
         "Exit"
     };
 
@@ -168,17 +169,30 @@ static void runInteractiveMenu() {
                     menu.displayInBox("Save Result", {"!!No allocation to save.", "Run allocation first (option 4)."});
                     break;
                 }
-                std::string filename = menu.promptInBox("Save Result", "Output file path: ");
-                OutputWriter::write(filename, lastResult);
-                menu.displayInBox("Save Result", {"Result saved to: " + filename});
+                std::string name = menu.promptInBox("Save Result", "File name (no extension): ");
+                if (name.empty()) break;
+                {
+                    namespace fs = std::filesystem;
+                    fs::path outDir = datasetPath().parent_path() / "outputs";
+                    std::error_code ec;
+                    fs::create_directories(outDir, ec);
+                    std::string fullPath = (outDir / (name + ".txt")).string();
+                    OutputWriter::write(fullPath, lastResult);
+                    menu.displayInBox("Save Result", {"Result saved to: outputs/" + name + ".txt"});
+                }
                 break;
             }
             case 7: {
-                auto lines = BatchProcessor::runAllBasicDatasets();
-                menu.displayInBox("All Basic Datasets", lines);
+                auto lines = BatchProcessor::runBasicDatasetsToFile();
+                menu.displayInBox("Basic Datasets", lines);
                 break;
             }
-            case 8:
+            case 8: {
+                auto lines = BatchProcessor::runAllTestsToFile();
+                menu.displayInBox("All Datasets", lines);
+                break;
+            }
+            case 9:
                 std::cout << "\033[?25h" << Menu::CLEAR_SCREEN;
                 return;
         }
@@ -196,24 +210,33 @@ int main(int argc, char *argv[]) {
             return BatchProcessor::run(argv[2], argv[3], argv[4]);
 
         if (argc == 6) {
-            fs::path root = datasetPath();
+            fs::path dsRoot       = datasetPath();
+            fs::path projectRoot  = dsRoot.parent_path();
             std::string folder        = argv[2];
             std::string rangesName    = argv[3];
             std::string registersName = argv[4];
-            std::string outFile       = argv[5];
+            std::string outStem       = argv[5];
+
             if (rangesName.size() < 4 || rangesName.substr(rangesName.size() - 4) != ".txt")
                 rangesName += ".txt";
             if (registersName.size() < 4 || registersName.substr(registersName.size() - 4) != ".txt")
                 registersName += ".txt";
+
+            // output goes to outputs/<folder>/<stem>.txt (no .txt needed in argument)
+            fs::path outDir = projectRoot / "outputs" / folder;
+            std::error_code ec;
+            fs::create_directories(outDir, ec);
+            std::string outFile = (outDir / (outStem + ".txt")).string();
+
             return BatchProcessor::run(
-                (root / folder / "ranges"    / rangesName).string(),
-                (root / folder / "registers" / registersName).string(),
+                (dsRoot / folder / "ranges"    / rangesName).string(),
+                (dsRoot / folder / "registers" / registersName).string(),
                 outFile);
         }
 
         std::cerr << "Usage:\n"
                   << "  " << argv[0] << " -b <ranges.txt> <registers.txt> <out.txt>\n"
-                  << "  " << argv[0] << " -b <folder> <ranges-name> <registers-name> <out.txt>\n";
+                  << "  " << argv[0] << " -b <folder> <ranges-name> <registers-name> <out-stem>\n";
         return 1;
     }
 
