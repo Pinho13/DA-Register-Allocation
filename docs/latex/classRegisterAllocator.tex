@@ -2,30 +2,17 @@
 \hypertarget{classRegisterAllocator}{}\label{classRegisterAllocator}\index{RegisterAllocator@{RegisterAllocator}}
 
 
-Implements all four register allocation algorithms.  
-
-
-
-
 {\ttfamily \+\#include $<$Register\+Allocator.\+h$>$}
 
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static \doxymbox{\hyperlink{structAllocationResult}{Allocation\+Result}} \doxymbox{\hyperlink{classRegisterAllocator_ac855e3a4c9db08619a0ef8fb39970333}{allocate}} (std::\+vector$<$ \doxymbox{\hyperlink{structWeb}{Web}} $>$ \&webs, \doxymbox{\hyperlink{classInterferenceGraph}{Interference\+Graph}} \&ig, const \doxymbox{\hyperlink{structRegisterConfig}{Register\+Config}} \&config)
-\begin{DoxyCompactList}\small\item\em Runs the algorithm specified in config on the given webs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Implements all four register allocation algorithms. 
-
-Algorithms:\+
-\begin{DoxyItemize}
-\item basic:\+ Greedy graph coloring as described in the project spec.
-\item spilling:\+ Greedy coloring with up to K webs spilled to memory.
-\item splitting:\+ Greedy coloring with up to K webs split into two sub-\/webs.
-\item free (BCT-\/\+Color):\+ biconnected-\/component decomposition with adaptive per-\/block coloring. 
-\end{DoxyItemize}
+Implements all register allocation algorithms:\+ basic, spilling, splitting, free (BCT-\/\+Color). Each algorithm is implemented in its own Coloring\+\_\+\texorpdfstring{$\ast$}{*}.cpp file. 
 
 \label{doc-func-members}
 \Hypertarget{classRegisterAllocator_doc-func-members}
@@ -38,23 +25,11 @@ Algorithms:\+
 
 
 
-Runs the algorithm specified in config on the given webs. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em webs} & The webs to allocate (modified in-\/place with assigned\+Register). \\
-\hline
-{\em ig} & The interference graph. \\
-\hline
-{\em config} & The register configuration (num\+Registers, algorithm, param). \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\doxylink{structAllocationResult}{Allocation\+Result} with assignments and feasibility flag. 
-\end{DoxyReturn}
-
-
 The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
 \item 
 /\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+include/\+core/\+\doxymbox{\hyperlink{RegisterAllocator_8h}{Register\+Allocator.\+h}}\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+core/\+\doxymbox{\hyperlink{Coloring__Basic_8cpp}{Coloring\+\_\+\+Basic.\+cpp}}\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+core/\+\doxymbox{\hyperlink{Coloring__BCT_8cpp}{Coloring\+\_\+\+BCT.\+cpp}}\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+core/\+\doxymbox{\hyperlink{Coloring__Dsatur_8cpp}{Coloring\+\_\+\+Dsatur.\+cpp}}\item 
+/\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+core/\+\doxymbox{\hyperlink{Coloring__Utils_8cpp}{Coloring\+\_\+\+Utils.\+cpp}}\item 
 /\+home/\+pinho/\+\+Classes/\+\+DA/\+\+DA-\/\+Register-\/\+Allocation/\+code/\+src/\+core/\+\doxymbox{\hyperlink{RegisterAllocator_8cpp}{Register\+Allocator.\+cpp}}\end{DoxyCompactItemize}

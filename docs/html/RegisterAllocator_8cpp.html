@@ -93,24 +93,14 @@ $(function(){initNavTree('RegisterAllocator_8cpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>Implementation of the four register allocation algorithms.  
+<p>Main dispatch — routes to the appropriate coloring algorithm.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
-<code>#include &lt;stack&gt;</code><br />
-<code>#include &lt;queue&gt;</code><br />
-<code>#include &lt;set&gt;</code><br />
-<code>#include &lt;map&gt;</code><br />
-<code>#include &lt;unordered_map&gt;</code><br />
+<div class="textblock"><code>#include &lt;set&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &quot;<a class="el" href="RegisterAllocator_8h_source.html">core/RegisterAllocator.h</a>&quot;</code><br />
 </div><a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of the four register allocation algorithms. </p>
-<p>Algorithms implemented:</p><ul>
-<li><b>basic</b>: Chaitin-style greedy simplification + stack-based coloring.</li>
-<li><b>spilling</b>: Basic coloring extended with up to K webs committed to memory.</li>
-<li><b>splitting</b>: Iterative web splitting to reduce interference, then basic coloring.</li>
-<li><b>free</b> (BCT-Color): biconnected-component decomposition with per-block adaptive coloring. </li>
-</ul>
+<div class="textblock"><p>Main dispatch — routes to the appropriate coloring algorithm. </p>
+<p>Algorithm implementations are split across: <a class="el" href="Coloring__Basic_8cpp.html">Coloring_Basic.cpp</a> — basic greedy, spill/split candidate selection <a class="el" href="Coloring__Dsatur_8cpp.html">Coloring_Dsatur.cpp</a> — DSATUR heuristic + exact backtracking <a class="el" href="Coloring__BCT_8cpp.html">Coloring_BCT.cpp</a> — biconnected-partition coloring (BCT-Color) <a class="el" href="Coloring__Utils_8cpp.html">Coloring_Utils.cpp</a> — Kempe swap, color normalization, reduction, validator </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">

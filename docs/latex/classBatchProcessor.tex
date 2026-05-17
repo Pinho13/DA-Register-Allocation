@@ -2,31 +2,20 @@
 \hypertarget{classBatchProcessor}{}\label{classBatchProcessor}\index{BatchProcessor@{BatchProcessor}}
 
 
-Handles non-\/interactive batch execution.  
-
-
-
-
 {\ttfamily \+\#include $<$Batch\+Processor.\+h$>$}
 
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static int \doxymbox{\hyperlink{classBatchProcessor_a89f76fd730dabebbbbdd665e8d8b7695}{run}} (const std::\+string \&ranges\+File, const std::\+string \&registers\+File, const std::\+string \&output\+File)
-\begin{DoxyCompactList}\small\item\em Runs the full allocation pipeline in batch mode. \end{DoxyCompactList}\item 
+\item 
+static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{classBatchProcessor_ad6446f2a49351a5bd0e907e160b5622e}{run\+Basic\+Datasets\+To\+File}} ()
+\item 
+static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{classBatchProcessor_ad8168367955d5da21d65a870256c8811}{run\+All\+Tests\+To\+File}} ()
+\item 
 static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{classBatchProcessor_aa2c7e30384f9b3b5283613532f9ea3f9}{run\+All\+Basic\+Datasets}} ()
-\begin{DoxyCompactList}\small\item\em Runs all basic test cases from the basic/\+ folder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
-
-\doxysubsection{Detailed Description}
-Handles non-\/interactive batch execution. 
-
-Invoked when the program is run as:\+ 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{./register\_alloc\ -\/b\ ranges.txt\ registers.txt\ allocation.txt}
-
-\end{DoxyCode}
- 
 
 \label{doc-func-members}
 \Hypertarget{classBatchProcessor_doc-func-members}
@@ -37,41 +26,24 @@ Invoked when the program is run as:\+
 {\footnotesize\ttfamily \label{classBatchProcessor_a89f76fd730dabebbbbdd665e8d8b7695} 
 int Batch\+Processor::\+run (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{ranges\+File}{, }\item[{const std::\+string \&}]{registers\+File}{, }\item[{const std::\+string \&}]{output\+File}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-
-
-Runs the full allocation pipeline in batch mode. 
-
-Parses both input files, builds webs, builds interference graph, runs the algorithm specified in the registers file, writes output.
-
-{\bfseries{Time Complexity:\+}} O(\+W\texorpdfstring{$^\wedge$}{\string^}2 \texorpdfstring{$\ast$}{*} L) dominated by web building and coloring.
-
-
-\begin{DoxyParams}{Parameters}
-{\em ranges\+File} & Path to the live ranges input file. \\
-\hline
-{\em registers\+File} & Path to the registers configuration file. \\
-\hline
-{\em output\+File} & Path to the output allocation file. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-0 on success, 1 on error. 
-\end{DoxyReturn}
 \Hypertarget{classBatchProcessor_aa2c7e30384f9b3b5283613532f9ea3f9}\index{BatchProcessor@{BatchProcessor}!runAllBasicDatasets@{runAllBasicDatasets}}
 \index{runAllBasicDatasets@{runAllBasicDatasets}!BatchProcessor@{BatchProcessor}}
 \doxysubsubsection{\texorpdfstring{runAllBasicDatasets()}{runAllBasicDatasets()}}
 {\footnotesize\ttfamily \label{classBatchProcessor_aa2c7e30384f9b3b5283613532f9ea3f9} 
 std::\+vector$<$ std::\+string $>$ Batch\+Processor::\+run\+All\+Basic\+Datasets (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+\Hypertarget{classBatchProcessor_ad8168367955d5da21d65a870256c8811}\index{BatchProcessor@{BatchProcessor}!runAllTestsToFile@{runAllTestsToFile}}
+\index{runAllTestsToFile@{runAllTestsToFile}!BatchProcessor@{BatchProcessor}}
+\doxysubsubsection{\texorpdfstring{runAllTestsToFile()}{runAllTestsToFile()}}
+{\footnotesize\ttfamily \label{classBatchProcessor_ad8168367955d5da21d65a870256c8811} 
+std::\+vector$<$ std::\+string $>$ Batch\+Processor::\+run\+All\+Tests\+To\+File (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+\Hypertarget{classBatchProcessor_ad6446f2a49351a5bd0e907e160b5622e}\index{BatchProcessor@{BatchProcessor}!runBasicDatasetsToFile@{runBasicDatasetsToFile}}
+\index{runBasicDatasetsToFile@{runBasicDatasetsToFile}!BatchProcessor@{BatchProcessor}}
+\doxysubsubsection{\texorpdfstring{runBasicDatasetsToFile()}{runBasicDatasetsToFile()}}
+{\footnotesize\ttfamily \label{classBatchProcessor_ad6446f2a49351a5bd0e907e160b5622e} 
+std::\+vector$<$ std::\+string $>$ Batch\+Processor::\+run\+Basic\+Datasets\+To\+File (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-Runs all basic test cases from the basic/\+ folder. 
-
-Used by the interactive menu to demo all datasets at once.
-
-\begin{DoxyReturn}{Returns}
-Lines to display in the menu box. 
-\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}

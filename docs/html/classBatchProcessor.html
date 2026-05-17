@@ -93,22 +93,16 @@ $(function(){initNavTree('classBatchProcessor.html','','classBatchProcessor-memb
 </div><!--header-->
 <div class="contents">
 
-<p>Handles non-interactive batch execution.  
- <a href="#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="BatchProcessor_8h_source.html">BatchProcessor.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a89f76fd730dabebbbbdd665e8d8b7695" id="r_a89f76fd730dabebbbbdd665e8d8b7695"><td class="memItemLeft">static int&#160;</td><td class="memItemRight"><a class="el" href="#a89f76fd730dabebbbbdd665e8d8b7695">run</a> (const std::string &amp;rangesFile, const std::string &amp;registersFile, const std::string &amp;outputFile)</td></tr>
-<tr class="memdesc:a89f76fd730dabebbbbdd665e8d8b7695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the full allocation pipeline in batch mode.  <br /></td></tr>
+<tr class="memitem:ad6446f2a49351a5bd0e907e160b5622e" id="r_ad6446f2a49351a5bd0e907e160b5622e"><td class="memItemLeft">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ad6446f2a49351a5bd0e907e160b5622e">runBasicDatasetsToFile</a> ()</td></tr>
+<tr class="memitem:ad8168367955d5da21d65a870256c8811" id="r_ad8168367955d5da21d65a870256c8811"><td class="memItemLeft">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ad8168367955d5da21d65a870256c8811">runAllTestsToFile</a> ()</td></tr>
 <tr class="memitem:aa2c7e30384f9b3b5283613532f9ea3f9" id="r_aa2c7e30384f9b3b5283613532f9ea3f9"><td class="memItemLeft">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#aa2c7e30384f9b3b5283613532f9ea3f9">runAllBasicDatasets</a> ()</td></tr>
-<tr class="memdesc:aa2c7e30384f9b3b5283613532f9ea3f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs all basic test cases from the basic/ folder.  <br /></td></tr>
 </table>
-<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Handles non-interactive batch execution. </p>
-<p>Invoked when the program is run as: </p><div class="fragment"><div class="line">./register_alloc -b ranges.txt registers.txt allocation.txt</div>
-</div><!-- fragment --> </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a89f76fd730dabebbbbdd665e8d8b7695" name="a89f76fd730dabebbbbdd665e8d8b7695"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a89f76fd730dabebbbbdd665e8d8b7695">&#9670;&#160;</a></span>run()</h2>
 
@@ -141,19 +135,6 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Runs the full allocation pipeline in batch mode. </p>
-<p>Parses both input files, builds webs, builds interference graph, runs the algorithm specified in the registers file, writes output.</p>
-<p><b>Time Complexity:</b> O(W^2 * L) dominated by web building and coloring.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">rangesFile</td><td>Path to the live ranges input file. </td></tr>
-    <tr><td class="paramname">registersFile</td><td>Path to the registers configuration file. </td></tr>
-    <tr><td class="paramname">outputFile</td><td>Path to the output allocation file. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>0 on success, 1 on error. </dd></dl>
-
 </div>
 </div>
 <a id="aa2c7e30384f9b3b5283613532f9ea3f9" name="aa2c7e30384f9b3b5283613532f9ea3f9"></a>
@@ -179,9 +160,55 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Runs all basic test cases from the basic/ folder. </p>
-<p>Used by the interactive menu to demo all datasets at once.</p>
-<dl class="section return"><dt>Returns</dt><dd>Lines to display in the menu box. </dd></dl>
+</div>
+</div>
+<a id="ad8168367955d5da21d65a870256c8811" name="ad8168367955d5da21d65a870256c8811"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8168367955d5da21d65a870256c8811">&#9670;&#160;</a></span>runAllTestsToFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; BatchProcessor::runAllTestsToFile </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad6446f2a49351a5bd0e907e160b5622e" name="ad6446f2a49351a5bd0e907e160b5622e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6446f2a49351a5bd0e907e160b5622e">&#9670;&#160;</a></span>runBasicDatasetsToFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; BatchProcessor::runBasicDatasetsToFile </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

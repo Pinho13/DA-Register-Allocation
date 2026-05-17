@@ -10,69 +10,84 @@
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{AllocationData_8h}{models/AllocationData.h}}"{}}}
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{InterferenceGraph_8h}{core/InterferenceGraph.h}}"{}}}
 \DoxyCodeLine{00008\ }
-\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classRegisterAllocator}{RegisterAllocator}}\ \{}
-\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structAllocationResult}{AllocationResult}}\ \doxymbox{\hyperlink{classRegisterAllocator_ac855e3a4c9db08619a0ef8fb39970333}{allocate}}(std::vector<Web>\ \&webs,}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structRegisterConfig}{RegisterConfig}}\ \&config);}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ basicColoring(std::vector<Web>\ \&webs,\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ N,\ std::vector<int>\ \&spilledIds);}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classRegisterAllocator}{RegisterAllocator}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Runs\ the\ algorithm\ specified\ in\ config.\ See\ Coloring\_*.cpp\ for\ implementations.}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{structAllocationResult}{AllocationResult}}\ \doxymbox{\hyperlink{classRegisterAllocator_ac855e3a4c9db08619a0ef8fb39970333}{allocate}}(std::vector<Web>\ \&webs,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structRegisterConfig}{RegisterConfig}}\ \&config);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ ──\ Basic\ /\ spilling\ /\ splitting\ (Coloring\_Basic.cpp)\ ─────────────────────}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Chaitin-\/style\ simplification\ +\ stack\ coloring.\ O(W\string^2).}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ spilledIds\ receives\ nodes\ forced\ out\ during\ simplification.}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ basicColoring(std::vector<Web>\ \&webs,\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ N,\ std::vector<int>\ \&spilledIds);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Heuristic:\ min\ liveRangeLength\ /\ (degree+1),\ tie-\/break\ highest\ degree.}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ selectSpillCandidate(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Web>\ \&webs);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ Splits\ web\ at\ webIdx\ into\ two\ halves;\ appends\ the\ second\ half\ to\ webs.}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ splitWeb(std::vector<Web>\ \&webs,\ \textcolor{keywordtype}{int}\ webIdx);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Heuristic:\ max\ degree\ ×\ liveRangeLength;\ excludes\ webs\ with\ <\ 2\ lines.}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ selectSplitCandidate(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Web>\ \&webs);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ ──\ DSATUR\ +\ exact\ backtracking\ (Coloring\_Dsatur.cpp)\ ─────────────────────}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ Saturation-\/degree\ ordering;\ O(W\string^2).}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ dsaturColoring(std::vector<Web>\ \&webs,\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,\ \textcolor{keywordtype}{int}\ N);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ ──\ BCT-\/Color\ (Coloring\_BCT.cpp)\ ──────────────────────────────────────────}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ BCC\ decomposition\ +\ block-\/cut\ tree\ DP\ +\ per-\/block\ coloring\ +\ normalization.}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ partitionedColoring(std::vector<Web>\ \&webs,\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,\ \textcolor{keywordtype}{int}\ N);}
 \DoxyCodeLine{00049\ }
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ selectSpillCandidate(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Web>\ \&webs);}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ splitWeb(std::vector<Web>\ \&webs,\ \textcolor{keywordtype}{int}\ webIdx);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ Tarjan\ DFS\ —\ populates\ blocks\ and\ artPoints.}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ findBiconnectedComponents(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \&blocks,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::set<int>\ \&artPoints);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ bcDFS(\textcolor{keywordtype}{int}\ u,\ \textcolor{keywordtype}{int}\ parent,}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \&timer,}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ \&disc,}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ \&low,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<bool>\ \&visited,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::stack<std::pair<int,int>>\ \&edgeStack,}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \&blocks,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::set<int>\ \&artPoints);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Colors\ one\ BCC\ block\ respecting\ pre-\/fixed\ articulation-\/point\ colors.}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ colorBlock(\textcolor{keyword}{const}\ std::vector<int>\ \&blockNodes,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Web>\ \&webs,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ N,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::map<int,int>\ \&fixedColors);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//\ ──\ Color\ post-\/processing\ (Coloring\_Utils.cpp)\ ────────────────────────────}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ Flips\ colors\ A↔B\ in\ the\ Kempe\ chain\ rooted\ at\ a\ neighbor\ of\ u.}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ kempeSwap(\textcolor{keywordtype}{int}\ u,\ \textcolor{keywordtype}{int}\ targetColor,}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Web>\ \&webs,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<int>\ \&coloredSet);}
 \DoxyCodeLine{00079\ }
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ selectSplitCandidate(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Web>\ \&webs);}
-\DoxyCodeLine{00096\ }
-\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ dsaturColoring(std::vector<Web>\ \&webs,\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,\ \textcolor{keywordtype}{int}\ N);}
-\DoxyCodeLine{00111\ }
-\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ partitionedColoring(std::vector<Web>\ \&webs,\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,\ \textcolor{keywordtype}{int}\ N);}
-\DoxyCodeLine{00134\ }
-\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ ──\ Biconnected\ component\ helpers\ ──────────────────────────────────────────}}
-\DoxyCodeLine{00136\ }
-\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keyword}{struct\ }Block\ \{}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ std::vector<int>\ nodes;\ \ \ \textcolor{comment}{//\ web\ ids\ in\ this\ biconnected\ component}}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isArticulationPoint;\ \textcolor{comment}{//\ true\ if\ this\ "{}block"{}\ is\ a\ single\ AP\ placeholder}}
-\DoxyCodeLine{00140\ \ \ \ \ \};}
-\DoxyCodeLine{00141\ }
-\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ findBiconnectedComponents(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \&blocks,}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::set<int>\ \&artPoints);}
-\DoxyCodeLine{00152\ }
-\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ bcDFS(\textcolor{keywordtype}{int}\ u,\ \textcolor{keywordtype}{int}\ parent,}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \&timer,}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ \&disc,}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<int>\ \&low,}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<bool>\ \&visited,}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::stack<std::pair<int,int>>\ \&edgeStack,}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::vector<int>>\ \&blocks,}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::set<int>\ \&artPoints);}
-\DoxyCodeLine{00162\ }
-\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ colorBlock(\textcolor{keyword}{const}\ std::vector<int>\ \&blockNodes,}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Web>\ \&webs,}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ N,}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::map<int,int>\ \&fixedColors);}
-\DoxyCodeLine{00178\ }
-\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ kempeSwap(\textcolor{keywordtype}{int}\ u,\ \textcolor{keywordtype}{int}\ targetColor,}
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Web>\ \&webs,}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::set<int>\ \&coloredSet);}
-\DoxyCodeLine{00198\ }
-\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ normalizeColors(std::vector<Web>\ \&webs,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig);}
-\DoxyCodeLine{00210\ }
-\DoxyCodeLine{00223\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ reduceColors(std::vector<Web>\ \&webs,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,\ \textcolor{keywordtype}{int}\ N);}
-\DoxyCodeLine{00224\ }
-\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ validateColoring(\textcolor{keyword}{const}\ std::vector<Web>\ \&webs,}
-\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ N);}
-\DoxyCodeLine{00244\ \};}
-\DoxyCodeLine{00245\ }
-\DoxyCodeLine{00246\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ Greedy\ remap\ of\ color\ indices\ to\ 0..K-\/1\ using\ the\ global\ conflict\ graph.}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ normalizeColors(std::vector<Web>\ \&webs,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ Iteratively\ eliminates\ the\ highest\ color\ via\ Kempe\ swaps.\ O(K\ *\ W).}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ reduceColors(std::vector<Web>\ \&webs,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,\ \textcolor{keywordtype}{int}\ N);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//\ Checks:\ no\ conflicts,\ no\ out-\/of-\/range\ colors,\ no\ uninitialized\ (-\/1)\ webs.}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ validateColoring(\textcolor{keyword}{const}\ std::vector<Web>\ \&webs,}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classInterferenceGraph}{InterferenceGraph}}\ \&ig,}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ N);}
+\DoxyCodeLine{00090\ \};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

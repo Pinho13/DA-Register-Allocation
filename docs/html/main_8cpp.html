@@ -93,7 +93,7 @@ $(function(){initNavTree('main_8cpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>Entry point for the Register Allocation tool.  
+<p>Entry point — batch mode dispatcher and interactive menu loop.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
@@ -101,6 +101,8 @@ $(function(){initNavTree('main_8cpp.html','',''); });
 <code>#include &lt;csignal&gt;</code><br />
 <code>#include &lt;termios.h&gt;</code><br />
 <code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;climits&gt;</code><br />
+<code>#include &lt;filesystem&gt;</code><br />
 <code>#include &quot;<a class="el" href="Menu_8h_source.html">ui/Menu.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="BatchProcessor_8h_source.html">io/BatchProcessor.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="DisplayFormatter_8h_source.html">ui/DisplayFormatter.h</a>&quot;</code><br />
@@ -122,11 +124,7 @@ Variables</h2></td></tr>
 <tr class="memitem:a1f61f80fbb464146c93ea74b1c7839e1" id="r_a1f61f80fbb464146c93ea74b1c7839e1"><td class="memItemLeft">struct termios&#160;</td><td class="memItemRight"><a class="el" href="#a1f61f80fbb464146c93ea74b1c7839e1">g_originalTermios</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Entry point for the Register Allocation tool. </p>
-<p>Supports two execution modes:</p><ul>
-<li><b>Interactive</b>: arrow-key menu for loading files, inspecting webs/graphs, running allocation algorithms, and saving results.</li>
-<li><b>Batch</b>: <span class="tt">./register_alloc -b ranges.txt registers.txt output.txt</span> </li>
-</ul>
+<div class="textblock"><p>Entry point — batch mode dispatcher and interactive menu loop. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&#160;</a></span>main()</h2>
