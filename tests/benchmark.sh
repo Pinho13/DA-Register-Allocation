@@ -127,7 +127,7 @@ echo "════════════════════════�
 printf "  %-12s  %8s  %8s  %8s\n" "Algorithm" "Spills" "Regs" "Time(ms)"
 printf "  %-12s  %8s  %8s  %8s\n" "────────────" "──────" "──────" "────────"
 for a in basic dsatur free; do
-    label="$a"; [[ "$a" == "free" ]] && label="BCT-Color"
+    label="$a"; [[ "$a" == "phantom" ]] && label="BCT-Color"
     printf "  %-12s  %8d  %8d  %8d\n" "$label" "${TOT_SPILLS[$a]}" "${TOT_REGS[$a]}" "${TOT_MS[$a]}"
 done
 

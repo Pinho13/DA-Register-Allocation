@@ -1,2 +1,0 @@
-registers: 3
-algorithm: free

@@ -110,7 +110,7 @@ def run_bct(ranges_text, N):
     with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as f:
         f.write(ranges_text); rpath = f.name
     with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as f:
-        f.write(f"registers: {N}\nalgorithm: free\n"); gpath = f.name
+        f.write(f"registers: {N}\nalgorithm: phantom\n"); gpath = f.name
     opath = tempfile.mktemp(suffix='.txt')
     epath = tempfile.mktemp(suffix='.txt')
     try:

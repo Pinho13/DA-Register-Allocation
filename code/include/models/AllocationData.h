@@ -49,7 +49,7 @@ struct Web {
  */
 struct RegisterConfig {
     int numRegisters;              /**< Maximum number of physical registers available */
-    std::string algorithm;         /**< Algorithm name: "basic", "spilling", "splitting", "free" (BCT-Color) */
+    std::string algorithm;         /**< Algorithm name: "basic", "spilling", "splitting", "phantom" (BCT-Color) */
     int algorithmParam;            /**< Numeric parameter K for spilling/splitting (0 if unused) */
 
     RegisterConfig() : numRegisters(0), algorithm("basic"), algorithmParam(0) {}

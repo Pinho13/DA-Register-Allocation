@@ -13,7 +13,7 @@
  *   algorithm: basic
  *   algorithm: spilling, 2
  *   algorithm: splitting, 2
- *   algorithm: free
+ *   algorithm: phantom
  * @endcode
  */
 class RegistersParser {

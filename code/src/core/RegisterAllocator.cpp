@@ -93,8 +93,8 @@ AllocationResult RegisterAllocator::allocate(std::vector<Web> &webs,
             result.registersUsed = 0;
         }
 
-    } else {
-        // BCT-Color
+    } else if (config.algorithm == "phantom") {
+        // BCT-Color (Phantom)
         partitionedColoring(webs, ig, N);
 
         if (!validateColoring(webs, ig, N))

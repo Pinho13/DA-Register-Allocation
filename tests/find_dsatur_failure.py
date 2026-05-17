@@ -190,7 +190,7 @@ def main():
                 ranges = graph_to_ranges(adj, n)
 
                 sp_dsatur, regs_dsatur, feas_dsatur = run_algo(ranges, N, "dsatur")
-                sp_free,   regs_free,   feas_free   = run_algo(ranges, N, "free")
+                sp_free,   regs_free,   feas_free   = run_algo(ranges, N, "phantom")
 
                 if sp_free < sp_dsatur:
                     hits += 1

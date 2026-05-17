@@ -120,14 +120,14 @@ run "$ROOT"/dataset/edge_cases/ranges/dsatur_dense.txt "$ROOT"/dataset/edge_case
 
 echo ""
 echo "=== Edge cases: free (partitioned + tree DP + backtracking) ==="
-run "$ROOT"/dataset/edge_cases/ranges/disconnected.txt      "$ROOT"/dataset/edge_cases/registers/free1.txt "free/disconnected/1reg"      feasible yes regs_used 1
-run "$ROOT"/dataset/edge_cases/ranges/no_interference.txt   "$ROOT"/dataset/edge_cases/registers/free1.txt "free/no_interference/1reg"   feasible yes regs_used 1
-run "$ROOT"/dataset/edge_cases/ranges/same_line_def_use.txt "$ROOT"/dataset/edge_cases/registers/free1.txt "free/same_line_def_use/1reg" feasible yes regs_used 1
-run "$ROOT"/dataset/edge_cases/ranges/dsatur_dense.txt      "$ROOT"/dataset/edge_cases/registers/free4.txt "free/dsatur_dense/4regs"     feasible yes regs_used 4
-run "$ROOT"/dataset/edge_cases/ranges/dsatur_dense.txt      "$ROOT"/dataset/edge_cases/registers/free3.txt "free/dsatur_dense/3regs"     feasible yes regs_used 3
-run "$ROOT"/dataset/edge_cases/ranges/spill_basic.txt       "$ROOT"/dataset/edge_cases/registers/free2.txt "free/spill_basic/2regs"      feasible yes regs_used 2
-run "$ROOT"/dataset/edge_cases/ranges/spill_exceeds_k.txt   "$ROOT"/dataset/edge_cases/registers/free2.txt "free/spill_exceeds/2regs"
-run "$ROOT"/dataset/edge_cases/ranges/web_merge_chain.txt   "$ROOT"/dataset/edge_cases/registers/free2.txt "free/web_merge_chain/2regs"
+run "$ROOT"/dataset/edge_cases/ranges/disconnected.txt      "$ROOT"/dataset/edge_cases/registers/phantom1.txt "free/disconnected/1reg"      feasible yes regs_used 1
+run "$ROOT"/dataset/edge_cases/ranges/no_interference.txt   "$ROOT"/dataset/edge_cases/registers/phantom1.txt "free/no_interference/1reg"   feasible yes regs_used 1
+run "$ROOT"/dataset/edge_cases/ranges/same_line_def_use.txt "$ROOT"/dataset/edge_cases/registers/phantom1.txt "free/same_line_def_use/1reg" feasible yes regs_used 1
+run "$ROOT"/dataset/edge_cases/ranges/dsatur_dense.txt      "$ROOT"/dataset/edge_cases/registers/phantom4.txt "free/dsatur_dense/4regs"     feasible yes regs_used 4
+run "$ROOT"/dataset/edge_cases/ranges/dsatur_dense.txt      "$ROOT"/dataset/edge_cases/registers/phantom3.txt "free/dsatur_dense/3regs"     feasible yes regs_used 3
+run "$ROOT"/dataset/edge_cases/ranges/spill_basic.txt       "$ROOT"/dataset/edge_cases/registers/phantom2.txt "free/spill_basic/2regs"      feasible yes regs_used 2
+run "$ROOT"/dataset/edge_cases/ranges/spill_exceeds_k.txt   "$ROOT"/dataset/edge_cases/registers/phantom2.txt "free/spill_exceeds/2regs"
+run "$ROOT"/dataset/edge_cases/ranges/web_merge_chain.txt   "$ROOT"/dataset/edge_cases/registers/phantom2.txt "free/web_merge_chain/2regs"
 
 # ── Hourglass ─────────────────────────────────────────────────────────────────
 
@@ -135,17 +135,17 @@ echo ""
 echo "=== Hourglass ==="
 # K3+K3 via AP — feasible with 3 regs, infeasible with 2
 run "$ROOT"/dataset/hourglass/ranges/hourglass1.txt "$ROOT"/dataset/hourglass/registers/basic3.txt "hourglass/h1-basic3"  feasible yes regs_at_most 3
-run "$ROOT"/dataset/hourglass/ranges/hourglass1.txt "$ROOT"/dataset/hourglass/registers/free3.txt  "hourglass/h1-free3"   feasible yes regs_at_most 3
+run "$ROOT"/dataset/hourglass/ranges/hourglass1.txt "$ROOT"/dataset/hourglass/registers/phantom3.txt  "hourglass/h1-phantom3"   feasible yes regs_at_most 3
 run "$ROOT"/dataset/hourglass/ranges/hourglass1.txt "$ROOT"/dataset/hourglass/registers/basic2.txt "hourglass/h1-basic2"  feasible no
 # K4+K3 via AP — needs 4 regs
 run "$ROOT"/dataset/hourglass/ranges/hourglass2.txt "$ROOT"/dataset/hourglass/registers/basic4.txt "hourglass/h2-basic4"  feasible yes regs_at_most 4
-run "$ROOT"/dataset/hourglass/ranges/hourglass2.txt "$ROOT"/dataset/hourglass/registers/free4.txt  "hourglass/h2-free4"   feasible yes regs_at_most 4
+run "$ROOT"/dataset/hourglass/ranges/hourglass2.txt "$ROOT"/dataset/hourglass/registers/phantom4.txt  "hourglass/h2-phantom4"   feasible yes regs_at_most 4
 run "$ROOT"/dataset/hourglass/ranges/hourglass2.txt "$ROOT"/dataset/hourglass/registers/basic3.txt "hourglass/h2-basic3"  feasible no
 # K3+K3+K3 chain — 3 regs
-run "$ROOT"/dataset/hourglass/ranges/hourglass3.txt "$ROOT"/dataset/hourglass/registers/free3.txt  "hourglass/h3-free3"   feasible yes regs_at_most 3
-run "$ROOT"/dataset/hourglass/ranges/hourglass4.txt "$ROOT"/dataset/hourglass/registers/free3.txt  "hourglass/h4-free3"   feasible yes regs_at_most 3
+run "$ROOT"/dataset/hourglass/ranges/hourglass3.txt "$ROOT"/dataset/hourglass/registers/phantom3.txt  "hourglass/h3-phantom3"   feasible yes regs_at_most 3
+run "$ROOT"/dataset/hourglass/ranges/hourglass4.txt "$ROOT"/dataset/hourglass/registers/phantom3.txt  "hourglass/h4-phantom3"   feasible yes regs_at_most 3
 # Deep chain — 4 regs
-run "$ROOT"/dataset/hourglass/ranges/hourglass5.txt "$ROOT"/dataset/hourglass/registers/free4.txt  "hourglass/h5-free4"   feasible yes regs_at_most 4
+run "$ROOT"/dataset/hourglass/ranges/hourglass5.txt "$ROOT"/dataset/hourglass/registers/phantom4.txt  "hourglass/h5-phantom4"   feasible yes regs_at_most 4
 run "$ROOT"/dataset/hourglass/ranges/hourglass5.txt "$ROOT"/dataset/hourglass/registers/basic4.txt "hourglass/h5-basic4"  feasible yes regs_at_most 4
 
 # ── Stress ────────────────────────────────────────────────────────────────────
@@ -153,19 +153,19 @@ run "$ROOT"/dataset/hourglass/ranges/hourglass5.txt "$ROOT"/dataset/hourglass/re
 echo ""
 echo "=== Stress ==="
 # χ=2 cases — must color with 2 (path10 aliases to 1 register: no real interference)
-run "$ROOT"/dataset/stress/ranges/path10.txt      "$ROOT"/dataset/stress/registers/free2.txt  "stress/path10-free2"      feasible yes regs_at_most 2
-run "$ROOT"/dataset/stress/ranges/ladder.txt      "$ROOT"/dataset/stress/registers/free2.txt  "stress/ladder-free2"      feasible yes regs_used 2
-run "$ROOT"/dataset/stress/ranges/star_k1_8.txt   "$ROOT"/dataset/stress/registers/free2.txt  "stress/star_k1_8-free2"   feasible yes regs_used 2
+run "$ROOT"/dataset/stress/ranges/path10.txt      "$ROOT"/dataset/stress/registers/phantom2.txt  "stress/path10-phantom2"      feasible yes regs_at_most 2
+run "$ROOT"/dataset/stress/ranges/ladder.txt      "$ROOT"/dataset/stress/registers/phantom2.txt  "stress/ladder-phantom2"      feasible yes regs_used 2
+run "$ROOT"/dataset/stress/ranges/star_k1_8.txt   "$ROOT"/dataset/stress/registers/phantom2.txt  "stress/star_k1_8-phantom2"   feasible yes regs_used 2
 # χ=3 cases — feasible with 3, not with 2
-run "$ROOT"/dataset/stress/ranges/five_k3.txt     "$ROOT"/dataset/stress/registers/free3.txt  "stress/five_k3-free3"     feasible yes regs_at_most 3
-run "$ROOT"/dataset/stress/ranges/deep_chain.txt  "$ROOT"/dataset/stress/registers/free3.txt  "stress/deep_chain-free3"  feasible yes regs_at_most 3
-run "$ROOT"/dataset/stress/ranges/wheel5.txt      "$ROOT"/dataset/stress/registers/free3.txt  "stress/wheel5-free3"      feasible yes regs_at_most 3
+run "$ROOT"/dataset/stress/ranges/five_k3.txt     "$ROOT"/dataset/stress/registers/phantom3.txt  "stress/five_k3-phantom3"     feasible yes regs_at_most 3
+run "$ROOT"/dataset/stress/ranges/deep_chain.txt  "$ROOT"/dataset/stress/registers/phantom3.txt  "stress/deep_chain-phantom3"  feasible yes regs_at_most 3
+run "$ROOT"/dataset/stress/ranges/wheel5.txt      "$ROOT"/dataset/stress/registers/phantom3.txt  "stress/wheel5-phantom3"      feasible yes regs_at_most 3
 run "$ROOT"/dataset/stress/ranges/five_k3.txt     "$ROOT"/dataset/stress/registers/basic2.txt "stress/five_k3-basic2"    feasible no
 # χ=4 cases — feasible with 4
-run "$ROOT"/dataset/stress/ranges/k4_edge_share.txt     "$ROOT"/dataset/stress/registers/free4.txt  "stress/k4_edge_share-free4"     feasible yes regs_used 4
-run "$ROOT"/dataset/stress/ranges/triple_hourglass.txt  "$ROOT"/dataset/stress/registers/free4.txt  "stress/triple_hourglass-free4"  feasible yes regs_at_most 4
-run "$ROOT"/dataset/stress/ranges/asym_hourglass.txt    "$ROOT"/dataset/stress/registers/free4.txt  "stress/asym_hourglass-free4"    feasible yes regs_at_most 4
-run "$ROOT"/dataset/stress/ranges/conflict_pressure.txt "$ROOT"/dataset/stress/registers/free4.txt  "stress/conflict_pressure-free4" feasible yes regs_at_most 4
+run "$ROOT"/dataset/stress/ranges/k4_edge_share.txt     "$ROOT"/dataset/stress/registers/phantom4.txt  "stress/k4_edge_share-phantom4"     feasible yes regs_used 4
+run "$ROOT"/dataset/stress/ranges/triple_hourglass.txt  "$ROOT"/dataset/stress/registers/phantom4.txt  "stress/triple_hourglass-phantom4"  feasible yes regs_at_most 4
+run "$ROOT"/dataset/stress/ranges/asym_hourglass.txt    "$ROOT"/dataset/stress/registers/phantom4.txt  "stress/asym_hourglass-phantom4"    feasible yes regs_at_most 4
+run "$ROOT"/dataset/stress/ranges/conflict_pressure.txt "$ROOT"/dataset/stress/registers/phantom4.txt  "stress/conflict_pressure-phantom4" feasible yes regs_at_most 4
 run "$ROOT"/dataset/stress/ranges/k4_edge_share.txt     "$ROOT"/dataset/stress/registers/basic3.txt "stress/k4_edge_share-basic3"    feasible no
 
 # ── Adversarial ───────────────────────────────────────────────────────────────
@@ -173,34 +173,34 @@ run "$ROOT"/dataset/stress/ranges/k4_edge_share.txt     "$ROOT"/dataset/stress/r
 echo ""
 echo "=== Adversarial ==="
 # χ=2
-run "$ROOT"/dataset/adversarial/ranges/large_bipartite.txt "$ROOT"/dataset/adversarial/registers/free2.txt  "adversarial/large_bipartite-free2"  feasible yes regs_used 2
-run "$ROOT"/dataset/adversarial/ranges/six_k2.txt          "$ROOT"/dataset/adversarial/registers/free2.txt  "adversarial/six_k2-free2"           feasible yes regs_used 2
-run "$ROOT"/dataset/adversarial/ranges/six_k2.txt          "$ROOT"/dataset/adversarial/registers/free1.txt  "adversarial/six_k2-free1"           feasible yes regs_used 1
+run "$ROOT"/dataset/adversarial/ranges/large_bipartite.txt "$ROOT"/dataset/adversarial/registers/phantom2.txt  "adversarial/large_bipartite-phantom2"  feasible yes regs_used 2
+run "$ROOT"/dataset/adversarial/ranges/six_k2.txt          "$ROOT"/dataset/adversarial/registers/phantom2.txt  "adversarial/six_k2-phantom2"           feasible yes regs_used 2
+run "$ROOT"/dataset/adversarial/ranges/six_k2.txt          "$ROOT"/dataset/adversarial/registers/phantom1.txt  "adversarial/six_k2-phantom1"           feasible yes regs_used 1
 # χ=3
-run "$ROOT"/dataset/adversarial/ranges/petersen.txt        "$ROOT"/dataset/adversarial/registers/free3.txt  "adversarial/petersen-free3"         feasible yes regs_used 3
-run "$ROOT"/dataset/adversarial/ranges/petersen.txt        "$ROOT"/dataset/adversarial/registers/free2.txt  "adversarial/petersen-free2"         feasible yes regs_used 2
-run "$ROOT"/dataset/adversarial/ranges/odd_cycle_c7.txt    "$ROOT"/dataset/adversarial/registers/free3.txt  "adversarial/odd_cycle_c7-free3"     feasible yes regs_at_most 3
-run "$ROOT"/dataset/adversarial/ranges/odd_cycle_c9.txt    "$ROOT"/dataset/adversarial/registers/free3.txt  "adversarial/odd_cycle_c9-free3"     feasible yes regs_at_most 3
-run "$ROOT"/dataset/adversarial/ranges/mycielski_c5.txt    "$ROOT"/dataset/adversarial/registers/free3.txt  "adversarial/mycielski_c5-free3"     feasible yes regs_used 3
-run "$ROOT"/dataset/adversarial/ranges/zigzag.txt          "$ROOT"/dataset/adversarial/registers/free3.txt  "adversarial/zigzag-free3"           feasible yes regs_at_most 3
-run "$ROOT"/dataset/adversarial/ranges/fat_ap_star.txt     "$ROOT"/dataset/adversarial/registers/free3.txt  "adversarial/fat_ap_star-free3"      feasible yes regs_used 3
-run "$ROOT"/dataset/adversarial/ranges/chain_20_k3.txt     "$ROOT"/dataset/adversarial/registers/free3.txt  "adversarial/chain_20_k3-free3"      feasible yes regs_at_most 3
-run "$ROOT"/dataset/adversarial/ranges/pure_c21.txt        "$ROOT"/dataset/adversarial/registers/free3.txt  "adversarial/pure_c21-free3"         feasible yes regs_at_most 3
+run "$ROOT"/dataset/adversarial/ranges/petersen.txt        "$ROOT"/dataset/adversarial/registers/phantom3.txt  "adversarial/petersen-phantom3"         feasible yes regs_used 3
+run "$ROOT"/dataset/adversarial/ranges/petersen.txt        "$ROOT"/dataset/adversarial/registers/phantom2.txt  "adversarial/petersen-phantom2"         feasible yes regs_used 2
+run "$ROOT"/dataset/adversarial/ranges/odd_cycle_c7.txt    "$ROOT"/dataset/adversarial/registers/phantom3.txt  "adversarial/odd_cycle_c7-phantom3"     feasible yes regs_at_most 3
+run "$ROOT"/dataset/adversarial/ranges/odd_cycle_c9.txt    "$ROOT"/dataset/adversarial/registers/phantom3.txt  "adversarial/odd_cycle_c9-phantom3"     feasible yes regs_at_most 3
+run "$ROOT"/dataset/adversarial/ranges/mycielski_c5.txt    "$ROOT"/dataset/adversarial/registers/phantom3.txt  "adversarial/mycielski_c5-phantom3"     feasible yes regs_used 3
+run "$ROOT"/dataset/adversarial/ranges/zigzag.txt          "$ROOT"/dataset/adversarial/registers/phantom3.txt  "adversarial/zigzag-phantom3"           feasible yes regs_at_most 3
+run "$ROOT"/dataset/adversarial/ranges/fat_ap_star.txt     "$ROOT"/dataset/adversarial/registers/phantom3.txt  "adversarial/fat_ap_star-phantom3"      feasible yes regs_used 3
+run "$ROOT"/dataset/adversarial/ranges/chain_20_k3.txt     "$ROOT"/dataset/adversarial/registers/phantom3.txt  "adversarial/chain_20_k3-phantom3"      feasible yes regs_at_most 3
+run "$ROOT"/dataset/adversarial/ranges/pure_c21.txt        "$ROOT"/dataset/adversarial/registers/phantom3.txt  "adversarial/pure_c21-phantom3"         feasible yes regs_at_most 3
 # χ=4
-run "$ROOT"/dataset/adversarial/ranges/grotzsch.txt           "$ROOT"/dataset/adversarial/registers/free4.txt  "adversarial/grotzsch-free4"           feasible yes regs_at_most 4
-run "$ROOT"/dataset/adversarial/ranges/grotzsch.txt           "$ROOT"/dataset/adversarial/registers/free3.txt  "adversarial/grotzsch-free3"           feasible yes regs_used 3
-run "$ROOT"/dataset/adversarial/ranges/k4_chain.txt           "$ROOT"/dataset/adversarial/registers/free4.txt  "adversarial/k4_chain-free4"           feasible yes regs_used 4
-run "$ROOT"/dataset/adversarial/ranges/k4_chain_10.txt        "$ROOT"/dataset/adversarial/registers/free4.txt  "adversarial/k4_chain_10-free4"        feasible yes regs_used 4
-run "$ROOT"/dataset/adversarial/ranges/ap_color_conflict.txt  "$ROOT"/dataset/adversarial/registers/free4.txt  "adversarial/ap_color_conflict-free4"  feasible yes regs_used 4
-run "$ROOT"/dataset/adversarial/ranges/double_ap_shared.txt   "$ROOT"/dataset/adversarial/registers/free4.txt  "adversarial/double_ap_shared-free4"   feasible yes regs_used 4
-run "$ROOT"/dataset/adversarial/ranges/w_shape_4ap.txt        "$ROOT"/dataset/adversarial/registers/free4.txt  "adversarial/w_shape_4ap-free4"        feasible yes regs_used 4
-run "$ROOT"/dataset/adversarial/ranges/two_k4_shared_edge.txt "$ROOT"/dataset/adversarial/registers/free4.txt  "adversarial/two_k4_shared_edge-free4" feasible yes regs_used 4
-run "$ROOT"/dataset/adversarial/ranges/three_k4_bridges.txt   "$ROOT"/dataset/adversarial/registers/free4.txt  "adversarial/three_k4_bridges-free4"   feasible yes regs_used 4
-run "$ROOT"/dataset/adversarial/ranges/dense_sparse_mix.txt   "$ROOT"/dataset/adversarial/registers/free4.txt  "adversarial/dense_sparse_mix-free4"   feasible yes regs_used 4
-run "$ROOT"/dataset/adversarial/ranges/dense_k4partite_100.txt "$ROOT"/dataset/adversarial/registers/free4.txt "adversarial/dense_k4partite-free4"   feasible yes regs_used 4
+run "$ROOT"/dataset/adversarial/ranges/grotzsch.txt           "$ROOT"/dataset/adversarial/registers/phantom4.txt  "adversarial/grotzsch-phantom4"           feasible yes regs_at_most 4
+run "$ROOT"/dataset/adversarial/ranges/grotzsch.txt           "$ROOT"/dataset/adversarial/registers/phantom3.txt  "adversarial/grotzsch-phantom3"           feasible yes regs_used 3
+run "$ROOT"/dataset/adversarial/ranges/k4_chain.txt           "$ROOT"/dataset/adversarial/registers/phantom4.txt  "adversarial/k4_chain-phantom4"           feasible yes regs_used 4
+run "$ROOT"/dataset/adversarial/ranges/k4_chain_10.txt        "$ROOT"/dataset/adversarial/registers/phantom4.txt  "adversarial/k4_chain_10-phantom4"        feasible yes regs_used 4
+run "$ROOT"/dataset/adversarial/ranges/ap_color_conflict.txt  "$ROOT"/dataset/adversarial/registers/phantom4.txt  "adversarial/ap_color_conflict-phantom4"  feasible yes regs_used 4
+run "$ROOT"/dataset/adversarial/ranges/double_ap_shared.txt   "$ROOT"/dataset/adversarial/registers/phantom4.txt  "adversarial/double_ap_shared-phantom4"   feasible yes regs_used 4
+run "$ROOT"/dataset/adversarial/ranges/w_shape_4ap.txt        "$ROOT"/dataset/adversarial/registers/phantom4.txt  "adversarial/w_shape_4ap-phantom4"        feasible yes regs_used 4
+run "$ROOT"/dataset/adversarial/ranges/two_k4_shared_edge.txt "$ROOT"/dataset/adversarial/registers/phantom4.txt  "adversarial/two_k4_shared_edge-phantom4" feasible yes regs_used 4
+run "$ROOT"/dataset/adversarial/ranges/three_k4_bridges.txt   "$ROOT"/dataset/adversarial/registers/phantom4.txt  "adversarial/three_k4_bridges-phantom4"   feasible yes regs_used 4
+run "$ROOT"/dataset/adversarial/ranges/dense_sparse_mix.txt   "$ROOT"/dataset/adversarial/registers/phantom4.txt  "adversarial/dense_sparse_mix-phantom4"   feasible yes regs_used 4
+run "$ROOT"/dataset/adversarial/ranges/dense_k4partite_100.txt "$ROOT"/dataset/adversarial/registers/phantom4.txt "adversarial/dense_k4partite-phantom4"   feasible yes regs_used 4
 # χ=5
-run "$ROOT"/dataset/adversarial/ranges/mycielski_m4.txt "$ROOT"/dataset/adversarial/registers/free5.txt "adversarial/mycielski_m4-free5" feasible yes regs_used 5
-run "$ROOT"/dataset/adversarial/ranges/mycielski_m4.txt "$ROOT"/dataset/adversarial/registers/free4.txt "adversarial/mycielski_m4-free4" feasible yes regs_used 4
+run "$ROOT"/dataset/adversarial/ranges/mycielski_m4.txt "$ROOT"/dataset/adversarial/registers/phantom5.txt "adversarial/mycielski_m4-phantom5" feasible yes regs_used 5
+run "$ROOT"/dataset/adversarial/ranges/mycielski_m4.txt "$ROOT"/dataset/adversarial/registers/phantom4.txt "adversarial/mycielski_m4-phantom4" feasible yes regs_used 4
 
 # ── Summary ───────────────────────────────────────────────────────────────────
 

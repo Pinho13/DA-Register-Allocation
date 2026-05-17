@@ -1,2 +1,2 @@
 registers: 3
-algorithm: free
+algorithm: dsatur

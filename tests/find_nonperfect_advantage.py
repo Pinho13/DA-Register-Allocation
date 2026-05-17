@@ -230,7 +230,7 @@ def test_pair(adj, n, label):
     found = False
     for N in range(1, chi + 2):
         sp_d, rd, fd = run_algo(ranges, N, "dsatur")
-        sp_f, rf, ff = run_algo(ranges, N, "free")
+        sp_f, rf, ff = run_algo(ranges, N, "phantom")
         if sp_d is None or sp_f is None:
             continue
         if sp_f < sp_d or (ff and not fd) or (rd > 0 and rf < rd and ff and fd):
@@ -298,7 +298,7 @@ def main():
                     if N < 1:
                         continue
                     sp_d, rd, fd = run_algo(ranges, N, "dsatur")
-                    sp_f, rf, ff = run_algo(ranges, N, "free")
+                    sp_f, rf, ff = run_algo(ranges, N, "phantom")
                     if sp_d is None or sp_f is None:
                         continue
                     if sp_f < sp_d or (rd > rf and ff and fd):
