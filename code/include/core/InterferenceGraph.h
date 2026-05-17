@@ -67,7 +67,7 @@ public:
     const Graph<int> &getGraph() const;
 
 private:
-    Graph<int> graph_;            /**< Underlying TP-provided graph (nodes are web ids) */
+    Graph<int> graph_;            /**< Underlying adjacency graph (nodes are web ids) */
     int numWebs_;                 /**< Total number of webs */
     std::vector<bool> removed_;   /**< Soft-delete flags for coloring simplification */
 

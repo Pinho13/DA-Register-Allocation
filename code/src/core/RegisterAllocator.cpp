@@ -1,12 +1,13 @@
 /**
  * @file RegisterAllocator.cpp
- * @brief Main dispatch — routes to the appropriate coloring algorithm.
+ * @brief Dispatch implementation for RegisterAllocator::allocate.
  *
- * Algorithm implementations are split across:
+ * Routes to the correct coloring strategy based on RegisterConfig::algorithm.
+ * Algorithm implementations live in:
  *   Coloring_Basic.cpp  — basic greedy, spill/split candidate selection
  *   Coloring_Dsatur.cpp — DSATUR heuristic + exact backtracking
- *   Coloring_BCT.cpp    — biconnected-partition coloring (BCT-Color)
- *   Coloring_Utils.cpp  — Kempe swap, color normalization, reduction, validator
+ *   Coloring_BCT.cpp    — Phantom (BCT-Color): biconnected-component decomposition
+ *   Coloring_Utils.cpp  — Kempe swap, colour normalisation, reduction, validator
  */
 
 #include <set>
@@ -94,11 +95,10 @@ AllocationResult RegisterAllocator::allocate(std::vector<Web> &webs,
         }
 
     } else if (config.algorithm == "phantom") {
-        // BCT-Color (Phantom)
         partitionedColoring(webs, ig, N);
 
         if (!validateColoring(webs, ig, N))
-            std::cerr << "[BCT-Color] coloring invariant violated after partitionedColoring\n";
+            std::cerr << "[Phantom] coloring invariant violated after partitionedColoring\n";
 
         // DSATUR floor: keep whichever produces fewer spills
         {
