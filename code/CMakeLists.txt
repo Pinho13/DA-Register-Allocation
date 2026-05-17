@@ -15,6 +15,10 @@ add_executable(register_alloc
     src/core/WebBuilder.cpp
     src/core/InterferenceGraph.cpp
     src/core/RegisterAllocator.cpp
+    src/core/Coloring_Basic.cpp
+    src/core/Coloring_Dsatur.cpp
+    src/core/Coloring_BCT.cpp
+    src/core/Coloring_Utils.cpp
     src/io/OutputWriter.cpp
     src/io/BatchProcessor.cpp
 )
