@@ -97,40 +97,41 @@ $(function(){initNavTree('InterferenceGraph_8h_source.html','',''); });
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;set&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="AllocationData_8h.html">models/AllocationData.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;data_structures/Graph.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
-<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classInterferenceGraph.html">   19</a></span><span class="keyword">class </span><a class="code hl_function" href="classInterferenceGraph.html#a4052e9b7d9a7f7a1e2e1311e577c07b6">InterferenceGraph</a> {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classInterferenceGraph.html#a4052e9b7d9a7f7a1e2e1311e577c07b6">InterferenceGraph</a>(<span class="keyword">const</span> std::vector&lt;Web&gt; &amp;webs);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classInterferenceGraph.html#a8b4fab6a60f93008035e665d8df30109">effectiveDegree</a>(<span class="keywordtype">int</span> webId) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    std::vector&lt;int&gt; <a class="code hl_function" href="classInterferenceGraph.html#a198ca6f2c31bfff930562d90f1bf009b">neighbours</a>(<span class="keywordtype">int</span> webId) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classInterferenceGraph.html#a8bb93aabd5633759f1f360f0c5e82823">interferes</a>(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classInterferenceGraph.html#aa81d693c4e2cddd40bb9d9891fafe006">size</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classInterferenceGraph.html#a28ca6789befd9d111b06177b455e404a">setRemoved</a>(<span class="keywordtype">int</span> webId, <span class="keywordtype">bool</span> removed);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classInterferenceGraph.html#adfd9bb518bb762a1e59036849a8d0485">isRemoved</a>(<span class="keywordtype">int</span> webId) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classInterferenceGraph.html#ab95684ac0b728579ffcfa9135da882c4">resetRemoved</a>();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">const</span> Graph&lt;int&gt; &amp;<a class="code hl_function" href="classInterferenceGraph.html#ab2f24eb760a02c827c5e3da10c82aa4b">getGraph</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    Graph&lt;int&gt; graph_;            </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">int</span> numWebs_;                 </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    std::vector&lt;bool&gt; removed_;   </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> computeInterference(<span class="keyword">const</span> <a class="code hl_struct" href="structWeb.html">Web</a> &amp;a, <span class="keyword">const</span> <a class="code hl_struct" href="structWeb.html">Web</a> &amp;b);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>};</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="AllocationData_8h.html">models/AllocationData.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;data_structures/Graph.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span></div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classInterferenceGraph.html">   20</a></span><span class="keyword">class </span><a class="code hl_function" href="classInterferenceGraph.html#a4052e9b7d9a7f7a1e2e1311e577c07b6">InterferenceGraph</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classInterferenceGraph.html#a4052e9b7d9a7f7a1e2e1311e577c07b6">InterferenceGraph</a>(<span class="keyword">const</span> std::vector&lt;Web&gt; &amp;webs);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classInterferenceGraph.html#a8b4fab6a60f93008035e665d8df30109">effectiveDegree</a>(<span class="keywordtype">int</span> webId) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::vector&lt;int&gt; <a class="code hl_function" href="classInterferenceGraph.html#a198ca6f2c31bfff930562d90f1bf009b">neighbours</a>(<span class="keywordtype">int</span> webId) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classInterferenceGraph.html#a8bb93aabd5633759f1f360f0c5e82823">interferes</a>(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classInterferenceGraph.html#aa81d693c4e2cddd40bb9d9891fafe006">size</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classInterferenceGraph.html#a28ca6789befd9d111b06177b455e404a">setRemoved</a>(<span class="keywordtype">int</span> webId, <span class="keywordtype">bool</span> removed);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classInterferenceGraph.html#adfd9bb518bb762a1e59036849a8d0485">isRemoved</a>(<span class="keywordtype">int</span> webId) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classInterferenceGraph.html#ab95684ac0b728579ffcfa9135da882c4">resetRemoved</a>();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keyword">const</span> Graph&lt;int&gt; &amp;<a class="code hl_function" href="classInterferenceGraph.html#ab2f24eb760a02c827c5e3da10c82aa4b">getGraph</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    Graph&lt;int&gt; graph_;            </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">int</span> numWebs_;                 </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    std::vector&lt;bool&gt; removed_;   </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> computeInterference(<span class="keyword">const</span> <a class="code hl_struct" href="structWeb.html">Web</a> &amp;a, <span class="keyword">const</span> <a class="code hl_struct" href="structWeb.html">Web</a> &amp;b);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>};</div>
 </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aAllocationData_8h_html"><div class="ttname"><a href="AllocationData_8h.html">AllocationData.h</a></div><div class="ttdoc">Core data structures for the Register Allocation project.</div></div>
 <div class="ttc" id="aclassInterferenceGraph_html_a198ca6f2c31bfff930562d90f1bf009b"><div class="ttname"><a href="classInterferenceGraph.html#a198ca6f2c31bfff930562d90f1bf009b">InterferenceGraph::neighbours</a></div><div class="ttdeci">std::vector&lt; int &gt; neighbours(int webId) const</div><div class="ttdoc">Returns the neighbours of webId (all, including removed ones).</div><div class="ttdef"><b>Definition</b> InterferenceGraph.cpp:54</div></div>
 <div class="ttc" id="aclassInterferenceGraph_html_a28ca6789befd9d111b06177b455e404a"><div class="ttname"><a href="classInterferenceGraph.html#a28ca6789befd9d111b06177b455e404a">InterferenceGraph::setRemoved</a></div><div class="ttdeci">void setRemoved(int webId, bool removed)</div><div class="ttdoc">Marks a node as removed (soft-delete for the coloring algorithm).</div><div class="ttdef"><b>Definition</b> InterferenceGraph.cpp:73</div></div>
