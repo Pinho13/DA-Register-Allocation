@@ -1,11 +1,6 @@
 /**
  * @file main.cpp
- * @brief Entry point for the Register Allocation tool.
- *
- * Supports two execution modes:
- *  - **Interactive**: arrow-key menu for loading files, inspecting webs/graphs, running
- *    allocation algorithms, and saving results.
- *  - **Batch**: `./register_alloc -b ranges.txt registers.txt output.txt`
+ * @brief Entry point — batch mode dispatcher and interactive menu loop.
  */
 
 #include <iostream>
@@ -14,6 +9,11 @@
 #include <csignal>
 #include <termios.h>
 #include <unistd.h>
+#include <climits>
+#include <filesystem>
+#ifdef __APPLE__
+#  include <mach-o/dyld.h>
+#endif
 #include "ui/Menu.h"
 #include "io/BatchProcessor.h"
 #include "ui/DisplayFormatter.h"
@@ -25,7 +25,23 @@
 #include "io/OutputWriter.h"
 #include "models/AllocationData.h"
 
+namespace fs = std::filesystem;
+
 struct termios g_originalTermios;
+
+static fs::path datasetPath() {
+    char buf[PATH_MAX];
+#ifdef __APPLE__
+    uint32_t size = sizeof(buf);
+    if (_NSGetExecutablePath(buf, &size) != 0) return fs::current_path() / "dataset";
+    return fs::canonical(buf).parent_path() / ".." / ".." / "dataset";
+#else
+    ssize_t len = readlink("/proc/self/exe", buf, sizeof(buf) - 1);
+    if (len < 0) return fs::current_path() / "dataset";
+    buf[len] = '\0';
+    return fs::path(buf).parent_path() / ".." / ".." / "dataset";
+#endif
+}
 
 void restoreTerminal(int) {
     tcsetattr(STDIN_FILENO, TCSANOW, &g_originalTermios);
@@ -33,18 +49,9 @@ void restoreTerminal(int) {
     std::exit(0);
 }
 
-int main(int argc, char *argv[]) {
-    tcgetattr(STDIN_FILENO, &g_originalTermios);
-    std::signal(SIGINT, restoreTerminal);
-
-    // Batch mode: ./register_alloc -b ranges.txt registers.txt allocation.txt
-    if (argc == 5 && std::string(argv[1]) == "-b") {
-        return BatchProcessor::run(argv[2], argv[3], argv[4]);
-    }
-
+static void runInteractiveMenu() {
     Menu menu;
 
-    // Application state
     std::vector<LiveRange> ranges;
     RegisterConfig config;
     std::vector<Web> webs;
@@ -54,7 +61,7 @@ int main(int argc, char *argv[]) {
     std::string loadedRangesFile;
     std::string loadedConfigFile;
 
-    std::vector<std::string> menuOptions = {
+    const std::vector<std::string> menuOptions = {
         "Load ranges file",
         "Load registers file",
         "Show live ranges",
@@ -62,7 +69,8 @@ int main(int argc, char *argv[]) {
         "Run register allocation",
         "Show allocation result",
         "Save result to file",
-        "Run all basic test datasets",
+        "Run basic datasets",
+        "Run all datasets",
         "Exit"
     };
 
@@ -71,7 +79,8 @@ int main(int argc, char *argv[]) {
 
         switch (choice) {
             case 0: {
-                std::string filename = menu.promptInBox("Load Ranges File", "File path: ");
+                std::string filename = menu.browseFile(datasetPath(), "Load Ranges File", "registers");
+                if (filename.empty()) break;
                 ranges.clear();
                 webs.clear();
                 rangesLoaded = false;
@@ -91,7 +100,8 @@ int main(int argc, char *argv[]) {
                 break;
             }
             case 1: {
-                std::string filename = menu.promptInBox("Load Registers File", "File path: ");
+                std::string filename = menu.browseFile(datasetPath(), "Load Registers File", "ranges");
+                if (filename.empty()) break;
                 configLoaded = false;
                 if (RegistersParser::parse(filename, config)) {
                     configLoaded = true;
@@ -108,11 +118,10 @@ int main(int argc, char *argv[]) {
                 break;
             }
             case 2: {
-                if (!rangesLoaded) {
+                if (!rangesLoaded)
                     menu.displayInBox("Live Ranges", {"!!No ranges file loaded.", "Use option 1 first."});
-                } else {
+                else
                     menu.displayInBox("Live Ranges", DisplayFormatter::formatRanges(ranges));
-                }
                 break;
             }
             case 3: {
@@ -123,17 +132,13 @@ int main(int argc, char *argv[]) {
                 webs.clear();
                 WebBuilder::build(ranges, webs);
                 InterferenceGraph ig(webs);
-
                 auto lines = DisplayFormatter::formatWebs(webs);
                 lines.push_back("");
                 lines.push_back("Interference edges:");
-                for (int i = 0; i < ig.size(); i++) {
-                    for (int j : ig.neighbours(i)) {
-                        if (j > i) {
+                for (int i = 0; i < ig.size(); i++)
+                    for (int j : ig.neighbours(i))
+                        if (j > i)
                             lines.push_back("  web" + std::to_string(i) + " <-> web" + std::to_string(j));
-                        }
-                    }
-                }
                 menu.displayInBox("Webs & Interference Graph", lines);
                 break;
             }
@@ -149,38 +154,92 @@ int main(int argc, char *argv[]) {
                 WebBuilder::build(ranges, webs);
                 InterferenceGraph ig(webs);
                 lastResult = RegisterAllocator::allocate(webs, ig, config);
-                auto lines = DisplayFormatter::formatAllocationResult(lastResult);
-                menu.displayInBox("Register Allocation", lines);
+                menu.displayInBox("Register Allocation", DisplayFormatter::formatAllocationResult(lastResult));
                 break;
             }
             case 5: {
-                if (lastResult.webs.empty()) {
-                    menu.displayInBox("Allocation Result", {"!!No allocation performed yet.", "Use option 5 first."});
-                } else {
+                if (lastResult.webs.empty())
+                    menu.displayInBox("Allocation Result", {"!!No allocation performed yet.", "Use option 4 first."});
+                else
                     menu.displayInBox("Allocation Result", DisplayFormatter::formatAllocationResult(lastResult));
-                }
                 break;
             }
             case 6: {
                 if (lastResult.webs.empty()) {
-                    menu.displayInBox("Save Result", {"!!No allocation to save.", "Run allocation first (option 5)."});
+                    menu.displayInBox("Save Result", {"!!No allocation to save.", "Run allocation first (option 4)."});
                     break;
                 }
-                std::string filename = menu.promptInBox("Save Result", "Output file path: ");
-                OutputWriter::write(filename, lastResult);
-                menu.displayInBox("Save Result", {"Result saved to: " + filename});
+                std::string name = menu.promptInBox("Save Result", "File name (no extension): ");
+                if (name.empty()) break;
+                {
+                    namespace fs = std::filesystem;
+                    fs::path outDir = datasetPath().parent_path() / "outputs";
+                    std::error_code ec;
+                    fs::create_directories(outDir, ec);
+                    std::string fullPath = (outDir / (name + ".txt")).string();
+                    OutputWriter::write(fullPath, lastResult);
+                    menu.displayInBox("Save Result", {"Result saved to: outputs/" + name + ".txt"});
+                }
                 break;
             }
             case 7: {
-                auto lines = BatchProcessor::runAllBasicDatasets();
-                menu.displayInBox("All Basic Datasets", lines);
+                auto lines = BatchProcessor::runBasicDatasetsToFile();
+                menu.displayInBox("Basic Datasets", lines);
                 break;
             }
-            case 8:
+            case 8: {
+                auto lines = BatchProcessor::runAllTestsToFile();
+                menu.displayInBox("All Datasets", lines);
+                break;
+            }
+            case 9:
                 std::cout << "\033[?25h" << Menu::CLEAR_SCREEN;
-                return 0;
+                return;
         }
     }
+}
 
+int main(int argc, char *argv[]) {
+    tcgetattr(STDIN_FILENO, &g_originalTermios);
+    std::signal(SIGINT, restoreTerminal);
+
+    // Batch mode (full paths):  -b <ranges> <registers> <out>
+    // Batch mode (short form):  -b <folder> <ranges-name> <registers-name> <out>
+    if (argc >= 5 && std::string(argv[1]) == "-b") {
+        if (argc == 5)
+            return BatchProcessor::run(argv[2], argv[3], argv[4]);
+
+        if (argc == 6) {
+            fs::path dsRoot       = datasetPath();
+            fs::path projectRoot  = dsRoot.parent_path();
+            std::string folder        = argv[2];
+            std::string rangesName    = argv[3];
+            std::string registersName = argv[4];
+            std::string outStem       = argv[5];
+
+            if (rangesName.size() < 4 || rangesName.substr(rangesName.size() - 4) != ".txt")
+                rangesName += ".txt";
+            if (registersName.size() < 4 || registersName.substr(registersName.size() - 4) != ".txt")
+                registersName += ".txt";
+
+            // output goes to outputs/<folder>/<stem>.txt (no .txt needed in argument)
+            fs::path outDir = projectRoot / "outputs" / folder;
+            std::error_code ec;
+            fs::create_directories(outDir, ec);
+            std::string outFile = (outDir / (outStem + ".txt")).string();
+
+            return BatchProcessor::run(
+                (dsRoot / folder / "ranges"    / rangesName).string(),
+                (dsRoot / folder / "registers" / registersName).string(),
+                outFile);
+        }
+
+        std::cerr << "Usage:\n"
+                  << "  " << argv[0] << " -b <ranges.txt> <registers.txt> <out.txt>\n"
+                  << "  " << argv[0] << " -b <folder> <ranges-name> <registers-name> <out-stem>\n";
+        return 1;
+    }
+
+    runInteractiveMenu();
     return 0;
 }

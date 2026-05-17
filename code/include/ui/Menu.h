@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <filesystem>
 
 /**
  * @brief Terminal UI renderer — draws boxes, arrow menus, and prompts.
@@ -15,6 +16,13 @@ public:
     void displayInBox(const std::string &subtitle, const std::vector<std::string> &lines);
     std::string promptInBox(const std::string &subtitle, const std::string &prompt);
     int arrowMenu(const std::vector<std::string> &options);
+
+    // Browse the filesystem starting at startDir; returns selected file path,
+    // or "" if the user cancelled (backed out of the root).
+    // hideDirName: if non-empty, directories with that name are hidden.
+    std::string browseFile(const std::filesystem::path &startDir,
+                           const std::string &subtitle,
+                           const std::string &hideDirName = "");
 
     static const std::string CLEAR_SCREEN;
 
