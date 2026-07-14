@@ -1,12 +1,13 @@
 # Register Allocation Tool
 
-> This project was developed by <a href="https://github.com/T0m2sT">Pedro Tomás Teixeira</a> (up202404987) and <a href="https://github.com/Pinho13">Rafael Pinho e Silva</a> (up202406334) for DA 2025/26.
-
-**Design of Algorithms (DA) - L.EIC016**
-Spring 2026 | Programming Project II
 
 A command-line tool that performs register allocation for compiler intermediate representations using graph-coloring algorithms. Given a set of live ranges and a register configuration, the tool builds webs, constructs an interference graph, and assigns physical registers (or spills to memory) via one of four selectable strategies.
 
+> This project was developed by <a href="https://github.com/T0m2sT">Pedro Tomás Teixeira</a> (up202404987) and <a href="https://github.com/Pinho13">Rafael Pinho e Silva</a> (up202406334) for DA 2025/26.
+
+![Grade](https://img.shields.io/badge/Grade-19.5%2F20-1E90FF?style=for-the-badge&labelColor=21262d)
+![Course](https://img.shields.io/badge/Course-DA-1E90FF?style=for-the-badge&labelColor=21262d)
+![Year](https://img.shields.io/badge/Year-2025%2F26-1E90FF?style=for-the-badge&labelColor=21262d)
 
 ## Build & Run
 
@@ -199,9 +200,3 @@ bash tests/run_tests.sh
 | Pedro Tomás Teixeira | 50% |
 | Rafael Pinho e Silva | 50% |
 
-
-<p align = "center" >
-  <h2 align = "center" >
-    Grade: 19.5/20
-  </h2>
-</p>
