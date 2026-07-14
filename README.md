@@ -6,7 +6,7 @@ A command-line tool that performs register allocation for compiler intermediate 
 
 ![Grade](https://img.shields.io/badge/Grade-19.5%2F20-1E90FF?style=for-the-badge&labelColor=21262d)
 ![Course](https://img.shields.io/badge/Course-DA-1E90FF?style=for-the-badge&labelColor=21262d)
-![Semester](https://img.shields.io/badge/Semester-2025%2F26-1E90FF?style=for-the-badge&labelColor=21262d)
+![Year](https://img.shields.io/badge/Year-2025%2F26-1E90FF?style=for-the-badge&labelColor=21262d)
 
 ## Build & Run
 
